@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ViewModels="clr-namespace:eTouristapp.Mobile.ViewModels"
+             mc:Ignorable="d"
+             x:Class="eTouristapp.Mobile.Views.RegistracijaPage">
+    <ContentPage.BindingContext>
+        <ViewModels:RegistracijaViewModel></ViewModels:RegistracijaViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="5" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+            <Label Text="Unesite vase podatke:"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="StartAndExpand" />
+
+            
+                <Label Text="Ime"></Label>
+                <Entry Text="{Binding Ime}"></Entry>
+                <Label Text="Prezime"></Label>
+                <Entry Text="{Binding Prezime}"></Entry>
+                <Label Text="Korisnicko ime"></Label>
+                <Entry Text="{Binding KorisnickoIme}"></Entry>
+                <Label Text="Email"></Label>
+                <Entry Text="{Binding Email}"></Entry>
+                <Label Text="Password"></Label>
+                <Entry Text="{Binding Password}"></Entry>
+                <Label Text="Password potvrda"></Label>
+                <Entry Text="{Binding PasswordPotvrda}"></Entry>
+            
+                <Button BackgroundColor="Blue" Clicked="Button_Clicked"  Text="Registracija"></Button>
+                
+            </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

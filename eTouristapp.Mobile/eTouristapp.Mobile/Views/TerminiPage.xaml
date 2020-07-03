@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ViewModels="clr-namespace:eTouristapp.Mobile.ViewModels"
+             mc:Ignorable="d"
+             x:Class="eTouristapp.Mobile.Views.TerminiPage">
+    <ContentPage.BindingContext>
+        <ViewModels:TerminiViewModel></ViewModels:TerminiViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Raspolozivi termini"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="StartAndExpand" />
+            <Label Text="*Za rezervaciju odaberite termin potom kliknite na dugme Kupi*"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="StartAndExpand" />
+
+            <ListView ItemSelected="ListView_ItemSelected" ItemsSource="{Binding TerminiList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid x:Name="TerminiLista"  Margin="4">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+
+                                </Grid.ColumnDefinitions>
+                                <Label BackgroundColor="CadetBlue" Text="Datum Polaska" Grid.Row="0" Grid.Column="0"></Label>
+                                <Label BackgroundColor="CadetBlue" Text="Datum Dolaska" Grid.Row="0" Grid.Column="1"></Label>
+                                <Label BackgroundColor="CadetBlue" Text="Cijena" Grid.Row="0" Grid.Column="2"></Label>
+
+                                <Label Text="{Binding DatumPolaska,StringFormat='{}{0:dd/MM/yyyy}'}" Grid.Row="1" Grid.Column="0"></Label>
+                                <Label Text="{Binding DatumDolaska,StringFormat='{}{0:dd/MM/yyyy}'}" Grid.Row="1"  Grid.Column="1"></Label>
+                                <Label Text="{Binding Cijena,StringFormat='{0:F2} KM'}" Grid.Row="1"  Grid.Column="2"></Label>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+            <Button BackgroundColor="LightBlue" Clicked="Button_Clicked" Text="Kupi"></Button>
+            <Button BackgroundColor="Red" Text="Komentari" Clicked="Button_Clicked_1" ></Button>
+        </StackLayout>
+       
+
+    </ContentPage.Content>
+</ContentPage>

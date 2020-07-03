@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ViewModels="clr-namespace:eTouristapp.Mobile.ViewModels"
+             mc:Ignorable="d"
+             x:Class="eTouristapp.Mobile.Views.OcjenePage">
+    <ContentPage.BindingContext>
+        <ViewModels:OcjeneViewModel></ViewModels:OcjeneViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Pregled komentara i ocjena:"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="StartAndExpand" />
+            <ListView ItemsSource="{Binding ListaOcjena}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid x:Name="ListaOcjena"  Margin="4">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+
+                                </Grid.ColumnDefinitions>
+                                <Label BackgroundColor="CadetBlue" Text="Komentar" Grid.Row="0" Grid.Column="0"></Label>
+                                <Label BackgroundColor="CadetBlue" Text="Ocjena" Grid.Row="0" Grid.Column="1"></Label>
+                                <!--<Label BackgroundColor="CadetBlue" Text="Cijena" Grid.Row="0" Grid.Column="2"></Label>-->
+
+                                <Label Text="{Binding Komentar}" Grid.Row="1" Grid.Column="0"></Label>
+                                <Label Text="{Binding OcjenaUsluge}" Grid.Row="1"  Grid.Column="1"></Label>
+                                <!--<Label Text="{Binding Cijena,StringFormat='{0:F2} KM'}" Grid.Row="1"  Grid.Column="2"></Label>-->
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+
+
+
+            <Button Clicked="Button_Clicked" BackgroundColor="Red" Text="Dodaj komentar"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
