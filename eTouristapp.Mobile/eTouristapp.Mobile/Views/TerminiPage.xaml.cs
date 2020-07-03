@@ -70,11 +70,20 @@ namespace eTouristapp.Mobile.Views
         private async void Button_Clicked(object sender, EventArgs e)
         {
             bool postoji = true;
-            KartaSearchRequest kartasearch = new KartaSearchRequest()
+            KartaSearchRequest kartasearch = null;
+
+            if (karta != null)
             {
-                KorisnikID = int.Parse(karta.KorisnikId.ToString()),
-                TerminID = int.Parse(karta.TerminId.ToString())
-            };
+
+
+                kartasearch = new KartaSearchRequest();
+
+                kartasearch.KorisnikID = int.Parse(karta.KorisnikId.ToString());
+                kartasearch.TerminID = int.Parse(karta.TerminId.ToString());
+                kartasearch.Ponistena = false;
+
+               
+            }
 
             var provjera = await _karte.Get<List<Karta>>(kartasearch);
             if(provjera.Count==0)
@@ -83,11 +92,11 @@ namespace eTouristapp.Mobile.Views
             }
 
 
-            if (karta != null && postoji==false)
+            if (karta != null && postoji == false)
             {
                 await _karte.Insert<KartaInsertRequest>(karta);
             }
-            
+           
 
            
 

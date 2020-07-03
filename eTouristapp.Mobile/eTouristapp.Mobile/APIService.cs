@@ -99,5 +99,11 @@ namespace eProdaja.Mobile
             //}
 
         }
+
+        public async Task<bool> Delete<T>(int id)
+        {
+            var url = $"{_apiUrl2}/{_route}/{id}";
+            return await url.WithBasicAuth(Username, Password).DeleteAsync().ReceiveJson<bool>();
+        }
     }
 }

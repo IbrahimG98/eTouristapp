@@ -14,6 +14,8 @@ namespace eTouristapp.WebAPI.Services
         {
         }
 
+       
+
         public virtual T Insert(TInsert request)
         {
             var entitet = _mapper.Map<TDatabase>(request);
@@ -29,12 +31,24 @@ namespace eTouristapp.WebAPI.Services
         public virtual T Update(int id, TUpdate request)
         {
             var entitet = _touristcontext.Set<TDatabase>().Find(id);
-            _mapper.Map(entitet, request);
+            
             _touristcontext.Set<TDatabase>().Attach(entitet);
             _touristcontext.Set<TDatabase>().Update(entitet);
-            //_mapper.Map(entitet, request);
+            _mapper.Map(entitet, request);
             _touristcontext.SaveChanges();
             return _mapper.Map<T>(entitet);
+        }
+        public virtual bool Delete(int id)
+        {
+            var entitet = _touristcontext.Set<TDatabase>().Find(id);
+            if (entitet != null)
+            {
+                _touristcontext.Set<TDatabase>().Remove(entitet);
+                _touristcontext.SaveChanges();
+                return true;
+
+            }
+            return false;
         }
     }
 }

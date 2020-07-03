@@ -9,5 +9,7 @@ namespace eTouristapp.Models.Request
         public int ID { get; set; }
         public int TerminID { get; set; }
         public int KorisnikID { get; set; }
+
+        public bool Ponistena { get; set; }
     }
 }

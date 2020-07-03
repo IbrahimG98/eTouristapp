@@ -29,8 +29,27 @@ namespace eTouristapp.WebAPI.Services
             {
                 query = query.Where(x => x.KorisnikId == search.KorisnikID);
             }
+            if(search.Ponistena==false)
+            {
+                query = query.Where(x =>x.Ponistena==false);
+            }
+            else
+            {
+                query = query.Where(x => x.Ponistena == true);
+            }
             var list = query.ToList();
             return _mapper.Map<List<Models.Karta>>(list);
+        }
+
+        public override Models.Karta Update(int id,KartaInsertRequest request)
+        {
+            var entitet = _touristcontext.Set<Database.Karta>().Find(id);
+            entitet.Ponistena = true;
+            _touristcontext.Set<Database.Karta>().Attach(entitet);
+            _touristcontext.Set<Database.Karta>().Update(entitet);
+            _mapper.Map(entitet, request);
+            _touristcontext.SaveChanges();
+            return _mapper.Map<Models.Karta>(entitet);
         }
 
 
