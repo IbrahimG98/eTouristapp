@@ -33,5 +33,19 @@ namespace eTouristapp.WebAPI.Services
             var list = query.ToList();
             return _mapper.Map<List<Models.Hotel>>(list);
         }
+
+        public override Models.Hotel Update(int id, HotelInsertRequest request)
+        {
+            var entitet = _touristcontext.Set<Database.Hotel>().Find(id);
+            entitet.Naziv = request.Naziv;
+            entitet.GradId = request.GradId;
+            entitet.BrojZvjezdica = request.BrojZvjezdica;
+            //entitet.Slika = request.Slika;
+            _touristcontext.Set<Database.Hotel>().Attach(entitet);
+            _touristcontext.Set<Database.Hotel>().Update(entitet);
+            _mapper.Map(entitet, request);
+            _touristcontext.SaveChanges();
+            return _mapper.Map<Models.Hotel>(entitet);
+        }
     }
 }

@@ -28,6 +28,8 @@ namespace eTouristapp.WebAPI.Mappers
             CreateMap<Database.Hotel, Models.Hotel>();
             CreateMap<Database.Hotel, HotelInsertRequest>().ReverseMap();
             CreateMap<Database.Hotel, Models.Hotel>().ReverseMap();
+            CreateMap<Models.Hotel, HotelInsertRequest>();
+            CreateMap<Models.Hotel, HotelInsertRequest>().ReverseMap();
 
             CreateMap<Database.Termin, Models.Termin>();
             CreateMap<Database.Termin, TerminInsertRequest>().ReverseMap();

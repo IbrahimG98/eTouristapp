@@ -42,12 +42,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnSacuvaj = new System.Windows.Forms.Button();
-            this.boxSlika = new System.Windows.Forms.PictureBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.cmbUloge = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.boxSlika)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -163,23 +160,6 @@
             this.btnSacuvaj.UseVisualStyleBackColor = true;
             this.btnSacuvaj.Click += new System.EventHandler(this.btnSacuvaj_Click);
             // 
-            // boxSlika
-            // 
-            this.boxSlika.Location = new System.Drawing.Point(441, 74);
-            this.boxSlika.Name = "boxSlika";
-            this.boxSlika.Size = new System.Drawing.Size(128, 117);
-            this.boxSlika.TabIndex = 13;
-            this.boxSlika.TabStop = false;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(441, 45);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(38, 17);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Slika";
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
@@ -208,8 +188,6 @@
             this.ClientSize = new System.Drawing.Size(800, 461);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cmbUloge);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.boxSlika);
             this.Controls.Add(this.btnSacuvaj);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -226,7 +204,6 @@
             this.Name = "frmKorisniciDetalji";
             this.Text = "frmKorisniciDetalji";
             this.Load += new System.EventHandler(this.frmKorisniciDetalji_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.boxSlika)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -248,8 +225,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnSacuvaj;
-        private System.Windows.Forms.PictureBox boxSlika;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cmbUloge;

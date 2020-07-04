@@ -27,14 +27,13 @@ namespace eTouristapp.WebAPI.Services
 
             return _mapper.Map<T>(entitet);
         }
-        [HttpPut]
         public virtual T Update(int id, TUpdate request)
         {
             var entitet = _touristcontext.Set<TDatabase>().Find(id);
             
             _touristcontext.Set<TDatabase>().Attach(entitet);
             _touristcontext.Set<TDatabase>().Update(entitet);
-            _mapper.Map(entitet, request);
+            _mapper.Map(request, entitet);
             _touristcontext.SaveChanges();
             return _mapper.Map<T>(entitet);
         }

@@ -12,9 +12,9 @@ namespace eTouristapp.Models.Request
         [Required]
         public string Naziv { get; set; }
         public byte[] Slika { get; set; }
-        
+        [Required]
         public int GradId { get; set; }
-        //[Range(1,5,ErrorMessage ="Brojevi od 1 do 5")]
+        [Range(1,5,ErrorMessage ="Brojevi od 1 do 5")]
         public int BrojZvjezdica { get; set; }
     }
 }

@@ -10,5 +10,7 @@ namespace eTouristapp.Models.Request
         public DateTime DatumPolaska { get; set; }
         public DateTime DatumDolaska { get; set; }
         public decimal Cijena { get; set; }
+
+        public bool Aktivan { get; set; }
     }
 }

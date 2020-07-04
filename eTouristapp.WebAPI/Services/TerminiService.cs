@@ -29,6 +29,7 @@ namespace eTouristapp.WebAPI.Services
             {
                 query = query.Where(x => x.DatumDolaska <= search.DatumDolaska);
             }
+
             var list = query.ToList();
             return _mapper.Map<List<Models.Termin>>(list);
         }

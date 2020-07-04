@@ -43,7 +43,7 @@ namespace eTouristapp.WinUI.Hoteli
                 txtZvjezdice.Text = hotel.BrojZvjezdica.ToString();
 
                 pbSlika.Image = ByteToImage(hotel.Slika);
-
+                hot.Slika = hotel.Slika;
 
                 var result = await _gradovi.Get<List<Models.Grad>>(null);
 
@@ -95,10 +95,11 @@ namespace eTouristapp.WinUI.Hoteli
             }
             hot.BrojZvjezdica = int.Parse(txtZvjezdice.Text.ToString());
             hot.Naziv = txtNaziv.Text;
-
+            
 
             if (_id.HasValue)
             {
+                hot.Id =_id.Value;
                 await _hotel.Update<HotelInsertRequest>(_id, hot);
             }
             else
@@ -107,6 +108,52 @@ namespace eTouristapp.WinUI.Hoteli
             }
             MessageBox.Show("Operacija uspjesna");
             this.Close();
+        }
+
+        private void txtNaziv_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNaziv.Text))
+            {
+                errorProvider1.SetError(txtNaziv, "Obavezno polje!");
+            }
+            else
+            {
+                errorProvider1.SetError(txtNaziv, null);
+            }
+        }
+
+        private void cmbGrad_Validating(object sender, CancelEventArgs e)
+        {
+            if(cmbGrad.SelectedValue==null)
+            {
+                errorProvider1.SetError(cmbGrad, "Obavezno polje!");
+            }
+            else
+            {
+                errorProvider1.SetError(cmbGrad, null);
+            }
+        }
+
+        private void txtZvjezdice_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtZvjezdice.Text))
+            {
+                errorProvider1.SetError(txtZvjezdice, "Obavezno polje!");
+            }
+            else
+            {
+                errorProvider1.SetError(txtZvjezdice, null);
+            }
+
+        }
+
+        private async void btnObrisi_Click(object sender, EventArgs e)
+        {
+            if(_id.HasValue)
+            {
+                await _hotel.Delete<bool>(_id);
+                this.Close();
+            }
         }
 
         //private Image Resize(Image img, int iWidth, int iHeight)
