@@ -23,9 +23,14 @@ namespace eTouristapp.WebAPI.Controllers
             return _service.Insert(request);
         }
         [HttpPut("{id}")]
-        public ActionResult<T> Update(int id, TUpdate request)
+        public ActionResult<T> Update(int id,[FromBody] TUpdate request)
         {
             return _service.Update(id, request);
+        }
+        [HttpDelete("{id}")]
+        public ActionResult<bool> Delete(int id)
+        {
+            return _service.Delete(id);
         }
 
     }

@@ -40,6 +40,7 @@
             this.txtSlika = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnTermini = new System.Windows.Forms.Button();
+            this.btnObrisi = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,7 +96,7 @@
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(246, 385);
+            this.btnSacuvaj.Location = new System.Drawing.Point(246, 316);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(100, 23);
             this.btnSacuvaj.TabIndex = 6;
@@ -135,19 +136,31 @@
             // 
             // btnTermini
             // 
-            this.btnTermini.Location = new System.Drawing.Point(37, 302);
+            this.btnTermini.Location = new System.Drawing.Point(31, 265);
             this.btnTermini.Name = "btnTermini";
-            this.btnTermini.Size = new System.Drawing.Size(309, 23);
+            this.btnTermini.Size = new System.Drawing.Size(315, 23);
             this.btnTermini.TabIndex = 10;
             this.btnTermini.Text = "Termini";
             this.btnTermini.UseVisualStyleBackColor = true;
             this.btnTermini.Click += new System.EventHandler(this.btnTermini_Click);
+            // 
+            // btnObrisi
+            // 
+            this.btnObrisi.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnObrisi.Location = new System.Drawing.Point(379, 380);
+            this.btnObrisi.Name = "btnObrisi";
+            this.btnObrisi.Size = new System.Drawing.Size(109, 23);
+            this.btnObrisi.TabIndex = 11;
+            this.btnObrisi.Text = "Obrisi";
+            this.btnObrisi.UseVisualStyleBackColor = false;
+            this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
             // 
             // frmDestinacijeDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(848, 432);
+            this.Controls.Add(this.btnObrisi);
             this.Controls.Add(this.btnTermini);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtSlika);
@@ -182,5 +195,6 @@
         private System.Windows.Forms.TextBox txtSlika;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnTermini;
+        private System.Windows.Forms.Button btnObrisi;
     }
 }

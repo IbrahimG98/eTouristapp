@@ -25,10 +25,9 @@ namespace eTouristapp.WinUI.Termini
         {
             var search = new TerminSearchRequest()
             {
-                DestinacijaId=int.Parse(_destinacijaid.ToString())
-                //Cijena=decimal.Parse(txtCijena.Text.ToString())
-                //DatumPolaska = pickerOd.Value,
-                //DatumDolaska=pickerDo.Value
+                DestinacijaId=int.Parse(_destinacijaid.ToString()),
+                DatumPolaska = pickerOd.Value,
+                DatumDolaska = pickerDo.Value
 
             };
 

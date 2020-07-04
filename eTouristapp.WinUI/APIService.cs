@@ -59,5 +59,17 @@ namespace eTouristapp.WinUI
             var result = await url.WithBasicAuth(Username, Password).PostJsonAsync(request).ReceiveJson<T>();
             return result;
         }
+
+        public async Task<bool> Delete<T>(object id)
+        {
+
+            //var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
+            var url = $"{Properties.Settings.Default.APIUrl2}/{_route}/{id}";
+
+            var result = await url.WithBasicAuth(Username, Password).DeleteAsync().ReceiveJson<bool>();
+            return result;
+        }
+
+
     }
 }

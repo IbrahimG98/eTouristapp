@@ -37,12 +37,12 @@
             this.txtCijena = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnTrazi = new System.Windows.Forms.Button();
+            this.btnNoviTermin = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumPolaska = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumDolaska = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Aktivan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnNoviTermin = new System.Windows.Forms.Button();
             this.Termini.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTermini)).BeginInit();
             this.SuspendLayout();
@@ -136,6 +136,16 @@
             this.btnTrazi.UseVisualStyleBackColor = true;
             this.btnTrazi.Click += new System.EventHandler(this.btnTrazi_Click);
             // 
+            // btnNoviTermin
+            // 
+            this.btnNoviTermin.Location = new System.Drawing.Point(658, 151);
+            this.btnNoviTermin.Name = "btnNoviTermin";
+            this.btnNoviTermin.Size = new System.Drawing.Size(120, 23);
+            this.btnNoviTermin.TabIndex = 8;
+            this.btnNoviTermin.Text = "Novi termin";
+            this.btnNoviTermin.UseVisualStyleBackColor = true;
+            this.btnNoviTermin.Click += new System.EventHandler(this.btnNoviTermin_Click);
+            // 
             // Id
             // 
             this.Id.DataPropertyName = "Id";
@@ -153,7 +163,6 @@
             this.DatumPolaska.MinimumWidth = 6;
             this.DatumPolaska.Name = "DatumPolaska";
             this.DatumPolaska.ReadOnly = true;
-            this.DatumPolaska.Visible = false;
             this.DatumPolaska.Width = 125;
             // 
             // DatumDolaska
@@ -182,16 +191,6 @@
             this.Aktivan.Name = "Aktivan";
             this.Aktivan.ReadOnly = true;
             this.Aktivan.Width = 125;
-            // 
-            // btnNoviTermin
-            // 
-            this.btnNoviTermin.Location = new System.Drawing.Point(658, 151);
-            this.btnNoviTermin.Name = "btnNoviTermin";
-            this.btnNoviTermin.Size = new System.Drawing.Size(120, 23);
-            this.btnNoviTermin.TabIndex = 8;
-            this.btnNoviTermin.Text = "Novi termin";
-            this.btnNoviTermin.UseVisualStyleBackColor = true;
-            this.btnNoviTermin.Click += new System.EventHandler(this.btnNoviTermin_Click);
             // 
             // frmTermini
             // 
@@ -227,11 +226,11 @@
         private System.Windows.Forms.TextBox txtCijena;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnTrazi;
+        private System.Windows.Forms.Button btnNoviTermin;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumPolaska;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumDolaska;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cijena;
         private System.Windows.Forms.DataGridViewTextBoxColumn Aktivan;
-        private System.Windows.Forms.Button btnNoviTermin;
     }
 }

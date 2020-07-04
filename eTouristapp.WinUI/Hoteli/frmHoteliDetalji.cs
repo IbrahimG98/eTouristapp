@@ -51,7 +51,7 @@ namespace eTouristapp.WinUI.Hoteli
                 cmbGrad.ValueMember = "Id";
 
                 cmbGrad.DataSource = result;
-                cmbGrad.SelectedIndex = hotel.GradId - 1;
+                cmbGrad.SelectedValue = hotel.GradId;
             }
             else
             {
@@ -80,6 +80,7 @@ namespace eTouristapp.WinUI.Hoteli
                 txtSlika.Text = filename;
 
                 Image image = Image.FromFile(filename);
+                //image = Resize(image, 50, 50);
                 pbSlika.Image = image;
 
             }
@@ -98,13 +99,22 @@ namespace eTouristapp.WinUI.Hoteli
 
             if (_id.HasValue)
             {
-                await _hotel.Update<Models.Hotel>(_id, hot);
+                await _hotel.Update<HotelInsertRequest>(_id, hot);
             }
             else
             {
-                await _hotel.Insert<Models.Hotel>(hot);
+                await _hotel.Insert<HotelInsertRequest>(hot);
             }
             MessageBox.Show("Operacija uspjesna");
+            this.Close();
         }
+
+        //private Image Resize(Image img, int iWidth, int iHeight)
+        //{
+        //    Bitmap bmp = new Bitmap(iWidth, iHeight);
+        //    Graphics graphic = Graphics.FromImage((Image)bmp);
+        //    graphic.DrawImage(img, 0, 0, iWidth, iHeight);
+        //    return (Image)bmp;
+        //}
     }
 }

@@ -46,9 +46,11 @@ namespace eTouristapp.WinUI.Destinacije
                 
                 pbSlika.Image = ByteToImage(destinacija.Slika);
 
-
                 var result = await _gradovi.Get<List<Models.Grad>>(null);
+
                
+                des.Slika = destinacija.Slika;
+
                 cmbGrad.DisplayMember = "Naziv";
                 cmbGrad.ValueMember = "Id";
                 
@@ -85,17 +87,18 @@ namespace eTouristapp.WinUI.Destinacije
                 des.GradId = GradId;
             }
             des.Naziv = txtNaziv.Text;
-
+            
             
             if (_id.HasValue)
             {
-                await _destinacija.Update<Models.Destinacija>(_id, des);
+                await _destinacija.Update<DestinacijaInsertRequest>(_id, des);
             }
             else
             {
-                await _destinacija.Insert<Models.Destinacija>(des);
+                await _destinacija.Insert<DestinacijaInsertRequest>(des);
             }
             MessageBox.Show("Operacija uspjesna");
+            this.Close();
             
         }
 
@@ -114,6 +117,13 @@ namespace eTouristapp.WinUI.Destinacije
 
             }
         }
+        //private Image Resize(Image img,int iWidth,int iHeight)
+        //{
+        //    Bitmap bmp = new Bitmap(iWidth, iHeight);
+        //    Graphics graphic = Graphics.FromImage((Image)bmp);
+        //    graphic.DrawImage(img, 0, 0, iWidth, iHeight);
+        //    return (Image)bmp;
+        //}
 
         private void btnTermini_Click(object sender, EventArgs e)
         {
@@ -132,6 +142,15 @@ namespace eTouristapp.WinUI.Destinacije
             //    frm.Show();
             //}
 
+        }
+
+        private async void btnObrisi_Click(object sender, EventArgs e)
+        {
+            if(_id.HasValue)
+            {
+                await _destinacija.Delete<bool>(_id);
+                this.Close();
+            }
         }
     }
 }

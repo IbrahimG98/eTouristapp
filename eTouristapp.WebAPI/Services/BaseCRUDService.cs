@@ -38,6 +38,7 @@ namespace eTouristapp.WebAPI.Services
             _touristcontext.SaveChanges();
             return _mapper.Map<T>(entitet);
         }
+        [HttpDelete]
         public virtual bool Delete(int id)
         {
             var entitet = _touristcontext.Set<TDatabase>().Find(id);
