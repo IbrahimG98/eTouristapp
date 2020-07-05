@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,9 +18,14 @@ namespace eTouristapp.WinUI.Termini
         private readonly APIService _hoteli = new APIService("Hoteli");
         private readonly APIService _termini = new APIService("Termini");
         private readonly APIService _destinacije = new APIService("Destinacije");
+        private readonly APIService _karte = new APIService("Karte");
 
         private int? _id = null;
         private int? _destinacijaid = null;
+        PrintPreviewDialog previewDialog = new PrintPreviewDialog();
+        PrintDocument printDocument = new PrintDocument();
+
+
 
         public frmTerminiDetalji(int? destinacijaid=null,int? id = null)
         {
@@ -44,10 +50,35 @@ namespace eTouristapp.WinUI.Termini
             cmbHotel.DataSource = result;
             
         }
+
+        private async Task LoadZaradaiKarte()
+        {
+            var _termin = await _termini.GetById<Models.Termin>(_id);
+            var _destinacija = await _destinacije.GetById<Models.Destinacija>(_termin.DestinacijaId);
+            
+            KartaSearchRequest request = new KartaSearchRequest()
+            {
+                TerminID=_termin.Id
+            };
+            var karte = await _karte.Get<List<Models.Karta>>(request);
+            int brojkarata = int.Parse(karte.Count().ToString());
+            float cijena = float.Parse(brojkarata.ToString()) * float.Parse(_termin.Cijena.ToString());
+            
+            txtUkupnoKarata.Text = brojkarata.ToString();
+            txtZarada.Text= cijena.ToString();
+            pickerDatump.Value = _termin.DatumPolaska;
+            pickerDatumd.Value = _termin.DatumDolaska;
+            txtNaziv.Text= _destinacija.Naziv;
+            
+
+
+        }
         private async void frmTerminiDetalji_Load(object sender, EventArgs e)
         {
             if (_id.HasValue)
             {
+                await LoadZaradaiKarte();
+
                 var termin = await _termini.GetById<Models.Termin>(_id);
                 pickerOd.Value = termin.DatumPolaska;
                 pickerDo.Value = termin.DatumDolaska;
@@ -70,13 +101,14 @@ namespace eTouristapp.WinUI.Termini
 
                 cmbHotel.DataSource = result;
                 cmbHotel.SelectedValue = termin.HotelId; //radi novog itema u cmblisti
-                                                                //implementirati update 
+                                                         //implementirati update 
 
-
+                
             }
             else
             {
                 await LoadHoteli();
+                
             }
 
 
@@ -109,6 +141,47 @@ namespace eTouristapp.WinUI.Termini
                 await _termini.Insert<Models.Termin>(tir);
             }
             MessageBox.Show("Operacija uspjesna");
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            Print(this.panel1);
+        }
+
+        public void Print(Panel panel)
+        {
+            PrinterSettings printerSettings = new PrinterSettings();
+            panel1 = panel;
+            GetPrintArea(panel);
+            previewDialog.Document = printDocument;
+            printDocument.PrintPage += new PrintPageEventHandler(printDocPrintPage);
+            previewDialog.ShowDialog();
+
+
+        }
+
+        private void printDocPrintPage(object sender, PrintPageEventArgs e)
+        {
+            Rectangle pagearea = e.PageBounds;
+            e.Graphics.DrawImage(memorying, (pagearea.Width / 2) - this.panel1.Width / 2, this.panel1.Location.Y);
+
+        }
+
+        Bitmap memorying;
+        public void GetPrintArea(Panel panel)
+        {
+            memorying = new Bitmap(panel.Height, panel.Width);
+            panel.DrawToBitmap(memorying, new Rectangle(0, 0, panel.Width, panel.Height));
         }
     }
 }

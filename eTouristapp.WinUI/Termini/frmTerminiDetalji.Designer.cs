@@ -44,6 +44,20 @@
             this.label8 = new System.Windows.Forms.Label();
             this.btnSacuvaj = new System.Windows.Forms.Button();
             this.txtPopust = new System.Windows.Forms.TextBox();
+            this.txtUkupnoKarata = new System.Windows.Forms.TextBox();
+            this.txtZarada = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.pickerDatumd = new System.Windows.Forms.DateTimePicker();
+            this.pickerDatump = new System.Windows.Forms.DateTimePicker();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtNaziv = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -57,14 +71,14 @@
             // 
             // pickerOd
             // 
-            this.pickerOd.Location = new System.Drawing.Point(16, 82);
+            this.pickerOd.Location = new System.Drawing.Point(13, 62);
             this.pickerOd.Name = "pickerOd";
             this.pickerOd.Size = new System.Drawing.Size(200, 22);
             this.pickerOd.TabIndex = 1;
             // 
             // pickerDo
             // 
-            this.pickerDo.Location = new System.Drawing.Point(16, 145);
+            this.pickerDo.Location = new System.Drawing.Point(13, 125);
             this.pickerDo.Name = "pickerDo";
             this.pickerDo.Size = new System.Drawing.Size(200, 22);
             this.pickerDo.TabIndex = 2;
@@ -72,7 +86,7 @@
             // chcboxAktivan
             // 
             this.chcboxAktivan.AutoSize = true;
-            this.chcboxAktivan.Location = new System.Drawing.Point(16, 205);
+            this.chcboxAktivan.Location = new System.Drawing.Point(13, 185);
             this.chcboxAktivan.Name = "chcboxAktivan";
             this.chcboxAktivan.Size = new System.Drawing.Size(18, 17);
             this.chcboxAktivan.TabIndex = 3;
@@ -81,29 +95,29 @@
             // cmbHotel
             // 
             this.cmbHotel.FormattingEnabled = true;
-            this.cmbHotel.Location = new System.Drawing.Point(387, 101);
+            this.cmbHotel.Location = new System.Drawing.Point(12, 229);
             this.cmbHotel.Name = "cmbHotel";
-            this.cmbHotel.Size = new System.Drawing.Size(121, 24);
+            this.cmbHotel.Size = new System.Drawing.Size(201, 24);
             this.cmbHotel.TabIndex = 4;
             // 
             // txtCijena
             // 
-            this.txtCijena.Location = new System.Drawing.Point(390, 163);
+            this.txtCijena.Location = new System.Drawing.Point(12, 288);
             this.txtCijena.Name = "txtCijena";
-            this.txtCijena.Size = new System.Drawing.Size(100, 22);
+            this.txtCijena.Size = new System.Drawing.Size(201, 22);
             this.txtCijena.TabIndex = 5;
             // 
             // txtAkcijskaCijena
             // 
-            this.txtAkcijskaCijena.Location = new System.Drawing.Point(387, 276);
+            this.txtAkcijskaCijena.Location = new System.Drawing.Point(12, 404);
             this.txtAkcijskaCijena.Name = "txtAkcijskaCijena";
-            this.txtAkcijskaCijena.Size = new System.Drawing.Size(100, 22);
+            this.txtAkcijskaCijena.Size = new System.Drawing.Size(201, 22);
             this.txtAkcijskaCijena.TabIndex = 7;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 59);
+            this.label2.Location = new System.Drawing.Point(13, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 17);
             this.label2.TabIndex = 8;
@@ -112,7 +126,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 122);
+            this.label3.Location = new System.Drawing.Point(10, 102);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 17);
             this.label3.TabIndex = 9;
@@ -121,7 +135,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 182);
+            this.label4.Location = new System.Drawing.Point(10, 162);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(54, 17);
             this.label4.TabIndex = 10;
@@ -130,7 +144,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(387, 78);
+            this.label5.Location = new System.Drawing.Point(12, 206);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 17);
             this.label5.TabIndex = 11;
@@ -139,7 +153,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(390, 140);
+            this.label6.Location = new System.Drawing.Point(12, 268);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 17);
             this.label6.TabIndex = 12;
@@ -148,7 +162,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(390, 194);
+            this.label7.Location = new System.Drawing.Point(9, 322);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(86, 17);
             this.label7.TabIndex = 13;
@@ -157,7 +171,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(390, 256);
+            this.label8.Location = new System.Drawing.Point(9, 384);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(100, 17);
             this.label8.TabIndex = 14;
@@ -165,7 +179,7 @@
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(141, 313);
+            this.btnSacuvaj.Location = new System.Drawing.Point(138, 438);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(75, 23);
             this.btnSacuvaj.TabIndex = 15;
@@ -175,16 +189,137 @@
             // 
             // txtPopust
             // 
-            this.txtPopust.Location = new System.Drawing.Point(387, 214);
+            this.txtPopust.Location = new System.Drawing.Point(12, 342);
             this.txtPopust.Name = "txtPopust";
-            this.txtPopust.Size = new System.Drawing.Size(100, 22);
+            this.txtPopust.Size = new System.Drawing.Size(201, 22);
             this.txtPopust.TabIndex = 16;
+            // 
+            // txtUkupnoKarata
+            // 
+            this.txtUkupnoKarata.Location = new System.Drawing.Point(71, 210);
+            this.txtUkupnoKarata.Name = "txtUkupnoKarata";
+            this.txtUkupnoKarata.Size = new System.Drawing.Size(239, 22);
+            this.txtUkupnoKarata.TabIndex = 17;
+            // 
+            // txtZarada
+            // 
+            this.txtZarada.Location = new System.Drawing.Point(71, 277);
+            this.txtZarada.Name = "txtZarada";
+            this.txtZarada.Size = new System.Drawing.Size(239, 22);
+            this.txtZarada.TabIndex = 18;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(68, 181);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(157, 17);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "Ukupno prodatih karata";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(68, 245);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(90, 17);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "Zarada u KM";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(65, 134);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(108, 17);
+            this.label11.TabIndex = 24;
+            this.label11.Text = "Datum povratka";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(65, 71);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(102, 17);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "Datum polaska";
+            // 
+            // pickerDatumd
+            // 
+            this.pickerDatumd.Location = new System.Drawing.Point(68, 157);
+            this.pickerDatumd.Name = "pickerDatumd";
+            this.pickerDatumd.Size = new System.Drawing.Size(242, 22);
+            this.pickerDatumd.TabIndex = 22;
+            // 
+            // pickerDatump
+            // 
+            this.pickerDatump.Location = new System.Drawing.Point(68, 94);
+            this.pickerDatump.Name = "pickerDatump";
+            this.pickerDatump.Size = new System.Drawing.Size(242, 22);
+            this.pickerDatump.TabIndex = 21;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(393, 39);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(95, 17);
+            this.label13.TabIndex = 25;
+            this.label13.Text = "Printing panel";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(65, 13);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(114, 17);
+            this.label14.TabIndex = 27;
+            this.label14.Text = "Naziv destinacije";
+            // 
+            // txtNaziv
+            // 
+            this.txtNaziv.Location = new System.Drawing.Point(68, 42);
+            this.txtNaziv.Name = "txtNaziv";
+            this.txtNaziv.Size = new System.Drawing.Size(242, 22);
+            this.txtNaziv.TabIndex = 26;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnPrint);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.txtUkupnoKarata);
+            this.panel1.Controls.Add(this.txtNaziv);
+            this.panel1.Controls.Add(this.txtZarada);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.pickerDatump);
+            this.panel1.Controls.Add(this.pickerDatumd);
+            this.panel1.Location = new System.Drawing.Point(338, 62);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(365, 364);
+            this.panel1.TabIndex = 28;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(235, 316);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(75, 23);
+            this.btnPrint.TabIndex = 29;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // frmTerminiDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 473);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.txtPopust);
             this.Controls.Add(this.btnSacuvaj);
             this.Controls.Add(this.label8);
@@ -204,6 +339,8 @@
             this.Name = "frmTerminiDetalji";
             this.Text = "frmTerminiDetalji";
             this.Load += new System.EventHandler(this.frmTerminiDetalji_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,5 +364,18 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnSacuvaj;
         private System.Windows.Forms.TextBox txtPopust;
+        private System.Windows.Forms.TextBox txtUkupnoKarata;
+        private System.Windows.Forms.TextBox txtZarada;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DateTimePicker pickerDatumd;
+        private System.Windows.Forms.DateTimePicker pickerDatump;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtNaziv;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnPrint;
     }
 }
