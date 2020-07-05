@@ -24,6 +24,12 @@ namespace eTouristapp.WebAPI.Services
         }
         public List<Models.Destinacija> GetPreporuka(int id)
         {
+            //ideja je bila da se kreira cbf filter koji ce korisniku preporucivati najcesce rezervisane destinacije u odnosu na historiju pretrazivanja
+            //posto svaka destinacija ima vise termina korisnik ce dobiti na pregled destinacije koje zadoolje kriteri
+            //a klikom na destinaciju otvoriti ce mu se prozor koji prikazuje aktivne termine
+
+
+
             List<Models.Destinacija> listapreporucenihdestinacija = new List<Models.Destinacija>();
             List<Models.Destinacija> rezultat = new List<Models.Destinacija>();
             Database.Korisnik korisnik = _context.Korisnik.Find(id);
@@ -40,7 +46,7 @@ namespace eTouristapp.WebAPI.Services
 
                 var sveDestinacije = _context.Destinacija.ToList();
 
-                
+                //dictionary sadrz parove ida destinacije i broja rezervacija iste
                 Dictionary<int, int> destinacijaibrojac = new Dictionary<int, int>();
                 foreach(var i in sveDestinacije)
                 {
@@ -61,7 +67,8 @@ namespace eTouristapp.WebAPI.Services
 
 
                     }
-
+                    //za svaku kartu se pronasao termin a za taj termin birana destinacija
+                    //ako u dictionariju ne postoji id destinacije ona se dodaje zajedno sa brojacem kao par
                     if(!destinacijaibrojac.ContainsKey(i.Id))
                     {
                         destinacijaibrojac.Add(i.Id, brojac1);
@@ -75,6 +82,8 @@ namespace eTouristapp.WebAPI.Services
 
                 foreach(var k in destinacijaibrojac.ToList())
                 {
+                    //ako je rezervisana vise od dva puta , destinacija se salje u listu preporucenih destinacija
+                    //koje su personalizirane sa svakog korisnika
                     if(k.Value>=PreporucenBroj)
                     {
                         
@@ -94,7 +103,7 @@ namespace eTouristapp.WebAPI.Services
 
 
             }
-
+            
             return rezultat;
         }
     }
