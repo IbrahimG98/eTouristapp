@@ -90,7 +90,7 @@ namespace eTouristapp.WebAPI
             services.AddDbContext<eTourist1Context>(options => options.UseSqlServer(connection));
 
             services.AddScoped<IKorisniciService, KorisniciService>();
-
+            services.AddScoped<IPreporukaService, PreporukeService>();
             services.AddScoped<IService<Models.Grad, object>,BaseService<Models.Grad,object,Grad>>();
             services.AddScoped<IService<Models.Uloga, object>, BaseService<Models.Uloga, object,Uloga>>();
             services.AddScoped<ICRUDService<Models.Destinacija, DestinacijaSearchRequest,DestinacijaInsertRequest,DestinacijaInsertRequest>, DestinacijeService>();

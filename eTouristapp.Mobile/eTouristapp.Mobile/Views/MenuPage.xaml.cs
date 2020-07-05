@@ -21,6 +21,7 @@ namespace eTouristapp.Mobile.Views
             menuItems = new List<HomeMenuItem>
             {
                 new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
+                new HomeMenuItem {Id = MenuItemType.Preporuka, Title="Preporucujemo" },
                 new HomeMenuItem {Id = MenuItemType.Destinacije, Title="Destinacije" },
                 new HomeMenuItem {Id = MenuItemType.MojiPodaci, Title="Moji podaci" }
             };

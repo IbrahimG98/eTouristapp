@@ -33,6 +33,9 @@ namespace eTouristapp.Mobile.Views
                     case (int)MenuItemType.Browse:
                         MenuPages.Add(id, new NavigationPage(new ItemsPage()));
                         break;
+                    case (int)MenuItemType.Preporuka:
+                        MenuPages.Add(id, new NavigationPage(new PreporukaPage()));
+                        break;
                     case (int)MenuItemType.Destinacije:
                         MenuPages.Add(id, new NavigationPage(new DestinacijePage()));
                         break;

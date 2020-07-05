@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using eTouristapp.Models;
 using eTouristapp.WebAPI.Database;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace eTouristapp.WebAPI.Services
 {
-    public class PreporukaService : IPreporukaService
+    public class PreporukeService : IPreporukaService
     {
         private readonly eTourist1Context _context;
         private readonly IMapper _mapper;
 
         private int PreporucenBroj = 2;
 
-        public PreporukaService(eTourist1Context context, IMapper mapper)
+        public PreporukeService(eTourist1Context context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -86,14 +87,6 @@ namespace eTouristapp.WebAPI.Services
 
 
                 return rezultat;
-
-
-
-
-
-
-
-
 
 
 

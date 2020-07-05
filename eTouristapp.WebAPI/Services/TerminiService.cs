@@ -21,11 +21,11 @@ namespace eTouristapp.WebAPI.Services
             {
                 query = query.Where(x => x.DestinacijaId == search.DestinacijaId);
             }
-            if (search.DatumPolaska != null)
+            if (search.DatumPolaska !=null )
             {
                 query = query.Where(x => x.DatumPolaska >= search.DatumPolaska);
             }
-            if (search.DatumDolaska!=null)
+            if (search.DatumDolaska != null)
             {
                 query = query.Where(x => x.DatumDolaska <= search.DatumDolaska);
             }

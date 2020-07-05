@@ -4,25 +4,25 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ViewModels="clr-namespace:eTouristapp.Mobile.ViewModels" xmlns:Converters="clr-namespace:eTouristapp.Mobile.Converters"
              mc:Ignorable="d"
-             x:Class="eTouristapp.Mobile.Views.DestinacijePage">
-
+             x:Class="eTouristapp.Mobile.Views.PreporukaPage">
     <ContentPage.BindingContext>
-        <ViewModels:DestinacijeViewModel></ViewModels:DestinacijeViewModel>
+        <ViewModels:PreporukaViewModel></ViewModels:PreporukaViewModel>
     </ContentPage.BindingContext>
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <Converters:ImageConverter x:Key="ImgConverter"></Converters:ImageConverter>
         </ResourceDictionary>
-        
+
     </ContentPage.Resources>
-    
     <ContentPage.Content>
+        
         <StackLayout>
-            <Label Text="Destinacije"
+            <Label Text="Za vas preporucujemo:"
                 VerticalOptions="StartAndExpand" 
                 HorizontalOptions="StartAndExpand" />
-            <Picker ItemsSource="{Binding GradoviList}" SelectedItem="{Binding SelectedGrad}" ItemDisplayBinding="{Binding Naziv}"></Picker>
-            <ListView ItemSelected="ListView_ItemSelected"  ItemsSource="{Binding DestinacijeList}">
+
+            <ListView   ItemsSource="{Binding PreporuceneDestinacijeList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -35,8 +35,9 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-                
+
             </ListView>
+
 
         </StackLayout>
     </ContentPage.Content>

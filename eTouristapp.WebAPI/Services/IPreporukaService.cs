@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eTouristapp.WebAPI.Services
 {
-    interface IPreporukaService
+    public interface IPreporukaService
     {
 
         public List<Destinacija> GetPreporuka(int id);
