@@ -13,7 +13,7 @@ namespace eTouristapp.Models.Request
         [Required]
 
         public decimal Cijena { get; set; }
-        public float Popust { get; set; }
+        public float? Popust { get; set; }
         [Required]
         public int HotelId { get; set; }
         public decimal? CijenaPopust { get; set; }

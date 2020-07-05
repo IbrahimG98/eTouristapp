@@ -30,9 +30,7 @@ namespace eTouristapp.Mobile.Views
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.Browse:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
-                        break;
+                    
                     case (int)MenuItemType.Preporuka:
                         MenuPages.Add(id, new NavigationPage(new PreporukaPage()));
                         break;

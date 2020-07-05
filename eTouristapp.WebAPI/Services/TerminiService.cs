@@ -33,5 +33,22 @@ namespace eTouristapp.WebAPI.Services
             var list = query.ToList();
             return _mapper.Map<List<Models.Termin>>(list);
         }
+
+        public override Models.Termin Update(int id,TerminInsertRequest insert)
+        {
+            var entitet = _touristcontext.Set<Database.Termin>().Find(id);
+            entitet.AktivanTermin = insert.AktivanTermin;
+            entitet.Cijena = insert.Cijena;
+            entitet.Popust = insert.Popust;
+            entitet.CijenaPopust = insert.CijenaPopust;
+            entitet.DatumDolaska = insert.DatumDolaska;
+            entitet.DatumPolaska = insert.DatumPolaska;
+            entitet.DestinacijaId = insert.DestinacijaId;
+            _touristcontext.Set<Database.Termin>().Attach(entitet);
+            _touristcontext.Set<Database.Termin>().Update(entitet);
+            _mapper.Map(entitet, insert);
+            _touristcontext.SaveChanges();
+            return _mapper.Map<Models.Termin>(entitet);
+        }
     }
 }

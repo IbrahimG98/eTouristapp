@@ -1,4 +1,5 @@
 ﻿using eTouristapp.Mobile.ViewModels;
+using eTouristapp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,16 @@ namespace eTouristapp.Mobile.Views
             await model.LoadPreporuka();
         }
 
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if(e.SelectedItem!=null)
+            {
+                var l = e.SelectedItem as Destinacija;
+                int id = int.Parse(l.Id.ToString());
+                Navigation.PushAsync(new TerminiPage(id));
 
+            }
+
+        }
     }
 }

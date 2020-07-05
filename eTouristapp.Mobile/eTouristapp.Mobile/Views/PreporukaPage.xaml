@@ -22,7 +22,7 @@
                 VerticalOptions="StartAndExpand" 
                 HorizontalOptions="StartAndExpand" />
 
-            <ListView   ItemsSource="{Binding PreporuceneDestinacijeList}">
+            <ListView ItemSelected="ListView_ItemSelected"   ItemsSource="{Binding PreporuceneDestinacijeList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
