@@ -125,7 +125,15 @@ namespace eTouristapp.WinUI.Termini
             }
             tir.AktivanTermin = chcboxAktivan.Checked;
             tir.Cijena = decimal.Parse(txtCijena.Text.ToString());
-            tir.Popust = float.Parse(txtPopust.Text.ToString());
+            if(txtPopust.Text == null)
+            {
+                tir.Popust = 0;
+            }
+            else
+            {
+                tir.Popust = float.Parse(txtPopust.Text.ToString());
+            }
+            
             tir.DatumDolaska = pickerDo.Value;
             tir.DatumPolaska = pickerOd.Value;
             tir.DestinacijaId = int.Parse(_destinacijaid.ToString());
