@@ -152,5 +152,14 @@ namespace eTouristapp.WinUI.Korisnici
                 errorProvider1.SetError(txtLozinkapotvrda, null);
             }
         }
+
+        private async void btnObrisi_Click(object sender, EventArgs e)
+        {
+            if(_id.HasValue)
+            {
+                await _service.Delete<Models.Korisnik>(_id);
+                this.Close();
+            }
+        }
     }
 }

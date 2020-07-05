@@ -98,7 +98,11 @@ namespace eTouristapp.WebAPI.Services
         public Models.Korisnik Update(int id, KorisniciInsertRequest request)
         {
             var entitet = _context.Korisnik.Find(id);
-
+            entitet.Ime = request.Ime;
+            entitet.KorisnikoIme = request.KorisnikoIme;
+            entitet.Prezime = request.Prezime;
+            entitet.UlogaId = request.UlogaId;
+            entitet.Email = request.Email;
 
             if (!string.IsNullOrWhiteSpace(request.Password))
             {
@@ -106,6 +110,7 @@ namespace eTouristapp.WebAPI.Services
                 {
                     throw new Exception("Passwordi se ne slazu!");
                 }
+                
             }
             _context.Korisnik.Attach(entitet);
             _context.Korisnik.Update(entitet);
@@ -134,6 +139,19 @@ namespace eTouristapp.WebAPI.Services
             byte[] inArray = algorithm.ComputeHash(dst);
             return Convert.ToBase64String(inArray);
 
+        }
+
+        public bool Delete(int id)
+        {
+            var entitet = _context.Korisnik.Find(id);
+
+            if(entitet!=null)
+            {
+                _context.Korisnik.Remove(entitet);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
         }
     }
 }

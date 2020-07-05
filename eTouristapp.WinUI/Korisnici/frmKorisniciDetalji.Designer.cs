@@ -45,6 +45,7 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.cmbUloge = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.btnObrisi = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -181,11 +182,22 @@
             this.label8.TabIndex = 16;
             this.label8.Text = "Uloga";
             // 
+            // btnObrisi
+            // 
+            this.btnObrisi.Location = new System.Drawing.Point(427, 404);
+            this.btnObrisi.Name = "btnObrisi";
+            this.btnObrisi.Size = new System.Drawing.Size(98, 23);
+            this.btnObrisi.TabIndex = 17;
+            this.btnObrisi.Text = "Obrisi";
+            this.btnObrisi.UseVisualStyleBackColor = true;
+            this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
+            // 
             // frmKorisniciDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 461);
+            this.Controls.Add(this.btnObrisi);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cmbUloge);
             this.Controls.Add(this.btnSacuvaj);
@@ -228,5 +240,6 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cmbUloge;
+        private System.Windows.Forms.Button btnObrisi;
     }
 }

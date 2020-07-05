@@ -1,9 +1,11 @@
-﻿using System;
+﻿using eTouristapp.Models.Request;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,14 +27,27 @@ namespace eTouristapp.WinUI
             {
                 APIService.Username = txtKorisnickoIme.Text;
                 APIService.Password = txtPassword.Text;
-                await _service.Get<dynamic>(null);
-                await _service2.Get<dynamic>(null);
-                frmIndex frm = new frmIndex();
-                frm.Show();
+                KorisniciSearchRequest n = new KorisniciSearchRequest()
+                {
+                    KorisnickoIme=APIService.Username
+                    
+                };
+                var korisnik = await _service.Get<List<Models.Korisnik>>(n);
+                if (korisnik.FirstOrDefault()!=null && korisnik.FirstOrDefault().UlogaId == 2)
+                {
+                    await _service.Get<dynamic>(null);
+                    await _service2.Get<dynamic>(null);
+                    frmIndex frm = new frmIndex();
+                    frm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Netacni podaci ili nemate permisije!");
+                }
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message, "Authentifikacija", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Pogresni podaci ili nemate permisije!", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
     }

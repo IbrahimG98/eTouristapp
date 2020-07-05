@@ -37,10 +37,17 @@ namespace eTouristapp.WebAPI.Controllers
             return _service.Insert(request);
         }
         [HttpPut("{id}")]
-        public ActionResult<Models.Korisnik> Update(int id,KorisniciInsertRequest request)
+        public ActionResult<Models.Korisnik> Update(int id, [FromBody]KorisniciInsertRequest request)
         {
-            return _service.Update(id,request);
+            return _service.Update(id, request);
         }
 
+        [HttpDelete("{id}")]
+        public ActionResult<bool> Delete(int id)
+        {
+            return _service.Delete(id);
+        }
     }
+   
 }
+
