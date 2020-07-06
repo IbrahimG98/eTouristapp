@@ -18,7 +18,7 @@ services:
     build:
       context: .
     environment:
-      - ConnectionStrings:eTourist=Server=etourist-sql,1433;Database=eTourist1;User=sa;Password=QWElkj132!;ConnectRetryCount=0
+      - ConnectionStrings:eTourist=Server=etourist-sql,1433;Database=eTourist1TMP;User=sa;Password=QWElkj132!;ConnectRetryCount=0
     ports:
       - 5000:5050
     networks:
