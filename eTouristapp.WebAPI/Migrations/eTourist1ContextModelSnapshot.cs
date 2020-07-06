@@ -316,8 +316,8 @@ namespace eTouristapp.WebAPI.Migrations
                             Email = "desktop@gmail.com",
                             Ime = "desktopuser",
                             KorisnikoIme = "desktop",
-                            LozinkaHash = "46zcbEUmNIdfAqaqJ5Lxe83l91o=",
-                            LozinkaSalt = "QUjjK7aml/F16MqL+Aa2qg==",
+                            LozinkaHash = "07uXAenNjTCEnl6vIyzx9wPr0b0=",
+                            LozinkaSalt = "CB6+2lJkEHjMVassr3zg7w==",
                             Prezime = "desktopuser",
                             UlogaId = 2
                         },
@@ -327,8 +327,8 @@ namespace eTouristapp.WebAPI.Migrations
                             Email = "mobile@gmail.com",
                             Ime = "mobileuser",
                             KorisnikoIme = "mobile",
-                            LozinkaHash = "6OvhL/Q+lEzaeNKPeY0D/oBx+YY=",
-                            LozinkaSalt = "Ik2AwPtDJBk2mcrVAQ7Kcg==",
+                            LozinkaHash = "w6ow5xlx4E2RryaR/bc12PeDHT8=",
+                            LozinkaSalt = "p0Ec+kG8OlRynGySj21QhA==",
                             Prezime = "mobileuser",
                             UlogaId = 1
                         });
