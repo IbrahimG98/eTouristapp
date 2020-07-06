@@ -19,6 +19,7 @@ namespace eProdaja.Mobile
 #if DEBUG
         //private string _apiUrl = "https://localhost:44396/api"; //sa ssl
         private string _apiUrl2 = "http://localhost:51097/api";
+        //private string _apiUrl2 = "http://localhost:5000/api";
 #endif
 
         public APIService(string route)

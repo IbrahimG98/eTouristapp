@@ -86,8 +86,14 @@ namespace eTouristapp.WebAPI
             services.AddAuthentication("BasicAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
-            var connection = "Server=.;Database=eTourist1;Trusted_Connection=True;ConnectRetryCount=0"; //@Server nije podrzan
+            //var connection = "Server=.;Database=eTourist1;Trusted_Connection=True;ConnectRetryCount=0"; //@Server nije podrzan
+            //services.AddDbContext<eTourist1Context>(options => options.UseSqlServer(connection));
+
+
+            var connection = Configuration.GetConnectionString("eTourist");
             services.AddDbContext<eTourist1Context>(options => options.UseSqlServer(connection));
+
+
 
             services.AddScoped<IKorisniciService, KorisniciService>();
             services.AddScoped<IPreporukaService, PreporukeService>();

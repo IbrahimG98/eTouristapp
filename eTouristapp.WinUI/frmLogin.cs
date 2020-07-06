@@ -33,7 +33,7 @@ namespace eTouristapp.WinUI
                     
                 };
                 var korisnik = await _service.Get<List<Models.Korisnik>>(n);
-                if (korisnik.FirstOrDefault()!=null && korisnik.FirstOrDefault().UlogaId == 2)
+                if (korisnik.FirstOrDefault() != null && korisnik.FirstOrDefault().UlogaId == 2)
                 {
                     await _service.Get<dynamic>(null);
                     await _service2.Get<dynamic>(null);
