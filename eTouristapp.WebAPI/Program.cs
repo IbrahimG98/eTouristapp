@@ -19,7 +19,7 @@ namespace eTouristapp.WebAPI
             //CreateHostBuilder(args).Build().Run();
 
             var host = CreateHostBuilder(args).Build();
-            using(var scope= host.Services.CreateScope())
+            using (var scope = host.Services.CreateScope())
             {
                 var service = scope.ServiceProvider.GetRequiredService<eTourist1Context>();
                 Data.Seed(service);
