@@ -21,6 +21,10 @@ namespace eTouristapp.WebAPI.Services
             {
                 query = query.Where(x => x.Naziv.Contains(search.Naziv));
             }
+            if(search.GradId!=0)
+            {
+                query = query.Where(x => x.GradId == search.GradId);
+            }
             var list = query.ToList();
             return _mapper.Map<List<Models.Destinacija>>(list);
         }
@@ -29,7 +33,8 @@ namespace eTouristapp.WebAPI.Services
         public override Models.Destinacija Update(int id, DestinacijaInsertRequest request)
         {
             var entitet = _touristcontext.Set<Database.Destinacija>().Find(id);
-
+            entitet.Naziv = request.Naziv;
+            entitet.GradId = request.GradId;
             _touristcontext.Set<Database.Destinacija>().Attach(entitet);
             _touristcontext.Set<Database.Destinacija>().Update(entitet);
             _mapper.Map(entitet, request);

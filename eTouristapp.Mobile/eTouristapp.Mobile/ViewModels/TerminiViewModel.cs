@@ -40,7 +40,11 @@ namespace eTouristapp.Mobile.ViewModels
 
             if (DestinacijaID != null)
             {
-                var search = new TerminSearchRequest();
+                var search = new TerminSearchRequest()
+                {
+                    Aktivan=true
+
+                };
                 search.DestinacijaId = int.Parse(DestinacijaID.ToString());
 
                 var list = await _terminiservice.Get<IEnumerable<Termin>>(search);

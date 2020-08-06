@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eTouristapp.WebAPI.Controllers
 {
-    
+
     public class GradController : BaseController<Models.Grad, object>
     {
         public GradController(IService<Grad, object> service) : base(service)

@@ -40,6 +40,13 @@
             this.hoteliToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pretragaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.noviHotelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.podrucjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kontinentiPretragaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.noviKontinentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.drzavePretragaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.novaDrzavaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gradoviPretragaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.noviGradToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -63,7 +70,8 @@
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.korisnikToolStripMenuItem,
             this.destinacijeToolStripMenuItem,
-            this.hoteliToolStripMenuItem});
+            this.hoteliToolStripMenuItem,
+            this.podrucjaToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(843, 28);
@@ -138,6 +146,61 @@
             this.noviHotelToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.noviHotelToolStripMenuItem.Text = "Novi hotel";
             this.noviHotelToolStripMenuItem.Click += new System.EventHandler(this.noviHotelToolStripMenuItem_Click);
+            // 
+            // podrucjaToolStripMenuItem
+            // 
+            this.podrucjaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.kontinentiPretragaToolStripMenuItem,
+            this.noviKontinentToolStripMenuItem,
+            this.drzavePretragaToolStripMenuItem,
+            this.novaDrzavaToolStripMenuItem,
+            this.gradoviPretragaToolStripMenuItem,
+            this.noviGradToolStripMenuItem});
+            this.podrucjaToolStripMenuItem.Name = "podrucjaToolStripMenuItem";
+            this.podrucjaToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
+            this.podrucjaToolStripMenuItem.Text = "Podrucja";
+            // 
+            // kontinentiPretragaToolStripMenuItem
+            // 
+            this.kontinentiPretragaToolStripMenuItem.Name = "kontinentiPretragaToolStripMenuItem";
+            this.kontinentiPretragaToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
+            this.kontinentiPretragaToolStripMenuItem.Text = "Kontinenti pretraga";
+            this.kontinentiPretragaToolStripMenuItem.Click += new System.EventHandler(this.kontinentiPretragaToolStripMenuItem_Click);
+            // 
+            // noviKontinentToolStripMenuItem
+            // 
+            this.noviKontinentToolStripMenuItem.Name = "noviKontinentToolStripMenuItem";
+            this.noviKontinentToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
+            this.noviKontinentToolStripMenuItem.Text = "Novi kontinent";
+            this.noviKontinentToolStripMenuItem.Click += new System.EventHandler(this.noviKontinentToolStripMenuItem_Click);
+            // 
+            // drzavePretragaToolStripMenuItem
+            // 
+            this.drzavePretragaToolStripMenuItem.Name = "drzavePretragaToolStripMenuItem";
+            this.drzavePretragaToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
+            this.drzavePretragaToolStripMenuItem.Text = "Drzave pretraga";
+            this.drzavePretragaToolStripMenuItem.Click += new System.EventHandler(this.drzavePretragaToolStripMenuItem_Click);
+            // 
+            // novaDrzavaToolStripMenuItem
+            // 
+            this.novaDrzavaToolStripMenuItem.Name = "novaDrzavaToolStripMenuItem";
+            this.novaDrzavaToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
+            this.novaDrzavaToolStripMenuItem.Text = "Nova drzava";
+            this.novaDrzavaToolStripMenuItem.Click += new System.EventHandler(this.novaDrzavaToolStripMenuItem_Click);
+            // 
+            // gradoviPretragaToolStripMenuItem
+            // 
+            this.gradoviPretragaToolStripMenuItem.Name = "gradoviPretragaToolStripMenuItem";
+            this.gradoviPretragaToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
+            this.gradoviPretragaToolStripMenuItem.Text = "Gradovi pretraga";
+            this.gradoviPretragaToolStripMenuItem.Click += new System.EventHandler(this.gradoviPretragaToolStripMenuItem_Click);
+            // 
+            // noviGradToolStripMenuItem
+            // 
+            this.noviGradToolStripMenuItem.Name = "noviGradToolStripMenuItem";
+            this.noviGradToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
+            this.noviGradToolStripMenuItem.Text = "Novi grad";
+            this.noviGradToolStripMenuItem.Click += new System.EventHandler(this.noviGradToolStripMenuItem_Click);
             // 
             // toolStrip
             // 
@@ -289,6 +352,13 @@
         private System.Windows.Forms.ToolStripMenuItem hoteliToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pretragaToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem noviHotelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem podrucjaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kontinentiPretragaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem noviKontinentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem drzavePretragaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem novaDrzavaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gradoviPretragaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem noviGradToolStripMenuItem;
     }
 }
 

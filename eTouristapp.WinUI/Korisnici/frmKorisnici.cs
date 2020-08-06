@@ -14,6 +14,7 @@ namespace eTouristapp.WinUI.Korisnici
     public partial class frmKorisnici : Form
     {
         private readonly APIService _apiService = new APIService("Korisnici");
+        private readonly APIService _ulogeservice = new APIService("Uloge");
         public frmKorisnici()
         {
             InitializeComponent();
@@ -23,19 +24,33 @@ namespace eTouristapp.WinUI.Korisnici
         {
 
         }
-
+        async Task LoadUloge()
+        {
+            var uloge = await _ulogeservice.Get<List<Models.Uloga>>(null);
+            uloge.Insert(0, new Models.Uloga());
+            cmbUloge.DataSource = uloge;
+            cmbUloge.ValueMember = "Id";
+            cmbUloge.DisplayMember = "Naziv";
+            cmbUloge.SelectedValue = 0;
+        }
         private async void btnGo_Click(object sender, EventArgs e)
         {
+            
             var search = new KorisniciSearchRequest()
             {
-                Ime=txtPretraga.Text
+                Ime=txtPretraga.Text,
+                KorisnickoIme=txtPretraga.Text,
+                UlogaId=int.Parse(cmbUloge.SelectedValue.ToString())
+
                 
 
             };
-
-            var result = await _apiService.Get<List<Models.Korisnik>>(search);
-            dgvKorisnici.AutoGenerateColumns = false;
-            dgvKorisnici.DataSource= result;
+            if (this.ValidateChildren())
+            {
+                var result = await _apiService.Get<List<Models.Korisnik>>(search);
+                dgvKorisnici.AutoGenerateColumns = false;
+                dgvKorisnici.DataSource = result;
+            }
             
         }
 
@@ -58,6 +73,25 @@ namespace eTouristapp.WinUI.Korisnici
         private void frmKorisnici_DoubleClick(object sender, EventArgs e)
         {
 
+        }
+
+        private async void frmKorisnici_Load(object sender, EventArgs e)
+        {
+            await LoadUloge();
+        }
+
+        private void cmbUloge_Validating(object sender, CancelEventArgs e)
+        {
+            if(cmbUloge.SelectedValue==null || int.Parse(cmbUloge.SelectedValue.ToString())==0 || cmbUloge.SelectedIndex==0)
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(cmbUloge, "Odaberite ulogu!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(cmbUloge, null);
+            }
         }
     }
 }

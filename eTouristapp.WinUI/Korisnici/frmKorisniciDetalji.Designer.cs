@@ -172,6 +172,7 @@
             this.cmbUloge.Name = "cmbUloge";
             this.cmbUloge.Size = new System.Drawing.Size(121, 24);
             this.cmbUloge.TabIndex = 15;
+            this.cmbUloge.Validating += new System.ComponentModel.CancelEventHandler(this.cmbUloge_Validating);
             // 
             // label8
             // 

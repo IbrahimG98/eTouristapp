@@ -10,10 +10,10 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Moje karte"
+            <Label Text="Moje aktivne karte"
                 VerticalOptions="StartAndExpand" 
                 HorizontalOptions="StartAndExpand" />
-
+            <Button Text="Historija karata" BackgroundColor="LightBlue" Clicked="Button_Clicked_1"></Button>
             <ListView ItemSelected="ListView_ItemSelected" ItemsSource="{Binding KarteList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>

@@ -220,6 +220,18 @@
     <Compile Include="Destinacije\frmDestinacijeDetalji.Designer.cs">
       <DependentUpon>frmDestinacijeDetalji.cs</DependentUpon>
     </Compile>
+    <Compile Include="Drzave\frmDrzave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drzave\frmDrzave.Designer.cs">
+      <DependentUpon>frmDrzave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Drzave\frmDrzaveDetalji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drzave\frmDrzaveDetalji.Designer.cs">
+      <DependentUpon>frmDrzaveDetalji.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,6 +250,18 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gradovi\frmGradovi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gradovi\frmGradovi.Designer.cs">
+      <DependentUpon>frmGradovi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gradovi\frmGradoviDetalji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gradovi\frmGradoviDetalji.Designer.cs">
+      <DependentUpon>frmGradoviDetalji.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hoteli\frmHoteli.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,6 +273,18 @@
     </Compile>
     <Compile Include="Hoteli\frmHoteliDetalji.Designer.cs">
       <DependentUpon>frmHoteliDetalji.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kontinenti\frmKontinenti.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kontinenti\frmKontinenti.Designer.cs">
+      <DependentUpon>frmKontinenti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kontinenti\frmKontinentiDetalji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kontinenti\frmKontinentiDetalji.Designer.cs">
+      <DependentUpon>frmKontinentiDetalji.cs</DependentUpon>
     </Compile>
     <Compile Include="Korisnici\frmKorisnici.cs">
       <SubType>Form</SubType>
@@ -288,17 +324,35 @@
     <EmbeddedResource Include="Destinacije\frmDestinacijeDetalji.resx">
       <DependentUpon>frmDestinacijeDetalji.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Drzave\frmDrzave.resx">
+      <DependentUpon>frmDrzave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Drzave\frmDrzaveDetalji.resx">
+      <DependentUpon>frmDrzaveDetalji.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmIndex.resx">
       <DependentUpon>frmIndex.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Gradovi\frmGradovi.resx">
+      <DependentUpon>frmGradovi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gradovi\frmGradoviDetalji.resx">
+      <DependentUpon>frmGradoviDetalji.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Hoteli\frmHoteli.resx">
       <DependentUpon>frmHoteli.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Hoteli\frmHoteliDetalji.resx">
       <DependentUpon>frmHoteliDetalji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kontinenti\frmKontinenti.resx">
+      <DependentUpon>frmKontinenti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kontinenti\frmKontinentiDetalji.resx">
+      <DependentUpon>frmKontinentiDetalji.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Korisnici\frmKorisnici.resx">
       <DependentUpon>frmKorisnici.cs</DependentUpon>

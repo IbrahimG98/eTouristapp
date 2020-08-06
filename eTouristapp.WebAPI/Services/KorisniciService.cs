@@ -53,6 +53,10 @@ namespace eTouristapp.WebAPI.Services
                 query = query.Where(x => x.Prezime.StartsWith(request.Prezime));
 
             }
+            if(request.UlogaId!=0)
+            {
+                query = query.Where(x => x.UlogaId == request.UlogaId);
+            }
             var list = query.ToList();
             return _mapper.Map<List<Models.Korisnik>>(list);
         }

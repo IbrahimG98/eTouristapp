@@ -25,7 +25,7 @@ namespace eTouristapp.Mobile.ViewModels
 
         }
         public ObservableCollection<MojeKarte> KarteList { get; set; } = new ObservableCollection<MojeKarte>();
-
+       
         public async Task LoadKarte()
         {
             KorisniciSearchRequest request = new KorisniciSearchRequest()
@@ -47,11 +47,12 @@ namespace eTouristapp.Mobile.ViewModels
 
             foreach(var x in karte)
             {
-                if (x.Ponistena == false)
+                var termin = await _terminiservice.GetById<Termin>(x.TerminId);
+                if (x.Ponistena == false && termin.AktivanTermin==true)
                 {
 
 
-                    var termin = await _terminiservice.GetById<Termin>(x.TerminId);
+                   
                     var hotel = await _hoteliservice.GetById<Hotel>(termin.HotelId);
                     var destinacija = await _destinacijeservice.GetById<Destinacija>(termin.DestinacijaId);
                     MojeKarte k = new MojeKarte()
@@ -72,5 +73,7 @@ namespace eTouristapp.Mobile.ViewModels
 
 
         }
+
+       
     }
 }

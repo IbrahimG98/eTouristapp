@@ -5,7 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace eTouristapp.Mobile.ViewModels
 {
@@ -19,7 +21,7 @@ namespace eTouristapp.Mobile.ViewModels
         {
             
         }
-
+        Regex myregex = new Regex("[A-Za-z]{2,30}[@][A-Za-z]{2,8}[.][A-Za-z]{2,7}");
         string _ime = string.Empty;
         public string Ime
         {
@@ -76,7 +78,17 @@ namespace eTouristapp.Mobile.ViewModels
 
             };
 
-            await _service.Insert<KorisniciInsertRequest>(korisnik);
+            if(!string.IsNullOrWhiteSpace(korisnik.Ime) && !string.IsNullOrWhiteSpace(korisnik.KorisnikoIme) && !string.IsNullOrWhiteSpace(korisnik.Prezime) &&
+                !string.IsNullOrWhiteSpace(korisnik.Email) && myregex.IsMatch(korisnik.Email) && !string.IsNullOrWhiteSpace(korisnik.Password) &&
+                !string.IsNullOrWhiteSpace(korisnik.PasswordPotvrda) && korisnik.Password==korisnik.PasswordPotvrda)
+            {
+                await _service.Insert<KorisniciInsertRequest>(korisnik);
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Greska", "Podaci nisu ispravni", "OK");
+            }
+            
         }
         
 

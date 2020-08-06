@@ -21,7 +21,7 @@
                 <Entry Text="{Binding Prezime}"></Entry>
                 <Label Text="Korisnicko ime"></Label>
                 <Entry Text="{Binding KorisnickoIme}"></Entry>
-                <Label Text="Email"></Label>
+                <Label Text="Email(example: examemail@exm.exa)"></Label>
                 <Entry Text="{Binding Email}"></Entry>
                 <Label Text="Password"></Label>
                 <Entry Text="{Binding Password}"></Entry>

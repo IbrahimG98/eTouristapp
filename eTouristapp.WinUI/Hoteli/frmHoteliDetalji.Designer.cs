@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.txtNaziv = new System.Windows.Forms.TextBox();
-            this.cmbGrad = new System.Windows.Forms.ComboBox();
             this.txtZvjezdice = new System.Windows.Forms.TextBox();
             this.pbSlika = new System.Windows.Forms.PictureBox();
             this.btnDodajSliku = new System.Windows.Forms.Button();
@@ -43,6 +42,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnObrisi = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmbDrzava = new System.Windows.Forms.ComboBox();
+            this.cmbGrad = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -55,20 +57,11 @@
             this.txtNaziv.TabIndex = 0;
             this.txtNaziv.Validating += new System.ComponentModel.CancelEventHandler(this.txtNaziv_Validating);
             // 
-            // cmbGrad
-            // 
-            this.cmbGrad.FormattingEnabled = true;
-            this.cmbGrad.Location = new System.Drawing.Point(26, 129);
-            this.cmbGrad.Name = "cmbGrad";
-            this.cmbGrad.Size = new System.Drawing.Size(121, 24);
-            this.cmbGrad.TabIndex = 1;
-            this.cmbGrad.Validating += new System.ComponentModel.CancelEventHandler(this.cmbGrad_Validating);
-            // 
             // txtZvjezdice
             // 
-            this.txtZvjezdice.Location = new System.Drawing.Point(233, 131);
+            this.txtZvjezdice.Location = new System.Drawing.Point(29, 122);
             this.txtZvjezdice.Name = "txtZvjezdice";
-            this.txtZvjezdice.Size = new System.Drawing.Size(65, 22);
+            this.txtZvjezdice.Size = new System.Drawing.Size(92, 22);
             this.txtZvjezdice.TabIndex = 2;
             this.txtZvjezdice.Validating += new System.ComponentModel.CancelEventHandler(this.txtZvjezdice_Validating);
             // 
@@ -79,10 +72,11 @@
             this.pbSlika.Size = new System.Drawing.Size(262, 249);
             this.pbSlika.TabIndex = 3;
             this.pbSlika.TabStop = false;
+            this.pbSlika.Validating += new System.ComponentModel.CancelEventHandler(this.pbSlika_Validating);
             // 
             // btnDodajSliku
             // 
-            this.btnDodajSliku.Location = new System.Drawing.Point(305, 277);
+            this.btnDodajSliku.Location = new System.Drawing.Point(316, 319);
             this.btnDodajSliku.Name = "btnDodajSliku";
             this.btnDodajSliku.Size = new System.Drawing.Size(93, 27);
             this.btnDodajSliku.TabIndex = 4;
@@ -92,7 +86,7 @@
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(309, 310);
+            this.btnSacuvaj.Location = new System.Drawing.Point(305, 390);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(89, 33);
             this.btnSacuvaj.TabIndex = 5;
@@ -112,7 +106,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 106);
+            this.label2.Location = new System.Drawing.Point(26, 227);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 17);
             this.label2.TabIndex = 7;
@@ -121,7 +115,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(219, 111);
+            this.label3.Location = new System.Drawing.Point(26, 102);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(95, 17);
             this.label3.TabIndex = 8;
@@ -133,15 +127,16 @@
             // 
             // txtSlika
             // 
-            this.txtSlika.Location = new System.Drawing.Point(26, 277);
+            this.txtSlika.Location = new System.Drawing.Point(26, 321);
             this.txtSlika.Name = "txtSlika";
             this.txtSlika.Size = new System.Drawing.Size(272, 22);
             this.txtSlika.TabIndex = 9;
+            this.txtSlika.Validating += new System.ComponentModel.CancelEventHandler(this.txtSlika_Validating);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 254);
+            this.label4.Location = new System.Drawing.Point(26, 298);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 17);
             this.label4.TabIndex = 10;
@@ -161,11 +156,41 @@
             this.btnObrisi.UseVisualStyleBackColor = true;
             this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(26, 166);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 17);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Drzava";
+            // 
+            // cmbDrzava
+            // 
+            this.cmbDrzava.FormattingEnabled = true;
+            this.cmbDrzava.Location = new System.Drawing.Point(29, 187);
+            this.cmbDrzava.Name = "cmbDrzava";
+            this.cmbDrzava.Size = new System.Drawing.Size(181, 24);
+            this.cmbDrzava.TabIndex = 14;
+            this.cmbDrzava.Validating += new System.ComponentModel.CancelEventHandler(this.cmbDrzava_Validating);
+            // 
+            // cmbGrad
+            // 
+            this.cmbGrad.FormattingEnabled = true;
+            this.cmbGrad.Location = new System.Drawing.Point(29, 260);
+            this.cmbGrad.Name = "cmbGrad";
+            this.cmbGrad.Size = new System.Drawing.Size(181, 24);
+            this.cmbGrad.TabIndex = 15;
+            this.cmbGrad.Validating += new System.ComponentModel.CancelEventHandler(this.cmbGrad_Validating_1);
+            // 
             // frmHoteliDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cmbGrad);
+            this.Controls.Add(this.cmbDrzava);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnObrisi);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtSlika);
@@ -176,7 +201,6 @@
             this.Controls.Add(this.btnDodajSliku);
             this.Controls.Add(this.pbSlika);
             this.Controls.Add(this.txtZvjezdice);
-            this.Controls.Add(this.cmbGrad);
             this.Controls.Add(this.txtNaziv);
             this.Name = "frmHoteliDetalji";
             this.Text = "frmHoteliDetalji";
@@ -191,7 +215,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtNaziv;
-        private System.Windows.Forms.ComboBox cmbGrad;
         private System.Windows.Forms.TextBox txtZvjezdice;
         private System.Windows.Forms.PictureBox pbSlika;
         private System.Windows.Forms.Button btnDodajSliku;
@@ -204,5 +227,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Button btnObrisi;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmbGrad;
+        private System.Windows.Forms.ComboBox cmbDrzava;
     }
 }

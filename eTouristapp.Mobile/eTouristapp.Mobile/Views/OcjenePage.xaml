@@ -28,12 +28,14 @@
                                     <ColumnDefinition Width="*"/>
 
                                 </Grid.ColumnDefinitions>
-                                <Label BackgroundColor="CadetBlue" Text="Komentar" Grid.Row="0" Grid.Column="0"></Label>
-                                <Label BackgroundColor="CadetBlue" Text="Ocjena" Grid.Row="0" Grid.Column="1"></Label>
+                                <Label BackgroundColor="CadetBlue" Text="Korisnicko ime" Grid.Row="0" Grid.Column="0"></Label>
+                                <Label BackgroundColor="CadetBlue" Text="Komentar" Grid.Row="0" Grid.Column="1"></Label>
+                                <Label BackgroundColor="CadetBlue" Text="Ocjena" Grid.Row="0" Grid.Column="2"></Label>
                                 <!--<Label BackgroundColor="CadetBlue" Text="Cijena" Grid.Row="0" Grid.Column="2"></Label>-->
 
-                                <Label Text="{Binding Komentar}" Grid.Row="1" Grid.Column="0"></Label>
-                                <Label Text="{Binding OcjenaUsluge}" Grid.Row="1"  Grid.Column="1"></Label>
+                                <Label Text="{Binding KorisnickoIme}" Grid.Row="1" Grid.Column="0"></Label>
+                                <Label Text="{Binding Komentar}" Grid.Row="1" Grid.Column="1"></Label>
+                                <Label Text="{Binding OcjenaUsluge}" Grid.Row="1"  Grid.Column="2"></Label>
                                 <!--<Label Text="{Binding Cijena,StringFormat='{0:F2} KM'}" Grid.Row="1"  Grid.Column="2"></Label>-->
 
                             </Grid>

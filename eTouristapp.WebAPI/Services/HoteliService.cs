@@ -18,17 +18,16 @@ namespace eTouristapp.WebAPI.Services
         public override List<Models.Hotel> Get(HotelSearchRequest search)
         {
             var query = _touristcontext.Set<Database.Hotel>().AsQueryable();
-
-            if (search.GradId != null)
-            {
-                query = query.Where(x => x.GradId == search.GradId);
-            }
-
             if (search.Naziv != null)
             {
                 query = query.Where(x => x.Naziv.Contains(search.Naziv));
             }
 
+
+            if (search.GradId != null)
+            {
+                query = query.Where(x => x.GradId == search.GradId);
+            }
 
             var list = query.ToList();
             return _mapper.Map<List<Models.Hotel>>(list);
@@ -40,7 +39,7 @@ namespace eTouristapp.WebAPI.Services
             entitet.Naziv = request.Naziv;
             entitet.GradId = request.GradId;
             entitet.BrojZvjezdica = request.BrojZvjezdica;
-            //entitet.Slika = request.Slika;
+            entitet.Slika = request.Slika;
             _touristcontext.Set<Database.Hotel>().Attach(entitet);
             _touristcontext.Set<Database.Hotel>().Update(entitet);
             _mapper.Map(entitet, request);

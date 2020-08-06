@@ -66,8 +66,8 @@ namespace eTouristapp.WinUI.Termini
             
             txtUkupnoKarata.Text = brojkarata.ToString();
             txtZarada.Text= cijena.ToString();
-            pickerDatump.Value = _termin.DatumPolaska;
-            pickerDatumd.Value = _termin.DatumDolaska;
+            txtDatumPolaska.Text = _termin.DatumPolaska.ToString();
+            txtDatumPovratka.Text = _termin.DatumDolaska.ToString();
             txtNaziv.Text= _destinacija.Naziv;
             
 
@@ -75,6 +75,17 @@ namespace eTouristapp.WinUI.Termini
         }
         private async void frmTerminiDetalji_Load(object sender, EventArgs e)
         {
+            await LoadHoteli();
+            if (!_id.HasValue)
+            {
+                txtCijena.Text = "0";
+                txtPopust.Text = "0";
+                txtAkcijskaCijena.Text = "0";
+                pickerOd.MinDate = System.DateTime.Now;
+                pickerDo.MinDate = System.DateTime.Now;
+            }
+            
+
             if (_id.HasValue)
             {
                 await LoadZaradaiKarte();
@@ -105,12 +116,7 @@ namespace eTouristapp.WinUI.Termini
 
                 
             }
-            else
-            {
-                await LoadHoteli();
-                
-            }
-
+           
 
         }
 
@@ -118,6 +124,8 @@ namespace eTouristapp.WinUI.Termini
         TerminInsertRequest tir = new TerminInsertRequest();
         private async void btnSacuvaj_Click(object sender, EventArgs e)
         {
+            this.ValidateChildren();
+
             var id = cmbHotel.SelectedValue;
             if (int.TryParse(id.ToString(), out int HotelId))
             {
@@ -142,13 +150,24 @@ namespace eTouristapp.WinUI.Termini
 
             if (_id.HasValue)
             {
-                await _termini.Update<Models.Termin>(_id, tir);
+                if (tir.HotelId > 0 && tir.Cijena > 0)
+                {
+                    await _termini.Update<Models.Termin>(_id,tir);
+                    MessageBox.Show("Izmjena uspjesna!");
+                    this.Close();
+                }
             }
             else
             {
-                await _termini.Insert<Models.Termin>(tir);
+                if (tir.HotelId > 0 && tir.Cijena > 0)
+                {
+                    await _termini.Insert<Models.Termin>(tir);
+                    MessageBox.Show("Dodavanje uspjesno!");
+                    this.Close();
+                }
+                
             }
-            MessageBox.Show("Operacija uspjesna");
+           
         }
 
         private void label9_Click(object sender, EventArgs e)
@@ -190,6 +209,118 @@ namespace eTouristapp.WinUI.Termini
         {
             memorying = new Bitmap(panel.Height, panel.Width);
             panel.DrawToBitmap(memorying, new Rectangle(0, 0, panel.Width, panel.Height));
+        }
+
+        private void txtCijena_Validating(object sender, CancelEventArgs e)
+        {
+            if(string.IsNullOrWhiteSpace(txtCijena.Text) || float.Parse(txtCijena.Text.ToString())==0)
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtCijena, "Unesite vrijednost!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txtCijena, null);
+            }
+        }
+
+        private void txtPopust_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtPopust.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtPopust, "Unesite vrijednost!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txtPopust, null);
+            }
+
+            if(float.Parse(txtPopust.Text.ToString())<0 || float.Parse(txtPopust.Text.ToString())>100)
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtPopust, "Unesite vrijednost izmedju 0 i 100!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txtPopust, null);
+            }
+
+
+        }
+
+        private void cmbHotel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbHotel_Validating(object sender, CancelEventArgs e)
+        {
+            if(int.Parse(cmbHotel.SelectedValue.ToString())==0 || cmbHotel.SelectedValue==null)
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(cmbHotel, "Odaberite hotel!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(cmbHotel, null);
+            }
+        }
+
+        private void txtCijena_MouseLeave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPopust_MouseLeave(object sender, EventArgs e)
+        {
+
+            var minus = decimal.Parse(txtCijena.Text.ToString()) * (decimal.Parse(txtPopust.Text.ToString())/100);
+            if (minus == 0)
+            {
+                txtAkcijskaCijena.Text = "0";
+                tir.CijenaPopust = 0;
+            }
+            else
+            {
+
+
+                var akcijska = decimal.Parse(txtCijena.Text.ToString()) - minus;
+                txtAkcijskaCijena.Text = akcijska.ToString();
+                tir.CijenaPopust = decimal.Parse(txtAkcijskaCijena.Text.ToString());
+            }
+        }
+
+        
+
+        
+
+        private async void btnObrisi_Click(object sender, EventArgs e)
+        {
+            if(_id.HasValue)
+            {
+                await _termini.Delete<bool>(_id);
+                MessageBox.Show("Uspjesno obrisano!");
+                this.Close();
+            }
+        }
+
+        private void pickerDo_Validating(object sender, CancelEventArgs e)
+        {
+            if(pickerDo.Value.Date<=pickerOd.Value.Date)
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(pickerDo, "Datum dolaska raniji od datuma polaska!Unesite novi datum!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(pickerDo, null);
+            }
         }
     }
 }

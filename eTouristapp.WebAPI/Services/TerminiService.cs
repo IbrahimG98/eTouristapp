@@ -29,6 +29,15 @@ namespace eTouristapp.WebAPI.Services
             {
                 query = query.Where(x => x.DatumDolaska <= search.DatumDolaska);
             }
+            if(search.Cijena!=0)
+            {
+                query = query.Where(x => x.Cijena <= search.Cijena);
+            }
+            if(search.Aktivan==true || search.Aktivan==false)
+            {
+                query = query.Where(x => x.AktivanTermin == search.Aktivan);
+            }
+           
 
             var list = query.ToList();
             return _mapper.Map<List<Models.Termin>>(list);
@@ -37,6 +46,7 @@ namespace eTouristapp.WebAPI.Services
         public override Models.Termin Update(int id,TerminInsertRequest insert)
         {
             var entitet = _touristcontext.Set<Database.Termin>().Find(id);
+            entitet.HotelId = insert.HotelId;
             entitet.AktivanTermin = insert.AktivanTermin;
             entitet.Cijena = insert.Cijena;
             entitet.Popust = insert.Popust;

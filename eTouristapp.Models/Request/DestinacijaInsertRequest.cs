@@ -9,8 +9,9 @@ namespace eTouristapp.Models.Request
     {
         [Required]
         public string Naziv { get; set; }
+        [Required]
         public byte[] Slika { get; set; }
-        
+        [Required]
         public int? GradId { get; set; }
     }
 }

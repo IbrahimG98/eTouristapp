@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.pickerOd = new System.Windows.Forms.DateTimePicker();
             this.pickerDo = new System.Windows.Forms.DateTimePicker();
@@ -50,14 +51,17 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.pickerDatumd = new System.Windows.Forms.DateTimePicker();
-            this.pickerDatump = new System.Windows.Forms.DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.txtNaziv = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnPrint = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnObrisi = new System.Windows.Forms.Button();
+            this.txtDatumPolaska = new System.Windows.Forms.TextBox();
+            this.txtDatumPovratka = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -82,6 +86,7 @@
             this.pickerDo.Name = "pickerDo";
             this.pickerDo.Size = new System.Drawing.Size(200, 22);
             this.pickerDo.TabIndex = 2;
+            this.pickerDo.Validating += new System.ComponentModel.CancelEventHandler(this.pickerDo_Validating);
             // 
             // chcboxAktivan
             // 
@@ -99,6 +104,8 @@
             this.cmbHotel.Name = "cmbHotel";
             this.cmbHotel.Size = new System.Drawing.Size(201, 24);
             this.cmbHotel.TabIndex = 4;
+            this.cmbHotel.SelectedIndexChanged += new System.EventHandler(this.cmbHotel_SelectedIndexChanged);
+            this.cmbHotel.Validating += new System.ComponentModel.CancelEventHandler(this.cmbHotel_Validating);
             // 
             // txtCijena
             // 
@@ -106,6 +113,8 @@
             this.txtCijena.Name = "txtCijena";
             this.txtCijena.Size = new System.Drawing.Size(201, 22);
             this.txtCijena.TabIndex = 5;
+            this.txtCijena.MouseLeave += new System.EventHandler(this.txtCijena_MouseLeave);
+            this.txtCijena.Validating += new System.ComponentModel.CancelEventHandler(this.txtCijena_Validating);
             // 
             // txtAkcijskaCijena
             // 
@@ -193,11 +202,14 @@
             this.txtPopust.Name = "txtPopust";
             this.txtPopust.Size = new System.Drawing.Size(201, 22);
             this.txtPopust.TabIndex = 16;
+            this.txtPopust.MouseLeave += new System.EventHandler(this.txtPopust_MouseLeave);
+            this.txtPopust.Validating += new System.ComponentModel.CancelEventHandler(this.txtPopust_Validating);
             // 
             // txtUkupnoKarata
             // 
             this.txtUkupnoKarata.Location = new System.Drawing.Point(71, 210);
             this.txtUkupnoKarata.Name = "txtUkupnoKarata";
+            this.txtUkupnoKarata.ReadOnly = true;
             this.txtUkupnoKarata.Size = new System.Drawing.Size(239, 22);
             this.txtUkupnoKarata.TabIndex = 17;
             // 
@@ -205,6 +217,7 @@
             // 
             this.txtZarada.Location = new System.Drawing.Point(71, 277);
             this.txtZarada.Name = "txtZarada";
+            this.txtZarada.ReadOnly = true;
             this.txtZarada.Size = new System.Drawing.Size(239, 22);
             this.txtZarada.TabIndex = 18;
             // 
@@ -246,20 +259,6 @@
             this.label12.TabIndex = 23;
             this.label12.Text = "Datum polaska";
             // 
-            // pickerDatumd
-            // 
-            this.pickerDatumd.Location = new System.Drawing.Point(68, 157);
-            this.pickerDatumd.Name = "pickerDatumd";
-            this.pickerDatumd.Size = new System.Drawing.Size(242, 22);
-            this.pickerDatumd.TabIndex = 22;
-            // 
-            // pickerDatump
-            // 
-            this.pickerDatump.Location = new System.Drawing.Point(68, 94);
-            this.pickerDatump.Name = "pickerDatump";
-            this.pickerDatump.Size = new System.Drawing.Size(242, 22);
-            this.pickerDatump.TabIndex = 21;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -282,12 +281,14 @@
             // 
             this.txtNaziv.Location = new System.Drawing.Point(68, 42);
             this.txtNaziv.Name = "txtNaziv";
+            this.txtNaziv.ReadOnly = true;
             this.txtNaziv.Size = new System.Drawing.Size(242, 22);
             this.txtNaziv.TabIndex = 26;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnPrint);
+            this.panel1.Controls.Add(this.txtDatumPovratka);
+            this.panel1.Controls.Add(this.txtDatumPolaska);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.txtUkupnoKarata);
             this.panel1.Controls.Add(this.txtNaziv);
@@ -296,8 +297,6 @@
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.pickerDatump);
-            this.panel1.Controls.Add(this.pickerDatumd);
             this.panel1.Location = new System.Drawing.Point(338, 62);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(365, 364);
@@ -305,7 +304,7 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(235, 316);
+            this.btnPrint.Location = new System.Drawing.Point(628, 432);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(75, 23);
             this.btnPrint.TabIndex = 29;
@@ -313,12 +312,44 @@
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // btnObrisi
+            // 
+            this.btnObrisi.Location = new System.Drawing.Point(237, 438);
+            this.btnObrisi.Name = "btnObrisi";
+            this.btnObrisi.Size = new System.Drawing.Size(75, 23);
+            this.btnObrisi.TabIndex = 29;
+            this.btnObrisi.Text = "Obrisi";
+            this.btnObrisi.UseVisualStyleBackColor = true;
+            this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
+            // 
+            // txtDatumPolaska
+            // 
+            this.txtDatumPolaska.Location = new System.Drawing.Point(71, 94);
+            this.txtDatumPolaska.Name = "txtDatumPolaska";
+            this.txtDatumPolaska.ReadOnly = true;
+            this.txtDatumPolaska.Size = new System.Drawing.Size(239, 22);
+            this.txtDatumPolaska.TabIndex = 30;
+            // 
+            // txtDatumPovratka
+            // 
+            this.txtDatumPovratka.Location = new System.Drawing.Point(71, 156);
+            this.txtDatumPovratka.Name = "txtDatumPovratka";
+            this.txtDatumPovratka.ReadOnly = true;
+            this.txtDatumPovratka.Size = new System.Drawing.Size(239, 22);
+            this.txtDatumPovratka.TabIndex = 31;
+            // 
             // frmTerminiDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 473);
+            this.Controls.Add(this.btnObrisi);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txtPopust);
             this.Controls.Add(this.btnSacuvaj);
@@ -341,6 +372,7 @@
             this.Load += new System.EventHandler(this.frmTerminiDetalji_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,12 +402,14 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DateTimePicker pickerDatumd;
-        private System.Windows.Forms.DateTimePicker pickerDatump;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtNaziv;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btnObrisi;
+        private System.Windows.Forms.TextBox txtDatumPovratka;
+        private System.Windows.Forms.TextBox txtDatumPolaska;
     }
 }

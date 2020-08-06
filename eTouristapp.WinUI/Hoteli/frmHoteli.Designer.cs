@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtNaziv = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnPretraga = new System.Windows.Forms.Button();
@@ -38,13 +39,19 @@
             this.Hoteli = new System.Windows.Forms.GroupBox();
             this.cmbGrad = new System.Windows.Forms.ComboBox();
             this.Grad = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbKontinenti = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbDrzave = new System.Windows.Forms.ComboBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoteli)).BeginInit();
             this.Hoteli.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNaziv
             // 
-            this.txtNaziv.Location = new System.Drawing.Point(21, 46);
+            this.txtNaziv.Location = new System.Drawing.Point(21, 32);
             this.txtNaziv.Name = "txtNaziv";
             this.txtNaziv.Size = new System.Drawing.Size(400, 22);
             this.txtNaziv.TabIndex = 0;
@@ -52,7 +59,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 23);
+            this.label1.Location = new System.Drawing.Point(21, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 17);
             this.label1.TabIndex = 2;
@@ -60,7 +67,7 @@
             // 
             // btnPretraga
             // 
-            this.btnPretraga.Location = new System.Drawing.Point(336, 118);
+            this.btnPretraga.Location = new System.Drawing.Point(253, 199);
             this.btnPretraga.Name = "btnPretraga";
             this.btnPretraga.Size = new System.Drawing.Size(85, 33);
             this.btnPretraga.TabIndex = 4;
@@ -118,9 +125,9 @@
             // Hoteli
             // 
             this.Hoteli.Controls.Add(this.dgvHoteli);
-            this.Hoteli.Location = new System.Drawing.Point(1, 174);
+            this.Hoteli.Location = new System.Drawing.Point(0, 234);
             this.Hoteli.Name = "Hoteli";
-            this.Hoteli.Size = new System.Drawing.Size(798, 274);
+            this.Hoteli.Size = new System.Drawing.Size(798, 214);
             this.Hoteli.TabIndex = 6;
             this.Hoteli.TabStop = false;
             this.Hoteli.Text = "Hoteli";
@@ -128,25 +135,72 @@
             // cmbGrad
             // 
             this.cmbGrad.FormattingEnabled = true;
-            this.cmbGrad.Location = new System.Drawing.Point(24, 118);
+            this.cmbGrad.Location = new System.Drawing.Point(21, 204);
             this.cmbGrad.Name = "cmbGrad";
             this.cmbGrad.Size = new System.Drawing.Size(167, 24);
             this.cmbGrad.TabIndex = 7;
+            this.cmbGrad.Validating += new System.ComponentModel.CancelEventHandler(this.cmbGrad_Validating);
             // 
             // Grad
             // 
             this.Grad.AutoSize = true;
-            this.Grad.Location = new System.Drawing.Point(21, 98);
+            this.Grad.Location = new System.Drawing.Point(21, 184);
             this.Grad.Name = "Grad";
             this.Grad.Size = new System.Drawing.Size(40, 17);
             this.Grad.TabIndex = 8;
             this.Grad.Text = "Grad";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(21, 75);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 17);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Kontinent";
+            // 
+            // cmbKontinenti
+            // 
+            this.cmbKontinenti.FormattingEnabled = true;
+            this.cmbKontinenti.Location = new System.Drawing.Point(21, 95);
+            this.cmbKontinenti.Name = "cmbKontinenti";
+            this.cmbKontinenti.Size = new System.Drawing.Size(164, 24);
+            this.cmbKontinenti.TabIndex = 10;
+            this.cmbKontinenti.SelectedIndexChanged += new System.EventHandler(this.cmbKontinenti_SelectedIndexChanged_1);
+            this.cmbKontinenti.Validating += new System.ComponentModel.CancelEventHandler(this.cmbKontinenti_Validating_1);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(21, 135);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 17);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Drzava";
+            // 
+            // cmbDrzave
+            // 
+            this.cmbDrzave.FormattingEnabled = true;
+            this.cmbDrzave.Location = new System.Drawing.Point(21, 156);
+            this.cmbDrzave.Name = "cmbDrzave";
+            this.cmbDrzave.Size = new System.Drawing.Size(164, 24);
+            this.cmbDrzave.TabIndex = 12;
+            this.cmbDrzave.SelectedIndexChanged += new System.EventHandler(this.cmbDrzave_SelectedIndexChanged_1);
+            this.cmbDrzave.Validating += new System.ComponentModel.CancelEventHandler(this.cmbDrzave_Validating_1);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmHoteli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cmbDrzave);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cmbKontinenti);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.Grad);
             this.Controls.Add(this.cmbGrad);
             this.Controls.Add(this.Hoteli);
@@ -155,8 +209,10 @@
             this.Controls.Add(this.txtNaziv);
             this.Name = "frmHoteli";
             this.Text = "frmHoteli";
+            this.Load += new System.EventHandler(this.frmHoteli_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoteli)).EndInit();
             this.Hoteli.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,5 +230,10 @@
         private System.Windows.Forms.GroupBox Hoteli;
         private System.Windows.Forms.ComboBox cmbGrad;
         private System.Windows.Forms.Label Grad;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbKontinenti;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbDrzave;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

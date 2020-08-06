@@ -10,19 +10,20 @@ namespace eTouristapp.Models.Request
     {
         public int Id { get; set; }
         [Required]
-        [MinLength(2)]
+       
         public string Ime { get; set; }
         [Required]
-        [MinLength(2)]
+        
         public string Prezime { get; set; }
         [Required]
-        [MinLength(3)]
+        
         public string KorisnikoIme { get; set; }
-        [EmailAddress]
+        [EmailAddress(ErrorMessage ="Email adresa format")]
         public string Email { get; set; }
+        [Required]
         public int? UlogaId { get; set; }
         [Required(AllowEmptyStrings = false)]
-        [MinLength(3)]
+       
         public string Password { get; set; }
         [Required(AllowEmptyStrings =false)]
         public string PasswordPotvrda { get; set; }

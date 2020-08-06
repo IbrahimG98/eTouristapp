@@ -14,10 +14,14 @@
                 VerticalOptions="StartAndExpand" 
                 HorizontalOptions="StartAndExpand" />
 
-            <Label Text="Komentar"></Label>
-            <Entry Text="{Binding Komentar}"></Entry>
-            <Label Text="Ocjena(0-5)"></Label>
+            <Label Text="{Binding Obavijest}"></Label>
+            <Label Text="Ocjena(1-5)"></Label>
             <Entry Text="{Binding Ocjena}"></Entry>
+            
+            <!--<Picker ItemsSource="{Binding ListaBrojeva}" SelectedItem="{Binding Ocjena}" ItemDisplayBinding="{Binding Oznaka}"></Picker>-->
+            
+            <Label  Text="Komentar"></Label>
+            <Entry Text="{Binding Komentar}"></Entry>
             <Button Clicked="Button_Clicked" BackgroundColor="Red" Command="{Binding DKomentar }" Text="Dodaj"></Button>
 
         </StackLayout>

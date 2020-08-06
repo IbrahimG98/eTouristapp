@@ -8,5 +8,6 @@ namespace eTouristapp.Models.Request
     {
         public int Id { get; set; }
         public string Naziv { get; set; }
+        public int? GradId { get; set; }
     }
 }

@@ -38,5 +38,10 @@ namespace eTouristapp.Mobile.Views
             }
 
         }
+
+        private async void Picker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            await model.LoadGradoviDestinacije();
+        }
     }
 }

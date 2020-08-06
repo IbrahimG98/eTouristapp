@@ -21,6 +21,7 @@
             <Label Text="Destinacije"
                 VerticalOptions="StartAndExpand" 
                 HorizontalOptions="StartAndExpand" />
+            <Picker SelectedIndexChanged="Picker_SelectedIndexChanged" ItemsSource="{Binding DrzaveList}" SelectedItem="{Binding SelectedDrzava}" ItemDisplayBinding="{Binding Naziv}"></Picker>
             <Picker ItemsSource="{Binding GradoviList}" SelectedItem="{Binding SelectedGrad}" ItemDisplayBinding="{Binding Naziv}"></Picker>
             <ListView ItemSelected="ListView_ItemSelected"  ItemsSource="{Binding DestinacijeList}">
                 <ListView.ItemTemplate>

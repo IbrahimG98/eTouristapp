@@ -105,7 +105,9 @@ namespace eTouristapp.WebAPI
             services.AddScoped<ICRUDService<Models.Ocjena, OcjenaSearchRequest, OcjenaInsertRequest, OcjenaInsertRequest>, OcjeneService>();
             services.AddScoped<ICRUDService<Models.Karta, KartaSearchRequest, KartaInsertRequest, KartaInsertRequest>, KarteService>();
             services.AddScoped<ICRUDService<Models.Putnik, PutnikSearchRequest, PutnikInsertRequest, PutnikInsertRequest>, PutniciService>();
-           
+            services.AddScoped<ICRUDService<Models.Grad, GradoviSearchRequest, GradoviInsertRequest, GradoviInsertRequest>, GradoviService>();
+            services.AddScoped<ICRUDService<Models.Drzava,DrzavaSearchRequest,DrzavaInsertRequest,DrzavaInsertRequest>,DrzaveService>();
+            services.AddScoped<ICRUDService<Models.Kontinent, KontinentSearchRequest, KontinentInsertRequest, KontinentInsertRequest>, KontinentiService>();
             services.AddAutoMapper(typeof(Startup));
         }
 

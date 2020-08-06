@@ -1,5 +1,8 @@
 ﻿using eTouristapp.WinUI.Destinacije;
+using eTouristapp.WinUI.Drzave;
+using eTouristapp.WinUI.Gradovi;
 using eTouristapp.WinUI.Hoteli;
+using eTouristapp.WinUI.Kontinenti;
 using eTouristapp.WinUI.Korisnici;
 using System;
 using System.Collections.Generic;
@@ -154,6 +157,62 @@ namespace eTouristapp.WinUI
             frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
+        }
+
+        private void kontinentiPretragaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmKontinenti frm = new frmKontinenti();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void noviKontinentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmKontinentiDetalji frm = new frmKontinentiDetalji();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void drzavePretragaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDrzave frm = new frmDrzave();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void novaDrzavaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDrzaveDetalji frm = new frmDrzaveDetalji();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void gradoviPretragaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGradovi frm = new frmGradovi();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void noviGradToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGradoviDetalji frm = new frmGradoviDetalji();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void hoteli2PretragaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //frmHoteli2 frm = new frmHoteli2();
+            //frm.MdiParent = this;
+            //frm.WindowState = FormWindowState.Maximized;
+            //frm.Show();
         }
     }
 }

@@ -8,13 +8,16 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Http.ModelBinding;
 using System.Windows.Forms;
 
 namespace eTouristapp.WinUI.Hoteli
 {
     public partial class frmHoteliDetalji : Form
     {
-        private readonly APIService _gradovi = new APIService("Grad");
+        private readonly APIService _kontinenti = new APIService("Kontinenti");
+        private readonly APIService _drzave = new APIService("Drzave");
+        private readonly APIService _gradovi = new APIService("Gradovi");
         private readonly APIService _hotel = new APIService("Hoteli");
         private int? _id = null;
         public frmHoteliDetalji(int? id = null)
@@ -22,6 +25,8 @@ namespace eTouristapp.WinUI.Hoteli
             InitializeComponent();
             _id = id;
         }
+        
+        private int? drzavaid = null;
 
         public static Bitmap ByteToImage(byte[] blob)
         {
@@ -35,37 +40,79 @@ namespace eTouristapp.WinUI.Hoteli
 
         private async void frmHoteliDetalji_Load(object sender, EventArgs e)
         {
-            if(_id.HasValue)
+
+           
+
+            if (_id.HasValue)
             {
                 var hotel = await _hotel.GetById<Models.Hotel>(_id);
                 txtNaziv.Text = hotel.Naziv;
 
+                var grad =await _gradovi.GetById<Models.Grad>(hotel.GradId);
                 txtZvjezdice.Text = hotel.BrojZvjezdica.ToString();
 
                 pbSlika.Image = ByteToImage(hotel.Slika);
+                pbSlika.Image = Resize(pbSlika.Image, 250, 250);
                 hot.Slika = hotel.Slika;
+                await LoadDrzave();
+                cmbDrzava.SelectedValue = grad.DrzavaId;
 
-                var result = await _gradovi.Get<List<Models.Grad>>(null);
+                await LoadGradovi(grad.DrzavaId);
+                cmbGrad.SelectedValue = grad.Id;
 
-                cmbGrad.DisplayMember = "Naziv";
-                cmbGrad.ValueMember = "Id";
+                
 
-                cmbGrad.DataSource = result;
-                cmbGrad.SelectedValue = hotel.GradId;
+
+
+               
+                
+
+
             }
             else
             {
-                await LoadGradovi();
+                await LoadDrzave();
+                await LoadGradovi(null);
+                txtZvjezdice.Text = "0";
             }
+
+
+
+
         }
 
-        private async Task LoadGradovi()
+        async Task LoadDrzave()
         {
-            var result = await _gradovi.Get<List<Models.Grad>>(null);
+            DrzavaSearchRequest request = new DrzavaSearchRequest()
+            {
+                Naziv=null,
+                KontinentId=0
+            };
+            var result = await _drzave.Get<List<Models.Drzava>>(request);
+            result.Insert(0, new Models.Drzava());
+            cmbDrzava.DisplayMember = "Naziv";
+            cmbDrzava.ValueMember = "Id";
+            cmbDrzava.DataSource = result;
+            cmbDrzava.SelectedValue = 0;
+        }
+        private async Task LoadGradovi(int? id)
+        {
+            GradoviSearchRequest request = new GradoviSearchRequest()
+            {
+                Naziv = null,
+                DrzavaId = 0
+            };
+            if (id.HasValue)
+            {
+                request.DrzavaId = id;
+            }
+
+            var result = await _gradovi.Get<List<Models.Grad>>(request);
             result.Insert(0, new Models.Grad());
             cmbGrad.DisplayMember = "Naziv";
             cmbGrad.ValueMember = "Id";
             cmbGrad.DataSource = result;
+            cmbGrad.SelectedValue = 0;
         }
         HotelInsertRequest hot = new HotelInsertRequest();
 
@@ -80,7 +127,7 @@ namespace eTouristapp.WinUI.Hoteli
                 txtSlika.Text = filename;
 
                 Image image = Image.FromFile(filename);
-                //image = Resize(image, 50, 50);
+                image = Resize(image, 250, 250);
                 pbSlika.Image = image;
 
             }
@@ -88,60 +135,105 @@ namespace eTouristapp.WinUI.Hoteli
 
         private async void btnSacuvaj_Click(object sender, EventArgs e)
         {
+            //this.ValidateChildren();
+
             var id = cmbGrad.SelectedValue;
             if (int.TryParse(id.ToString(), out int GradId))
             {
                 hot.GradId = GradId;
             }
-            hot.BrojZvjezdica = int.Parse(txtZvjezdice.Text.ToString());
-            hot.Naziv = txtNaziv.Text;
-            
-
-            if (_id.HasValue)
+            if (string.IsNullOrEmpty(txtZvjezdice.Text))
             {
-                hot.Id =_id.Value;
-                await _hotel.Update<HotelInsertRequest>(_id, hot);
+                hot.BrojZvjezdica = 0;
             }
             else
             {
-                await _hotel.Insert<HotelInsertRequest>(hot);
+
+                hot.BrojZvjezdica = int.Parse(txtZvjezdice.Text.ToString());
             }
-            MessageBox.Show("Operacija uspjesna");
-            this.Close();
+            hot.Naziv = txtNaziv.Text;
+
+           
+
+            if(this.ValidateChildren())
+            {
+
+                if (_id.HasValue)
+                {
+                    hot.Id = _id.Value;
+                    await _hotel.Update<HotelInsertRequest>(_id, hot);
+                    MessageBox.Show("Izmjena uspjesna!");
+                    this.Close();
+                }
+                else
+                {
+
+                    //if (hot.Naziv != null && hot.GradId != 0 && hot.Slika != null && hot.GradId != 0 && hot.BrojZvjezdica > 0 && hot.BrojZvjezdica < 6)
+                    //{
+
+
+                    await _hotel.Insert<HotelInsertRequest>(hot);
+                    MessageBox.Show("Dodavanje uspjesno!");
+                    this.Close();
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("Unesite sve podatke!");
+                    //}
+                }
+            }
+            
         }
 
         private void txtNaziv_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNaziv.Text))
+            if (string.IsNullOrWhiteSpace(txtNaziv.Text) || string.IsNullOrEmpty(txtNaziv.Text))
             {
+                e.Cancel = true;
                 errorProvider1.SetError(txtNaziv, "Obavezno polje!");
             }
             else
             {
+                e.Cancel = false;
                 errorProvider1.SetError(txtNaziv, null);
             }
         }
 
-        private void cmbGrad_Validating(object sender, CancelEventArgs e)
-        {
-            if(cmbGrad.SelectedValue==null)
-            {
-                errorProvider1.SetError(cmbGrad, "Obavezno polje!");
-            }
-            else
-            {
-                errorProvider1.SetError(cmbGrad, null);
-            }
-        }
+        //private void cmbGrad_Validating(object sender, CancelEventArgs e)
+        //{
+        //    if (cmbGrad.SelectedValue == null || cmbGrad.SelectedIndex == 0 ||  int.Parse(cmbGrad.SelectedValue.ToString()) == 0)
+        //    {
+        //        e.Cancel = true;
+        //        errorProvider1.SetError(cmbGrad, "Odaberite vrijednost!");
+        //    }
+        //    else
+        //    {
+        //        e.Cancel = false;
+        //        errorProvider1.SetError(cmbGrad, null);
+        //    }
+        //}
 
         private void txtZvjezdice_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtZvjezdice.Text))
             {
+                e.Cancel = true;
                 errorProvider1.SetError(txtZvjezdice, "Obavezno polje!");
             }
             else
             {
+                e.Cancel = false;
+                errorProvider1.SetError(txtZvjezdice, null);
+            }
+
+            if (int.Parse(txtZvjezdice.Text.ToString())<1 || int.Parse(txtZvjezdice.Text.ToString())>5)
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtZvjezdice, "Unesite vrijednosti izmedju 1 i 5!");
+            }
+            else
+            {
+                e.Cancel = false;
                 errorProvider1.SetError(txtZvjezdice, null);
             }
 
@@ -152,16 +244,88 @@ namespace eTouristapp.WinUI.Hoteli
             if(_id.HasValue)
             {
                 await _hotel.Delete<bool>(_id);
+                MessageBox.Show("Uspjesno obrisano!");
                 this.Close();
             }
         }
 
-        //private Image Resize(Image img, int iWidth, int iHeight)
-        //{
-        //    Bitmap bmp = new Bitmap(iWidth, iHeight);
-        //    Graphics graphic = Graphics.FromImage((Image)bmp);
-        //    graphic.DrawImage(img, 0, 0, iWidth, iHeight);
-        //    return (Image)bmp;
-        //}
+        private void pbSlika_Validating(object sender, CancelEventArgs e)
+        {
+            //if(hot.Slika==null)
+            //{
+            //    e.Cancel = true;
+            //    errorProvider1.SetError(txtSlika, "Odaberite sliku");
+            //}
+            //else
+            //{
+            //    e.Cancel = false;
+            //    errorProvider1.SetError(txtSlika, null);
+            //}
+        }
+
+        private void txtSlika_Validating(object sender, CancelEventArgs e)
+        {
+            if (!_id.HasValue)
+            {
+                if (string.IsNullOrWhiteSpace(txtSlika.Text) || string.IsNullOrEmpty(txtSlika.Text))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(txtSlika, "Odaberite sliku!");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(txtSlika, null);
+                }
+            }
+        }
+
+        
+
+        private async void cmbDrzave_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            drzavaid = int.Parse(cmbDrzava.SelectedValue.ToString());
+            await LoadGradovi(drzavaid);
+        }
+
+       
+
+       
+
+        private Image Resize(Image img, int iWidth, int iHeight)
+        {
+            Bitmap bmp = new Bitmap(iWidth, iHeight);
+            Graphics graphic = Graphics.FromImage((Image)bmp);
+            graphic.DrawImage(img, 0, 0, iWidth, iHeight);
+            return (Image)bmp;
+        }
+
+        private void cmbDrzava_Validating(object sender, CancelEventArgs e)
+        {
+            if (cmbDrzava.SelectedValue == null || cmbDrzava.SelectedIndex == 0 || int.Parse(cmbDrzava.SelectedValue.ToString()) == 0)
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(cmbDrzava, "Odaberite vrijednost!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(cmbDrzava, null);
+            }
+        }
+
+        private void cmbGrad_Validating_1(object sender, CancelEventArgs e)
+        {
+            if (cmbGrad.SelectedValue == null || cmbGrad.SelectedIndex == 0 || int.Parse(cmbGrad.SelectedValue.ToString()) == 0)
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(cmbGrad, "Odaberite vrijednost!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(cmbGrad, null);
+            }
+        }
     }
 }

@@ -33,7 +33,7 @@ namespace eTouristapp.WinUI
                     
                 };
                 var korisnik = await _service.Get<List<Models.Korisnik>>(n);
-                if (korisnik.FirstOrDefault() != null && korisnik.FirstOrDefault().UlogaId == 2)
+                if (this.ValidateChildren() && korisnik.FirstOrDefault() != null && korisnik.FirstOrDefault().UlogaId == 2)
                 {
                     await _service.Get<dynamic>(null);
                     await _service2.Get<dynamic>(null);
@@ -48,6 +48,35 @@ namespace eTouristapp.WinUI
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Pogresni podaci ili nemate permisije!", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtKorisnickoIme_Validating(object sender, CancelEventArgs e)
+        {
+            if(string.IsNullOrWhiteSpace(txtKorisnickoIme.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtKorisnickoIme, "Unesite korisnicko ime!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txtKorisnickoIme, null);
+            }
+        }
+
+        private void txtPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if(string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtPassword, "Unesite lozinku!");
+
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txtPassword, null);
             }
         }
     }

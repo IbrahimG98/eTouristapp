@@ -8,6 +8,9 @@ using Xamarin.Forms;
 using Flurl;
 using Flurl.Http;
 using eProdaja.Mobile;
+using eTouristapp.Models;
+using eTouristapp.Models.Request;
+using System.Linq;
 
 namespace eTouristapp.Mobile.ViewModels
 {
@@ -35,17 +38,38 @@ namespace eTouristapp.Mobile.ViewModels
         }
 
         public ICommand LoginCommand { get; set; }
-
-        async Task Login()
+       
+        public async Task Login()
         {
             IsBusy = true;
             APIService.Username = _username;
             APIService.Password = _password;
+            KorisniciSearchRequest request = new KorisniciSearchRequest()
+            {
+                KorisnickoIme=_username
+
+            };
+            var korisnici = await _service.Get<List<Korisnik>>(request);
+            var korisnik = korisnici.FirstOrDefault();
+            
             try
             {
-                
-                await _service.Get<dynamic>(null);
-                Application.Current.MainPage = new MainPage();
+
+                //await _service.Get<dynamic>(null);
+                //Application.Current.MainPage = new MainPage();
+                if(korisnik!=null && korisnik.UlogaId==1)
+                {
+                    Application.Current.MainPage = new MainPage();
+                   
+                }
+                else
+                {
+                    //await DisplayAlert("Greska", "Netacni podaci!", "OK");
+                    await App.Current.MainPage.DisplayAlert("Greska", "Netacni podaci!", "OK");
+
+
+                }
+
 
             }
             catch(Exception ex)

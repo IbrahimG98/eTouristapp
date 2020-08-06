@@ -19,7 +19,8 @@ namespace eTouristapp.Mobile.ViewModels
     public class DestinacijeViewModel:BaseViewModel
     {
         private readonly APIService _service = new APIService("Destinacije");
-        private readonly APIService _gradoviservice = new APIService("Grad");
+        private readonly APIService _gradoviservice = new APIService("Gradovi");
+        private readonly APIService _drzaveservice = new APIService("Drzave");
         public DestinacijeViewModel()
         {
             Initial = new Command(async()=>await Init());
@@ -29,9 +30,9 @@ namespace eTouristapp.Mobile.ViewModels
         public Grad SelectedGrad
         {
             get { return _selectedGrad; }
-            set { SetProperty(ref _selectedGrad, value); 
+            set { SetProperty(ref _selectedGrad, value);
 
-                if(value!=null)
+                if (value != null)
                 {
                     Initial.Execute(null);
                 }
@@ -46,15 +47,31 @@ namespace eTouristapp.Mobile.ViewModels
             {
                 SetProperty(ref _selectedDestinacija, value);
 
-                //if (value != null)
-                //{
-                //    Initial.Execute(null);
-                //}
+                if (value != null)
+                {
+                    Initial.Execute(null);
+                }
             }
 
         }
 
+        Drzava _selectedDrzava = null;
+        public Drzava SelectedDrzava
+        {
+            get { return _selectedDrzava; }
+            set
+            {
+                SetProperty(ref _selectedDrzava, value);
 
+                if (value != null)
+                {
+                    Initial.Execute(null);
+                }
+            }
+
+        }
+
+        public ObservableCollection<Drzava> DrzaveList { get; set; } = new ObservableCollection<Drzava>();
         public ObservableCollection<Destinacija> DestinacijeList { get; set; } = new ObservableCollection<Destinacija>();
         public ObservableCollection<Grad> GradoviList { get; set; } = new ObservableCollection<Grad>();
         public ICommand Initial { get; set; }
@@ -65,23 +82,61 @@ namespace eTouristapp.Mobile.ViewModels
 
         public async Task Init()
         {
-            if(GradoviList.Count==0)
+            if (DrzaveList.Count == 0)
             {
-                var gradovilist = await _gradoviservice.Get<IEnumerable<Grad>>(null);
-
                 
+                DrzavaSearchRequest request = new DrzavaSearchRequest()
+                {
+                    Naziv = null,
+                    KontinentId = 0
+
+                };
+                var drzavelist = await _drzaveservice.Get<IEnumerable<Drzava>>(request);
+
+                DrzaveList.Clear();
+
+                foreach (var drzava in drzavelist)
+                {
+                    DrzaveList.Add(drzava);
+                }
+               
+            }
+
+
+            if (SelectedDrzava != null)
+            {
+                //if (GradoviList.Count == 0)
+                //{
+                
+
+                GradoviSearchRequest request = new GradoviSearchRequest()
+                {
+                    Naziv = null,
+                    DrzavaId = SelectedDrzava.Id
+
+                };
+                //var gradovilist = await _gradoviservice.Get<IEnumerable<Grad>>(request);
+                var gradovilist = new List<Grad>();
+
+
 
                 foreach (var grad in gradovilist)
                 {
                     GradoviList.Add(grad);
                 }
-            }
 
-            if(SelectedGrad!=null)
+
+            
+        }
+
+            if (SelectedGrad != null)
             {
-                DestinacijaSearchRequest search = new DestinacijaSearchRequest();
-                search.Id = SelectedGrad.Id;
-                search.Naziv = SelectedGrad.Naziv;
+                DestinacijaSearchRequest search = new DestinacijaSearchRequest()
+                {
+                    GradId = SelectedGrad.Id,
+                    Naziv = SelectedGrad.Naziv
+                };
+
 
                 var list = await _service.Get<IEnumerable<Destinacija>>(search);
 
@@ -93,9 +148,54 @@ namespace eTouristapp.Mobile.ViewModels
                 }
             }
 
-           
+
 
 
         }
+
+        public async Task LoadGradoviDestinacije()
+        {
+            if(SelectedDrzava!=null)
+            {
+                GradoviSearchRequest request = new GradoviSearchRequest()
+                {
+                    Naziv = null,
+                    DrzavaId = SelectedDrzava.Id
+
+                };
+                var gradovilist = await _gradoviservice.Get<IEnumerable<Grad>>(request);
+
+
+                GradoviList.Clear();
+
+                foreach (var grad in gradovilist)
+                {
+                    GradoviList.Add(grad);
+                }
+
+            }
+
+            if (SelectedGrad != null)
+            {
+                DestinacijaSearchRequest search = new DestinacijaSearchRequest()
+                {
+                    GradId = SelectedGrad.Id,
+                    Naziv = SelectedGrad.Naziv
+                };
+
+
+                var list = await _service.Get<IEnumerable<Destinacija>>(search);
+
+                DestinacijeList.Clear();
+
+                foreach (var destinacija in list)
+                {
+                    DestinacijeList.Add(destinacija);
+                }
+            }
+        }
+
+
     }
+    
 }

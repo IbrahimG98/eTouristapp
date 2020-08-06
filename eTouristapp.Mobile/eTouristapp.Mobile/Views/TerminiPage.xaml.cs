@@ -95,6 +95,7 @@ namespace eTouristapp.Mobile.Views
             if (karta != null && postoji == false)
             {
                 await _karte.Insert<KartaInsertRequest>(karta);
+                
             }
            
 

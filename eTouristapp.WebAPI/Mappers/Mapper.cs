@@ -47,6 +47,18 @@ namespace eTouristapp.WebAPI.Mappers
             CreateMap<Database.Ocjena, OcjenaInsertRequest>().ReverseMap();
             CreateMap<Database.Ocjena, Models.Ocjena>().ReverseMap();
 
+            CreateMap<Database.Grad, Models.Grad>();
+            CreateMap<Database.Grad, GradoviInsertRequest>().ReverseMap();
+            CreateMap<Database.Grad, Models.Grad>().ReverseMap();
+
+            CreateMap<Database.Drzava, Models.Drzava>();
+            CreateMap<Database.Drzava, DrzavaInsertRequest>().ReverseMap();
+            CreateMap<Database.Drzava, Models.Drzava>().ReverseMap();
+
+            CreateMap<Database.Kontinent, Models.Kontinent>();
+            CreateMap<Database.Kontinent, KontinentInsertRequest>().ReverseMap();
+            CreateMap<Database.Kontinent, Models.Kontinent>().ReverseMap();
+
 
 
         }
