@@ -94,7 +94,7 @@
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(246, 380);
+            this.btnSacuvaj.Location = new System.Drawing.Point(246, 397);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(100, 23);
             this.btnSacuvaj.TabIndex = 6;
@@ -137,16 +137,16 @@
             // 
             this.btnTermini.Location = new System.Drawing.Point(31, 329);
             this.btnTermini.Name = "btnTermini";
-            this.btnTermini.Size = new System.Drawing.Size(315, 23);
+            this.btnTermini.Size = new System.Drawing.Size(315, 45);
             this.btnTermini.TabIndex = 10;
-            this.btnTermini.Text = "Termini";
+            this.btnTermini.Text = "Termini(ovdje se vrsi pregled termina za destinaciju)";
             this.btnTermini.UseVisualStyleBackColor = true;
             this.btnTermini.Click += new System.EventHandler(this.btnTermini_Click);
             // 
             // btnObrisi
             // 
             this.btnObrisi.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.btnObrisi.Location = new System.Drawing.Point(379, 380);
+            this.btnObrisi.Location = new System.Drawing.Point(379, 397);
             this.btnObrisi.Name = "btnObrisi";
             this.btnObrisi.Size = new System.Drawing.Size(109, 23);
             this.btnObrisi.TabIndex = 11;
@@ -174,6 +174,7 @@
             this.cmbDrzava.Name = "cmbDrzava";
             this.cmbDrzava.Size = new System.Drawing.Size(185, 24);
             this.cmbDrzava.TabIndex = 13;
+            this.cmbDrzava.SelectedIndexChanged += new System.EventHandler(this.cmbDrzava_SelectedIndexChanged);
             this.cmbDrzava.Validating += new System.ComponentModel.CancelEventHandler(this.cmbDrzava_Validating);
             // 
             // cmbGrad

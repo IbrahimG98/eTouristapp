@@ -24,7 +24,7 @@ namespace eTouristapp.WinUI.Drzave
         private async Task LoadKontinenti()
         {
             var result = await _kontinenti.Get<List<Models.Kontinent>>(null);
-            result.Insert(0, new Models.Kontinent());
+            result.Insert(0, new Models.Kontinent() { Naziv="---" });
             cmbKontinent.DisplayMember = "Naziv";
             cmbKontinent.ValueMember = "Id";
             cmbKontinent.DataSource = result;

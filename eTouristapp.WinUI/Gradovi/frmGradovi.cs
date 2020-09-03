@@ -26,24 +26,28 @@ namespace eTouristapp.WinUI.Gradovi
         private async void btnPretraga_Click(object sender, EventArgs e)
         {
 
-            if (this.ValidateChildren())
-            {
-                var search = new GradoviSearchRequest()
+            
+                if (this.ValidateChildren())
                 {
-                    Naziv = txtNaziv.Text,
-                    DrzavaId = int.Parse(cmbDrzava.SelectedValue.ToString())
+                    var search = new GradoviSearchRequest()
+                    {
+                        Naziv = txtNaziv.Text,
+                        DrzavaId = int.Parse(cmbDrzava.SelectedValue.ToString())
 
-                };
-                var result = await _gradovi.Get<List<Models.Grad>>(search);
-                dgvGradovi.AutoGenerateColumns = false;
-                dgvGradovi.DataSource = result;
-            }
+                    };
+                    var result = await _gradovi.Get<List<Models.Grad>>(search);
+                    dgvGradovi.AutoGenerateColumns = false;
+                    dgvGradovi.DataSource = result;
+                }
+            
         }
 
         async Task LoadKontinenti()
         {
+            
             var result = await _kontinenti.Get<List<Models.Kontinent>>(null);
-            result.Insert(0, new Models.Kontinent());
+            result.Insert(0, new Models.Kontinent() { Naziv="---" });
+            
             cmbKontinent.DisplayMember = "Naziv";
             cmbKontinent.ValueMember = "Id";
             cmbKontinent.DataSource = result;
@@ -60,6 +64,7 @@ namespace eTouristapp.WinUI.Gradovi
 
             var result = await _drzave.Get<List<Models.Drzava>>(request);
             //result.Insert(0, new Models.Drzava());
+            
             cmbDrzava.DisplayMember = "Naziv";
             cmbDrzava.ValueMember = "Id";
             cmbDrzava.DataSource = result;

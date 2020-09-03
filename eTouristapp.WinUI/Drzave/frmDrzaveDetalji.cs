@@ -36,7 +36,7 @@ namespace eTouristapp.WinUI.Drzave
         private async Task LoadKontinenti()
         {
             var result = await _kontinenti.Get<List<Models.Kontinent>>(null);
-            result.Insert(0, new Models.Kontinent());
+            result.Insert(0, new Models.Kontinent() { Naziv = "---" });
             cmbKontinent.DisplayMember = "Naziv";
             cmbKontinent.ValueMember = "Id";
             cmbKontinent.DataSource = result;
@@ -45,12 +45,13 @@ namespace eTouristapp.WinUI.Drzave
 
         private async void btnSacuvaj_Click(object sender, EventArgs e)
         {
-            DrzavaInsertRequest drzava = new DrzavaInsertRequest();
-            drzava.KontinentId = int.Parse(cmbKontinent.SelectedValue.ToString());
-            drzava.Naziv = txtNaziv.Text;
+            
 
             if (this.ValidateChildren())
             {
+                DrzavaInsertRequest drzava = new DrzavaInsertRequest();
+                drzava.KontinentId = int.Parse(cmbKontinent.SelectedValue.ToString());
+                drzava.Naziv = txtNaziv.Text;
                 if (_id.HasValue)
                 {
                     await _drzave.Update<DrzavaInsertRequest>(_id, drzava);
@@ -90,7 +91,7 @@ namespace eTouristapp.WinUI.Drzave
 
         private void cmbKontinent_Validating(object sender, CancelEventArgs e)
         {
-            if(int.Parse(cmbKontinent.SelectedValue.ToString())<0)
+            if(int.Parse(cmbKontinent.SelectedValue.ToString())<0 || cmbKontinent.SelectedIndex==-1 || cmbKontinent.SelectedIndex==0)
             {
                 e.Cancel = true;
                 errorProvider1.SetError(cmbKontinent, "Odaberite vrijednost");

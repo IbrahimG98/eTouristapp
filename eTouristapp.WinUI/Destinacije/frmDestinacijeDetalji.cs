@@ -1,4 +1,5 @@
-﻿using eTouristapp.Models.Request;
+﻿using eTouristapp.Models;
+using eTouristapp.Models.Request;
 using eTouristapp.WinUI.Termini;
 using System;
 using System.Collections.Generic;
@@ -84,7 +85,7 @@ namespace eTouristapp.WinUI.Destinacije
                 KontinentId = 0
             };
             var result = await _drzave.Get<List<Models.Drzava>>(request);
-            result.Insert(0, new Models.Drzava());
+            result.Insert(0, new Models.Drzava() {Naziv="---" });
             cmbDrzava.DisplayMember = "Naziv";
             cmbDrzava.ValueMember = "Id";
             cmbDrzava.DataSource = result;
@@ -268,6 +269,16 @@ namespace eTouristapp.WinUI.Destinacije
             {
                 e.Cancel = false;
                 errorProvider1.SetError(cmbGrad, null);
+            }
+        }
+
+        private async void cmbDrzava_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            if(cmbDrzava.SelectedValue.ToString()!=null&& cmbDrzava.SelectedIndex!=0 && cmbDrzava.SelectedIndex!=-1)
+            {
+                drzavaid = int.Parse(cmbDrzava.SelectedValue.ToString());
+                await LoadGradovi(drzavaid);
             }
         }
 

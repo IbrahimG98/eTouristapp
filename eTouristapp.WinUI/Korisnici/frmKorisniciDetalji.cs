@@ -28,11 +28,11 @@ namespace eTouristapp.WinUI.Korisnici
        private async Task LoadUloge()
         {
             var uloge = await _ulogeservice.Get<List<Models.Uloga>>(null);
-            uloge.Insert(0, new Models.Uloga());
+            uloge.Insert(0, new Models.Uloga() { Naziv="---" });
             cmbUloge.DataSource = uloge;
             cmbUloge.ValueMember = "Id";
             cmbUloge.DisplayMember = "Naziv";
-            cmbUloge.SelectedValue = 0;
+            
 
         }
         private async void frmKorisniciDetalji_Load(object sender, EventArgs e)
@@ -209,7 +209,7 @@ namespace eTouristapp.WinUI.Korisnici
 
         private void cmbUloge_Validating(object sender, CancelEventArgs e)
         {
-            if(int.Parse(cmbUloge.SelectedValue.ToString())==0 || cmbUloge.SelectedValue==null || cmbUloge.SelectedIndex==0)
+            if(int.Parse(cmbUloge.SelectedValue.ToString())==0 || cmbUloge.SelectedValue==null || cmbUloge.SelectedIndex==0 || cmbUloge.SelectedIndex==-1)
             {
                 e.Cancel = true;
                 errorProvider1.SetError(cmbUloge, "Odaberite vrijednost");
