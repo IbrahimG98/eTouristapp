@@ -35,14 +35,14 @@
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pretraga = new System.Windows.Forms.Label();
-            this.btnTrazi = new System.Windows.Forms.Button();
-            this.cmbGrad = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.cmbKontinenti = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.cmbDrzave = new System.Windows.Forms.ComboBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnPretraga = new System.Windows.Forms.Button();
+            this.cmbKontinent = new System.Windows.Forms.ComboBox();
+            this.cmbDrzava = new System.Windows.Forms.ComboBox();
+            this.cmbGrad = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDestinacije)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -112,26 +112,6 @@
             this.Pretraga.Size = new System.Drawing.Size(63, 17);
             this.Pretraga.TabIndex = 2;
             this.Pretraga.Text = "Pretraga";
-            this.Pretraga.Click += new System.EventHandler(this.Pretraga_Click);
-            // 
-            // btnTrazi
-            // 
-            this.btnTrazi.Location = new System.Drawing.Point(214, 209);
-            this.btnTrazi.Name = "btnTrazi";
-            this.btnTrazi.Size = new System.Drawing.Size(75, 23);
-            this.btnTrazi.TabIndex = 3;
-            this.btnTrazi.Text = "Trazi";
-            this.btnTrazi.UseVisualStyleBackColor = true;
-            this.btnTrazi.Click += new System.EventHandler(this.btnTrazi_Click);
-            // 
-            // cmbGrad
-            // 
-            this.cmbGrad.FormattingEnabled = true;
-            this.cmbGrad.Location = new System.Drawing.Point(12, 208);
-            this.cmbGrad.Name = "cmbGrad";
-            this.cmbGrad.Size = new System.Drawing.Size(148, 24);
-            this.cmbGrad.TabIndex = 4;
-            this.cmbGrad.Validating += new System.ComponentModel.CancelEventHandler(this.cmbGrad_Validating);
             // 
             // label1
             // 
@@ -151,16 +131,6 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Kontinent";
             // 
-            // cmbKontinenti
-            // 
-            this.cmbKontinenti.FormattingEnabled = true;
-            this.cmbKontinenti.Location = new System.Drawing.Point(12, 101);
-            this.cmbKontinenti.Name = "cmbKontinenti";
-            this.cmbKontinenti.Size = new System.Drawing.Size(148, 24);
-            this.cmbKontinenti.TabIndex = 7;
-            this.cmbKontinenti.SelectedIndexChanged += new System.EventHandler(this.cmbKontinenti_SelectedIndexChanged);
-            this.cmbKontinenti.Validating += new System.ComponentModel.CancelEventHandler(this.cmbKontinenti_Validating);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -170,32 +140,62 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Drzava";
             // 
-            // cmbDrzave
-            // 
-            this.cmbDrzave.FormattingEnabled = true;
-            this.cmbDrzave.Location = new System.Drawing.Point(12, 161);
-            this.cmbDrzave.Name = "cmbDrzave";
-            this.cmbDrzave.Size = new System.Drawing.Size(148, 24);
-            this.cmbDrzave.TabIndex = 9;
-            this.cmbDrzave.SelectedIndexChanged += new System.EventHandler(this.cmbDrzave_SelectedIndexChanged);
-            this.cmbDrzave.Validating += new System.ComponentModel.CancelEventHandler(this.cmbDrzave_Validating);
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // btnPretraga
+            // 
+            this.btnPretraga.Location = new System.Drawing.Point(328, 207);
+            this.btnPretraga.Name = "btnPretraga";
+            this.btnPretraga.Size = new System.Drawing.Size(86, 23);
+            this.btnPretraga.TabIndex = 12;
+            this.btnPretraga.Text = "Pretraga";
+            this.btnPretraga.UseVisualStyleBackColor = true;
+            this.btnPretraga.Click += new System.EventHandler(this.btnPretraga_Click);
+            this.btnPretraga.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnPretraga_MouseClick);
+            // 
+            // cmbKontinent
+            // 
+            this.cmbKontinent.FormattingEnabled = true;
+            this.cmbKontinent.Location = new System.Drawing.Point(13, 102);
+            this.cmbKontinent.Name = "cmbKontinent";
+            this.cmbKontinent.Size = new System.Drawing.Size(258, 24);
+            this.cmbKontinent.TabIndex = 13;
+            this.cmbKontinent.SelectedIndexChanged += new System.EventHandler(this.cmbKontinent_SelectedIndexChanged);
+            this.cmbKontinent.Validating += new System.ComponentModel.CancelEventHandler(this.cmbKontinent_Validating);
+            // 
+            // cmbDrzava
+            // 
+            this.cmbDrzava.FormattingEnabled = true;
+            this.cmbDrzava.Location = new System.Drawing.Point(12, 161);
+            this.cmbDrzava.Name = "cmbDrzava";
+            this.cmbDrzava.Size = new System.Drawing.Size(258, 24);
+            this.cmbDrzava.TabIndex = 14;
+            this.cmbDrzava.SelectedIndexChanged += new System.EventHandler(this.cmbDrzava_SelectedIndexChanged);
+            this.cmbDrzava.Validating += new System.ComponentModel.CancelEventHandler(this.cmbDrzava_Validating);
+            // 
+            // cmbGrad
+            // 
+            this.cmbGrad.FormattingEnabled = true;
+            this.cmbGrad.Location = new System.Drawing.Point(13, 208);
+            this.cmbGrad.Name = "cmbGrad";
+            this.cmbGrad.Size = new System.Drawing.Size(258, 24);
+            this.cmbGrad.TabIndex = 15;
+            this.cmbGrad.Validating += new System.ComponentModel.CancelEventHandler(this.cmbGrad_Validating);
             // 
             // frmDestinacije
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.cmbDrzave);
+            this.Controls.Add(this.cmbGrad);
+            this.Controls.Add(this.cmbDrzava);
+            this.Controls.Add(this.cmbKontinent);
+            this.Controls.Add(this.btnPretraga);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.cmbKontinenti);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.cmbGrad);
-            this.Controls.Add(this.btnTrazi);
             this.Controls.Add(this.Pretraga);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtPretraga);
@@ -216,15 +216,15 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvDestinacije;
         private System.Windows.Forms.Label Pretraga;
-        private System.Windows.Forms.Button btnTrazi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
-        private System.Windows.Forms.ComboBox cmbGrad;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cmbKontinenti;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cmbDrzave;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btnPretraga;
+        private System.Windows.Forms.ComboBox cmbGrad;
+        private System.Windows.Forms.ComboBox cmbDrzava;
+        private System.Windows.Forms.ComboBox cmbKontinent;
     }
 }

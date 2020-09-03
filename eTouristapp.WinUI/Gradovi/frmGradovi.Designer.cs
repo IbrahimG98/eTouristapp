@@ -36,11 +36,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNaziv = new System.Windows.Forms.TextBox();
-            this.cmbDrzave = new System.Windows.Forms.ComboBox();
             this.btnPretraga = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.cmbKontinenti = new System.Windows.Forms.ComboBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cmbKontinent = new System.Windows.Forms.ComboBox();
+            this.cmbDrzava = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGradovi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -118,18 +118,9 @@
             this.txtNaziv.Size = new System.Drawing.Size(226, 22);
             this.txtNaziv.TabIndex = 4;
             // 
-            // cmbDrzave
-            // 
-            this.cmbDrzave.FormattingEnabled = true;
-            this.cmbDrzave.Location = new System.Drawing.Point(12, 143);
-            this.cmbDrzave.Name = "cmbDrzave";
-            this.cmbDrzave.Size = new System.Drawing.Size(226, 24);
-            this.cmbDrzave.TabIndex = 5;
-            this.cmbDrzave.Validating += new System.ComponentModel.CancelEventHandler(this.cmbDrzave_Validating);
-            // 
             // btnPretraga
             // 
-            this.btnPretraga.Location = new System.Drawing.Point(163, 173);
+            this.btnPretraga.Location = new System.Drawing.Point(257, 175);
             this.btnPretraga.Name = "btnPretraga";
             this.btnPretraga.Size = new System.Drawing.Size(75, 23);
             this.btnPretraga.TabIndex = 7;
@@ -146,29 +137,40 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Kontinent";
             // 
-            // cmbKontinenti
-            // 
-            this.cmbKontinenti.FormattingEnabled = true;
-            this.cmbKontinenti.Location = new System.Drawing.Point(12, 87);
-            this.cmbKontinenti.Name = "cmbKontinenti";
-            this.cmbKontinenti.Size = new System.Drawing.Size(222, 24);
-            this.cmbKontinenti.TabIndex = 9;
-            this.cmbKontinenti.SelectedIndexChanged += new System.EventHandler(this.cmbKontinenti_SelectedIndexChanged);
-            this.cmbKontinenti.Validating += new System.ComponentModel.CancelEventHandler(this.cmbKontinenti_Validating);
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // cmbKontinent
+            // 
+            this.cmbKontinent.FormattingEnabled = true;
+            this.cmbKontinent.Location = new System.Drawing.Point(12, 86);
+            this.cmbKontinent.Name = "cmbKontinent";
+            this.cmbKontinent.Size = new System.Drawing.Size(226, 24);
+            this.cmbKontinent.TabIndex = 9;
+            this.cmbKontinent.DropDown += new System.EventHandler(this.cmbKontinent_DropDown);
+            this.cmbKontinent.SelectedIndexChanged += new System.EventHandler(this.cmbKontinent_SelectedIndexChanged);
+            this.cmbKontinent.Validating += new System.ComponentModel.CancelEventHandler(this.cmbKontinent_Validating);
+            // 
+            // cmbDrzava
+            // 
+            this.cmbDrzava.FormattingEnabled = true;
+            this.cmbDrzava.Location = new System.Drawing.Point(12, 144);
+            this.cmbDrzava.Name = "cmbDrzava";
+            this.cmbDrzava.Size = new System.Drawing.Size(226, 24);
+            this.cmbDrzava.TabIndex = 10;
+            this.cmbDrzava.SelectedIndexChanged += new System.EventHandler(this.cmbDrzava_SelectedIndexChanged);
+            this.cmbDrzava.Validating += new System.ComponentModel.CancelEventHandler(this.cmbDrzava_Validating);
             // 
             // frmGradovi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.cmbKontinenti);
+            this.Controls.Add(this.cmbDrzava);
+            this.Controls.Add(this.cmbKontinent);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnPretraga);
-            this.Controls.Add(this.cmbDrzave);
             this.Controls.Add(this.txtNaziv);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -191,12 +193,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNaziv;
-        private System.Windows.Forms.ComboBox cmbDrzave;
         private System.Windows.Forms.Button btnPretraga;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cmbKontinenti;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ComboBox cmbDrzava;
+        private System.Windows.Forms.ComboBox cmbKontinent;
     }
 }

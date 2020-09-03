@@ -33,85 +33,43 @@ namespace eTouristapp.WinUI.Destinacije
         {
             var result = await _kontinenti.Get<List<Models.Kontinent>>(null);
             result.Insert(0, new Models.Kontinent());
-            cmbKontinenti.DisplayMember = "Naziv";
-            cmbKontinenti.ValueMember = "Id";
-            cmbKontinenti.DataSource = result;
-            cmbKontinenti.SelectedValue = 0;
+            cmbKontinent.DisplayMember = "Naziv";
+            cmbKontinent.ValueMember = "Id";
+            cmbKontinent.DataSource = result;
+            cmbKontinent.SelectedIndex = 0;
         }
         async Task LoadDrzave(int? id)
         {
             DrzavaSearchRequest request = new DrzavaSearchRequest()
             {
                 Naziv = null,
-                KontinentId = 0
+                KontinentId = id
             };
-            if(id.HasValue)
-            {
-                request.KontinentId = id;
-            }
-            else
-            {
-                request.KontinentId = 0;
-            }
+
             var result = await _drzave.Get<List<Models.Drzava>>(request);
-            result.Insert(0, new Models.Drzava());
-            cmbDrzave.DisplayMember = "Naziv";
-            cmbDrzave.ValueMember = "Id";
-            cmbDrzave.DataSource = result;
-            cmbDrzave.SelectedValue = 0;
+            //result.Insert(0, new Models.Drzava());
+            cmbDrzava.DisplayMember = "Naziv";
+            cmbDrzava.ValueMember = "Id";
+            cmbDrzava.DataSource = result;
+            cmbDrzava.SelectedIndex = 0;
         }
         private async Task LoadGradovi(int? id)
         {
             GradoviSearchRequest request = new GradoviSearchRequest()
             {
                 Naziv = null,
-                DrzavaId = 0
+                DrzavaId = id
             };
-            if (id.HasValue)
-            {
-                request.DrzavaId = id;
-            }
-            else
-            {
-                request.DrzavaId = 0;
-            }
-            
             var result = await _gradovi.Get<List<Models.Grad>>(request);
-            result.Insert(0, new Models.Grad());
+            //result.Insert(0, new Models.Grad());
             cmbGrad.DisplayMember = "Naziv";
             cmbGrad.ValueMember = "Id";
             cmbGrad.DataSource = result;
-            cmbGrad.SelectedValue = 0;
+            cmbGrad.SelectedIndex = 0;
         }
-        private async void Pretraga_Click(object sender, EventArgs e)
-        {
-            var search = new DestinacijaSearchRequest()
-            {
-                Naziv = txtPretraga.Text,
-                GradId=int.Parse(cmbGrad.SelectedValue.ToString())
-            };
-            if (this.ValidateChildren())
-            {
-                var result = await _destinacije.Get<List<Models.Destinacija>>(search);
-                dgvDestinacije.AutoGenerateColumns = false;
-                dgvDestinacije.DataSource = result;
-            }
-        }
+       
 
-        private async void btnTrazi_Click(object sender, EventArgs e)
-        {
-            var search = new DestinacijaSearchRequest()
-            {
-                Naziv = txtPretraga.Text,
-                GradId=int.Parse(cmbGrad.SelectedValue.ToString())
-            };
-            if (this.ValidateChildren())
-            {
-                var result = await _destinacije.Get<List<Models.Destinacija>>(search);
-                dgvDestinacije.AutoGenerateColumns = false;
-                dgvDestinacije.DataSource = result;
-            }
-        }
+       
 
         private void dgvDestinacije_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -128,64 +86,126 @@ namespace eTouristapp.WinUI.Destinacije
         private async void frmDestinacije_Load(object sender, EventArgs e)
         {
             await LoadKontinenti();
-            await LoadDrzave(null);
-            await LoadGradovi(null);
+            cmbDrzava.Enabled = false;
+            cmbGrad.Enabled = false;
         }
 
-        private async void cmbKontinenti_SelectedIndexChanged(object sender, EventArgs e)
+        
+
+       
+
+      
+
+        private async void btnPretraga_Click(object sender, EventArgs e)
         {
-            kontinentid = int.Parse(cmbKontinenti.SelectedValue.ToString());
-            await LoadDrzave(kontinentid);
+            if (this.ValidateChildren())
+            {
+                var search = new DestinacijaSearchRequest()
+                {
+                    Naziv = txtPretraga.Text,
+                    GradId = int.Parse(cmbGrad.SelectedValue.ToString())
+
+                };
+
+                var result = await _destinacije.Get<List<Models.Destinacija>>(search);
+                dgvDestinacije.AutoGenerateColumns = false;
+                dgvDestinacije.DataSource = result;
+            }
+
         }
 
-        private async void cmbDrzave_SelectedIndexChanged(object sender, EventArgs e)
+        
+
+        private async void cmbKontinent_SelectedIndexChanged(object sender, EventArgs e)
         {
-            drzavaid = int.Parse(cmbDrzave.SelectedValue.ToString());
-            await LoadGradovi(drzavaid);
+            if(cmbKontinent.SelectedIndex==-1)
+            {
+                cmbKontinent.SelectedIndex = 0;
+            }
+            if (cmbKontinent.SelectedValue.ToString() != null && cmbKontinent.SelectedIndex != -1 && cmbKontinent.SelectedIndex != 0)
+            {
+                cmbDrzava.Enabled = true;
+                kontinentid = int.Parse(cmbKontinent.SelectedValue.ToString());
+                await LoadDrzave(kontinentid);
+            }
+            else
+            {
+                cmbDrzava.Enabled = false;
+                cmbGrad.Enabled = false;
+            }
         }
 
-        private void cmbKontinenti_Validating(object sender, CancelEventArgs e)
+        private async void cmbDrzava_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (int.Parse(cmbKontinenti.SelectedValue.ToString()) == 0 || cmbKontinenti.SelectedValue == null || cmbKontinenti.SelectedItem == null)
+            if (cmbDrzava.SelectedValue.ToString() != null && cmbDrzava.SelectedIndex != -1)
+            {
+                cmbGrad.Enabled = true;
+                drzavaid = int.Parse(cmbDrzava.SelectedValue.ToString());
+                await LoadGradovi(drzavaid);
+            }
+            else
+            {
+                cmbGrad.Enabled = false;
+
+            }
+        }
+
+        private void cmbKontinent_Validating(object sender, CancelEventArgs e)
+        {
+            if (cmbKontinent.SelectedValue.ToString() == null || cmbKontinent.SelectedValue == null || cmbKontinent.SelectedIndex == 0 || cmbKontinent.SelectedIndex == -1)
             {
                 e.Cancel = true;
-                errorProvider1.SetError(cmbKontinenti, "Odaberite vrijednost!");
+                errorProvider1.SetError(cmbKontinent, "Odaberite kontinent!");
             }
             else
             {
                 e.Cancel = false;
-                errorProvider1.SetError(cmbKontinenti, null);
-
+                errorProvider1.SetError(cmbKontinent, null);
             }
         }
 
-        private void cmbDrzave_Validating(object sender, CancelEventArgs e)
+        private void cmbDrzava_Validating(object sender, CancelEventArgs e)
         {
-            if (int.Parse(cmbDrzave.SelectedValue.ToString()) == 0 || cmbDrzave.SelectedValue == null || cmbDrzave.SelectedItem == null)
+            if (cmbDrzava.Enabled == false)
             {
                 e.Cancel = true;
-                errorProvider1.SetError(cmbDrzave, "Odaberite vrijednost!");
+                errorProvider1.SetError(cmbDrzava, "Odaberite drzavu!");
             }
             else
             {
                 e.Cancel = false;
-                errorProvider1.SetError(cmbDrzave, null);
-
+                errorProvider1.SetError(cmbDrzava, null);
             }
         }
 
         private void cmbGrad_Validating(object sender, CancelEventArgs e)
         {
-            if (int.Parse(cmbGrad.SelectedValue.ToString()) == 0 || cmbGrad.SelectedValue == null || cmbGrad.SelectedItem == null)
+            if (cmbGrad.Enabled == false)
             {
                 e.Cancel = true;
-                errorProvider1.SetError(cmbGrad, "Odaberite vrijednost!");
+                errorProvider1.SetError(cmbGrad, "Odaberite grad!");
             }
             else
             {
                 e.Cancel = false;
                 errorProvider1.SetError(cmbGrad, null);
+            }
+        }
 
+        private async void btnPretraga_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (this.ValidateChildren())
+            {
+                var search = new DestinacijaSearchRequest()
+                {
+                    Naziv = txtPretraga.Text,
+                    GradId = int.Parse(cmbGrad.SelectedValue.ToString())
+
+                };
+
+                var result = await _destinacije.Get<List<Models.Destinacija>>(search);
+                dgvDestinacije.AutoGenerateColumns = false;
+                dgvDestinacije.DataSource = result;
             }
         }
     }
