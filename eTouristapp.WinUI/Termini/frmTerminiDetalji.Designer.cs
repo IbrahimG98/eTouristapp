@@ -55,11 +55,12 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txtNaziv = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtDatumPovratka = new System.Windows.Forms.TextBox();
+            this.txtDatumPolaska = new System.Windows.Forms.TextBox();
             this.btnPrint = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnObrisi = new System.Windows.Forms.Button();
-            this.txtDatumPolaska = new System.Windows.Forms.TextBox();
-            this.txtDatumPovratka = new System.Windows.Forms.TextBox();
+            this.btnKarte = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -69,9 +70,10 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 17);
+            this.label1.Size = new System.Drawing.Size(509, 17);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Novi termin";
+            this.label1.Text = "Novi termin(za postojeci termin karte se dodaju preko mobilnog dijela aplikacije)" +
+    "";
             // 
             // pickerOd
             // 
@@ -120,6 +122,7 @@
             // 
             this.txtAkcijskaCijena.Location = new System.Drawing.Point(12, 404);
             this.txtAkcijskaCijena.Name = "txtAkcijskaCijena";
+            this.txtAkcijskaCijena.ReadOnly = true;
             this.txtAkcijskaCijena.Size = new System.Drawing.Size(201, 22);
             this.txtAkcijskaCijena.TabIndex = 7;
             // 
@@ -302,6 +305,22 @@
             this.panel1.Size = new System.Drawing.Size(365, 364);
             this.panel1.TabIndex = 28;
             // 
+            // txtDatumPovratka
+            // 
+            this.txtDatumPovratka.Location = new System.Drawing.Point(71, 156);
+            this.txtDatumPovratka.Name = "txtDatumPovratka";
+            this.txtDatumPovratka.ReadOnly = true;
+            this.txtDatumPovratka.Size = new System.Drawing.Size(239, 22);
+            this.txtDatumPovratka.TabIndex = 31;
+            // 
+            // txtDatumPolaska
+            // 
+            this.txtDatumPolaska.Location = new System.Drawing.Point(71, 94);
+            this.txtDatumPolaska.Name = "txtDatumPolaska";
+            this.txtDatumPolaska.ReadOnly = true;
+            this.txtDatumPolaska.Size = new System.Drawing.Size(239, 22);
+            this.txtDatumPolaska.TabIndex = 30;
+            // 
             // btnPrint
             // 
             this.btnPrint.Location = new System.Drawing.Point(628, 432);
@@ -326,27 +345,23 @@
             this.btnObrisi.UseVisualStyleBackColor = true;
             this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
             // 
-            // txtDatumPolaska
+            // btnKarte
             // 
-            this.txtDatumPolaska.Location = new System.Drawing.Point(71, 94);
-            this.txtDatumPolaska.Name = "txtDatumPolaska";
-            this.txtDatumPolaska.ReadOnly = true;
-            this.txtDatumPolaska.Size = new System.Drawing.Size(239, 22);
-            this.txtDatumPolaska.TabIndex = 30;
-            // 
-            // txtDatumPovratka
-            // 
-            this.txtDatumPovratka.Location = new System.Drawing.Point(71, 156);
-            this.txtDatumPovratka.Name = "txtDatumPovratka";
-            this.txtDatumPovratka.ReadOnly = true;
-            this.txtDatumPovratka.Size = new System.Drawing.Size(239, 22);
-            this.txtDatumPovratka.TabIndex = 31;
+            this.btnKarte.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnKarte.Location = new System.Drawing.Point(338, 438);
+            this.btnKarte.Name = "btnKarte";
+            this.btnKarte.Size = new System.Drawing.Size(225, 23);
+            this.btnKarte.TabIndex = 30;
+            this.btnKarte.Text = "Pregled karata za termin";
+            this.btnKarte.UseVisualStyleBackColor = false;
+            this.btnKarte.Click += new System.EventHandler(this.btnKarte_Click);
             // 
             // frmTerminiDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 473);
+            this.ClientSize = new System.Drawing.Size(800, 471);
+            this.Controls.Add(this.btnKarte);
             this.Controls.Add(this.btnObrisi);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnPrint);
@@ -411,5 +426,6 @@
         private System.Windows.Forms.Button btnObrisi;
         private System.Windows.Forms.TextBox txtDatumPovratka;
         private System.Windows.Forms.TextBox txtDatumPolaska;
+        private System.Windows.Forms.Button btnKarte;
     }
 }

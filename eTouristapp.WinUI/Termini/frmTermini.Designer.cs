@@ -181,7 +181,7 @@
             // 
             // btnTrazi
             // 
-            this.btnTrazi.Location = new System.Drawing.Point(440, 126);
+            this.btnTrazi.Location = new System.Drawing.Point(526, 126);
             this.btnTrazi.Name = "btnTrazi";
             this.btnTrazi.Size = new System.Drawing.Size(75, 23);
             this.btnTrazi.TabIndex = 7;
@@ -193,7 +193,7 @@
             // 
             this.btnNoviTermin.Location = new System.Drawing.Point(658, 151);
             this.btnNoviTermin.Name = "btnNoviTermin";
-            this.btnNoviTermin.Size = new System.Drawing.Size(120, 23);
+            this.btnNoviTermin.Size = new System.Drawing.Size(130, 23);
             this.btnNoviTermin.TabIndex = 8;
             this.btnNoviTermin.Text = "Novi termin";
             this.btnNoviTermin.UseVisualStyleBackColor = true;
@@ -204,9 +204,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(308, 100);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 17);
+            this.label3.Size = new System.Drawing.Size(293, 17);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Aktivan";
+            this.label3.Text = "Aktivan(defaultno izlistava neaktivne termine)";
             // 
             // chcbAktivan
             // 

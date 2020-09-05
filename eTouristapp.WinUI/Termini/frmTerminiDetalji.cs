@@ -1,5 +1,6 @@
 ﻿using eTouristapp.Models;
 using eTouristapp.Models.Request;
+using eTouristapp.WinUI.Karte;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -320,6 +321,15 @@ namespace eTouristapp.WinUI.Termini
             {
                 e.Cancel = false;
                 errorProvider1.SetError(pickerDo, null);
+            }
+        }
+
+        private void btnKarte_Click(object sender, EventArgs e)
+        {
+            if(_id.HasValue)
+            {
+                frmKarte frm = new frmKarte(_id);
+                frm.Show();
             }
         }
     }

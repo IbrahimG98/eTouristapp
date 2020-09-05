@@ -23,23 +23,25 @@ namespace eTouristapp.WinUI.Termini
 
         private async void btnTrazi_Click(object sender, EventArgs e)
         {
-            this.ValidateChildren();
-
-            var search = new TerminSearchRequest()
+            if (this.ValidateChildren())
             {
-                DestinacijaId=int.Parse(_destinacijaid.ToString()),
-                DatumPolaska = pickerOd.Value,
-                DatumDolaska = pickerDo.Value,
-                Cijena=decimal.Parse(txtCijena.Text.ToString()),
-                Aktivan=chcbAktivan.Checked
 
-            };
-           
-                
+                var search = new TerminSearchRequest()
+                {
+                    DestinacijaId = int.Parse(_destinacijaid.ToString()),
+                    DatumPolaska = pickerOd.Value,
+                    DatumDolaska = pickerDo.Value,
+                    Cijena = decimal.Parse(txtCijena.Text.ToString()),
+                    Aktivan = chcbAktivan.Checked
 
-            var result = await _termini.Get<List<Models.Termin>>(search);
-            dgvTermini.AutoGenerateColumns = false;
-            dgvTermini.DataSource = result;
+                };
+
+
+
+                var result = await _termini.Get<List<Models.Termin>>(search);
+                dgvTermini.AutoGenerateColumns = false;
+                dgvTermini.DataSource = result;
+            }
         }
 
         private void dgvTermini_MouseDoubleClick(object sender, MouseEventArgs e)

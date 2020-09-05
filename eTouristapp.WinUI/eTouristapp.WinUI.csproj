@@ -274,6 +274,12 @@
     <Compile Include="Hoteli\frmHoteliDetalji.Designer.cs">
       <DependentUpon>frmHoteliDetalji.cs</DependentUpon>
     </Compile>
+    <Compile Include="Karte\frmKarte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Karte\frmKarte.Designer.cs">
+      <DependentUpon>frmKarte.cs</DependentUpon>
+    </Compile>
     <Compile Include="Kontinenti\frmKontinenti.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -347,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Hoteli\frmHoteliDetalji.resx">
       <DependentUpon>frmHoteliDetalji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Karte\frmKarte.resx">
+      <DependentUpon>frmKarte.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Kontinenti\frmKontinenti.resx">
       <DependentUpon>frmKontinenti.cs</DependentUpon>
