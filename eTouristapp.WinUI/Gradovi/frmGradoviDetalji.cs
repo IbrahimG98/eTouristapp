@@ -144,7 +144,7 @@ namespace eTouristapp.WinUI.Gradovi
 
         private async  void cmbKontinenti_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cmbKontinenti.SelectedIndex==0 || cmbKontinenti.SelectedIndex==-1 )
+            if (cmbKontinenti.SelectedIndex == 0 || cmbKontinenti.SelectedIndex == -1)
             {
                 cmbDrzava.Enabled = false;
             }
