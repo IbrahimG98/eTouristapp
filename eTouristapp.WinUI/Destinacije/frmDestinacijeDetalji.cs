@@ -105,7 +105,7 @@ namespace eTouristapp.WinUI.Destinacije
                 request.DrzavaId = 0;
             }
             var result = await _gradovi.Get<List<Models.Grad>>(request);
-            result.Insert(0, new Models.Grad());
+            result.Insert(0, new Models.Grad() { Naziv="---"});
             cmbGrad.DisplayMember = "Naziv";
             cmbGrad.ValueMember = "Id";
             cmbGrad.DataSource = result;
@@ -240,13 +240,14 @@ namespace eTouristapp.WinUI.Destinacije
 
         private async void cmbDrzave_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             drzavaid = int.Parse(cmbDrzava.SelectedValue.ToString());
             await LoadGradovi(drzavaid);
         }
 
         private void cmbDrzava_Validating(object sender, CancelEventArgs e)
         {
-            if (cmbDrzava.SelectedValue == null || int.Parse(cmbDrzava.SelectedValue.ToString()) == 0)
+            if (cmbDrzava.SelectedValue == null || int.Parse(cmbDrzava.SelectedValue.ToString()) == 0 || cmbDrzava.SelectedIndex==0 || cmbDrzava.SelectedIndex==-1)
             {
                 e.Cancel = true;
                 errorProvider1.SetError(cmbDrzava, "Odaberite vrijednost");
@@ -260,7 +261,7 @@ namespace eTouristapp.WinUI.Destinacije
 
         private void cmbGrad_Validating(object sender, CancelEventArgs e)
         {
-            if (cmbGrad.SelectedValue == null || int.Parse(cmbGrad.SelectedValue.ToString()) == 0)
+            if (cmbGrad.SelectedValue == null || int.Parse(cmbGrad.SelectedValue.ToString()) == 0 || cmbGrad.SelectedIndex==0 || cmbGrad.SelectedIndex==-1)
             {
                 e.Cancel = true;
                 errorProvider1.SetError(cmbGrad, "Odaberite vrijednost");

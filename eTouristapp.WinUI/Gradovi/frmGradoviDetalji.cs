@@ -26,7 +26,7 @@ namespace eTouristapp.WinUI.Gradovi
          async Task LoadKontinenti()
         {
             var result = await _kontinenti.Get<List<Models.Kontinent>>(null);
-            result.Insert(0, new Models.Kontinent());
+            result.Insert(0, new Models.Kontinent() { Naziv="---" });
             cmbKontinenti.DisplayMember = "Naziv";
             cmbKontinenti.ValueMember = "Id";
             cmbKontinenti.DataSource = result;
@@ -50,7 +50,7 @@ namespace eTouristapp.WinUI.Gradovi
                 request.KontinentId = 0;
             }
             var result = await _drzave.Get<List<Models.Drzava>>(request);
-            result.Insert(0, new Models.Drzava());
+            result.Insert(0, new Models.Drzava() { Naziv="---" });
             cmbDrzava.DisplayMember = "Naziv";
             cmbDrzava.ValueMember = "Id";
             cmbDrzava.DataSource = result;
@@ -68,6 +68,7 @@ namespace eTouristapp.WinUI.Gradovi
                 var kontinent = await _kontinenti.GetById<Models.Kontinent>(drzava.KontinentId);
                 txtNaziv.Text = grad.Naziv;
                 cmbKontinenti.SelectedValue = kontinent.Id;
+                await LoadDrzave(kontinent.Id);
                 cmbDrzava.SelectedValue = grad.DrzavaId;
             }
         }
@@ -129,7 +130,7 @@ namespace eTouristapp.WinUI.Gradovi
 
         private void cmbDrzava_Validating(object sender, CancelEventArgs e)
         {
-            if(int.Parse(cmbDrzava.SelectedValue.ToString())==0 || cmbDrzava.SelectedValue==null || cmbDrzava.SelectedItem==null)
+            if(int.Parse(cmbDrzava.SelectedValue.ToString())==0 || cmbDrzava.SelectedIndex==0 || cmbDrzava.SelectedIndex==-1 || cmbDrzava.SelectedValue==null || cmbDrzava.SelectedItem==null)
             {
                 e.Cancel = true;
                 errorProvider1.SetError(cmbDrzava, "Odaberite vrijednost");
@@ -143,16 +144,25 @@ namespace eTouristapp.WinUI.Gradovi
 
         private async  void cmbKontinenti_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!_id.HasValue)
+            if(cmbKontinenti.SelectedIndex==0 || cmbKontinenti.SelectedIndex==-1 )
+            {
+                cmbDrzava.Enabled = false;
+            }
+            else
+            {
+                cmbDrzava.Enabled = true;
+            }
+            if (cmbKontinenti.SelectedValue.ToString()!=null && cmbKontinenti.SelectedIndex!=0 && cmbKontinenti.SelectedIndex!=-1)
             {
                 kontinentid = int.Parse(cmbKontinenti.SelectedValue.ToString());
                 await LoadDrzave(kontinentid);
             }
+           
         }
 
         private void cmbKontinenti_Validating(object sender, CancelEventArgs e)
         {
-            if(int.Parse(cmbKontinenti.SelectedValue.ToString())==0 || cmbKontinenti.SelectedValue==null || cmbKontinenti.SelectedItem==null)
+            if(int.Parse(cmbKontinenti.SelectedValue.ToString())==0 || cmbKontinenti.SelectedIndex==0 || cmbKontinenti.SelectedIndex==-1 || cmbKontinenti.SelectedValue==null || cmbKontinenti.SelectedItem==null)
             {
                 e.Cancel = true;
                 errorProvider1.SetError(cmbKontinenti, "Odaberite vrijednost!");
