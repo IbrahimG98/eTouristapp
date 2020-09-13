@@ -112,10 +112,7 @@ namespace eTouristapp.WinUI.Hoteli
 
         private async void btnPretraga_Click(object sender, EventArgs e)
         {
-         
-
             
-
             if (this.ValidateChildren())
             {
                 var search = new HotelSearchRequest()
@@ -134,13 +131,7 @@ namespace eTouristapp.WinUI.Hoteli
 
        
 
-        private async void frmHoteli_Load_1(object sender, EventArgs e)
-        {
-            await LoadKontinenti();
-            
-            cmbDrzava.Enabled = false;
-            cmbGrad.Enabled = false;
-        }
+        
 
         private async void cmbKontinent_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -223,6 +214,16 @@ namespace eTouristapp.WinUI.Hoteli
             }
 
             
+        }
+
+        
+
+        private async void frmHoteli_Load(object sender, EventArgs e)
+        {
+            await LoadKontinenti();
+
+            cmbDrzava.Enabled = false;
+            cmbGrad.Enabled = false;
         }
     }
 }

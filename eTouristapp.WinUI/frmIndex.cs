@@ -113,7 +113,7 @@ namespace eTouristapp.WinUI
         private void pretragaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmKorisnici frm = new frmKorisnici();
-            frm.MdiParent = this;
+            //frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
@@ -121,7 +121,7 @@ namespace eTouristapp.WinUI
         private void noviKorisnikToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmKorisniciDetalji frm = new frmKorisniciDetalji();
-            frm.MdiParent = this;
+            //frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
@@ -130,7 +130,7 @@ namespace eTouristapp.WinUI
         {
 
             frmDestinacije frm = new frmDestinacije();
-            frm.MdiParent = this;
+            //frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
@@ -138,7 +138,7 @@ namespace eTouristapp.WinUI
         private void novaDestinacijaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmDestinacijeDetalji frm = new frmDestinacijeDetalji();
-            frm.MdiParent = this;
+            //frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
@@ -146,7 +146,7 @@ namespace eTouristapp.WinUI
         private void pretragaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             frmHoteli frm = new frmHoteli();
-            frm.MdiParent = this;
+            //frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
@@ -154,7 +154,7 @@ namespace eTouristapp.WinUI
         private void noviHotelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmHoteliDetalji frm = new frmHoteliDetalji();
-            frm.MdiParent = this;
+            //frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
@@ -162,7 +162,7 @@ namespace eTouristapp.WinUI
         private void kontinentiPretragaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmKontinenti frm = new frmKontinenti();
-            frm.MdiParent = this;
+            //frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
@@ -170,7 +170,7 @@ namespace eTouristapp.WinUI
         private void noviKontinentToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmKontinentiDetalji frm = new frmKontinentiDetalji();
-            frm.MdiParent = this;
+            //frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
@@ -178,7 +178,7 @@ namespace eTouristapp.WinUI
         private void drzavePretragaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmDrzave frm = new frmDrzave();
-            frm.MdiParent = this;
+            //frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
@@ -186,7 +186,7 @@ namespace eTouristapp.WinUI
         private void novaDrzavaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmDrzaveDetalji frm = new frmDrzaveDetalji();
-            frm.MdiParent = this;
+            //frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
@@ -194,7 +194,7 @@ namespace eTouristapp.WinUI
         private void gradoviPretragaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmGradovi frm = new frmGradovi();
-            frm.MdiParent = this;
+            //frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
@@ -202,7 +202,7 @@ namespace eTouristapp.WinUI
         private void noviGradToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmGradoviDetalji frm = new frmGradoviDetalji();
-            frm.MdiParent = this;
+            //frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }

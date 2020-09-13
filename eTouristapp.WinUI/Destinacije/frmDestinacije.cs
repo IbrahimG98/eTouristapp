@@ -88,6 +88,7 @@ namespace eTouristapp.WinUI.Destinacije
             await LoadKontinenti();
             cmbDrzava.Enabled = false;
             cmbGrad.Enabled = false;
+           
         }
 
         

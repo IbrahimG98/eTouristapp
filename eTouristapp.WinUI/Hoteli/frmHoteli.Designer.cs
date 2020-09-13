@@ -55,6 +55,7 @@
             this.txtNaziv.Name = "txtNaziv";
             this.txtNaziv.Size = new System.Drawing.Size(400, 22);
             this.txtNaziv.TabIndex = 0;
+            
             // 
             // label1
             // 
@@ -210,7 +211,7 @@
             this.Controls.Add(this.txtNaziv);
             this.Name = "frmHoteli";
             this.Text = "frmHoteli";
-            this.Load += new System.EventHandler(this.frmHoteli_Load_1);
+            this.Load += new System.EventHandler(this.frmHoteli_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoteli)).EndInit();
             this.Hoteli.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
