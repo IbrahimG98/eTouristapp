@@ -114,7 +114,7 @@ namespace eTouristapp.WinUI
         {
             frmKorisnici frm = new frmKorisnici();
             //frm.MdiParent = this;
-            frm.WindowState = FormWindowState.Maximized;
+            //frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
 
@@ -122,7 +122,7 @@ namespace eTouristapp.WinUI
         {
             frmKorisniciDetalji frm = new frmKorisniciDetalji();
             //frm.MdiParent = this;
-            frm.WindowState = FormWindowState.Maximized;
+            //frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
 
@@ -131,7 +131,7 @@ namespace eTouristapp.WinUI
 
             frmDestinacije frm = new frmDestinacije();
             //frm.MdiParent = this;
-            frm.WindowState = FormWindowState.Maximized;
+            //frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
 
@@ -139,7 +139,7 @@ namespace eTouristapp.WinUI
         {
             frmDestinacijeDetalji frm = new frmDestinacijeDetalji();
             //frm.MdiParent = this;
-            frm.WindowState = FormWindowState.Maximized;
+            //frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
 
@@ -147,7 +147,7 @@ namespace eTouristapp.WinUI
         {
             frmHoteli frm = new frmHoteli();
             //frm.MdiParent = this;
-            frm.WindowState = FormWindowState.Maximized;
+            //frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
 
@@ -155,7 +155,7 @@ namespace eTouristapp.WinUI
         {
             frmHoteliDetalji frm = new frmHoteliDetalji();
             //frm.MdiParent = this;
-            frm.WindowState = FormWindowState.Maximized;
+            //frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
 
@@ -163,7 +163,7 @@ namespace eTouristapp.WinUI
         {
             frmKontinenti frm = new frmKontinenti();
             //frm.MdiParent = this;
-            frm.WindowState = FormWindowState.Maximized;
+            //frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
 
@@ -171,7 +171,7 @@ namespace eTouristapp.WinUI
         {
             frmKontinentiDetalji frm = new frmKontinentiDetalji();
             //frm.MdiParent = this;
-            frm.WindowState = FormWindowState.Maximized;
+            //frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
 
@@ -179,7 +179,7 @@ namespace eTouristapp.WinUI
         {
             frmDrzave frm = new frmDrzave();
             //frm.MdiParent = this;
-            frm.WindowState = FormWindowState.Maximized;
+            //frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
 
@@ -187,7 +187,7 @@ namespace eTouristapp.WinUI
         {
             frmDrzaveDetalji frm = new frmDrzaveDetalji();
             //frm.MdiParent = this;
-            frm.WindowState = FormWindowState.Maximized;
+            //frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
 
@@ -195,7 +195,7 @@ namespace eTouristapp.WinUI
         {
             frmGradovi frm = new frmGradovi();
             //frm.MdiParent = this;
-            frm.WindowState = FormWindowState.Maximized;
+            //frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
 
@@ -203,7 +203,7 @@ namespace eTouristapp.WinUI
         {
             frmGradoviDetalji frm = new frmGradoviDetalji();
             //frm.MdiParent = this;
-            frm.WindowState = FormWindowState.Maximized;
+            //frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
 

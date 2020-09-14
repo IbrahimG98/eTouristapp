@@ -38,6 +38,7 @@ namespace eTouristapp.WinUI
                     await _service.Get<dynamic>(null);
                     await _service2.Get<dynamic>(null);
                     frmIndex frm = new frmIndex();
+                    frm.WindowState = FormWindowState.Maximized;
                     frm.Show();
                 }
                 else
