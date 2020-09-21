@@ -46,9 +46,10 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
     </RefreshView>-->
-
-    <StackLayout>
-        <Label Text="Dobrodosli na mobiln verziju aplikacije eTourist1 Sa lijeve strane imate korisnicki menu. Ugodno koristenje zelimo!!"></Label>
-        <Label Text="*Ponistavanje karata se vrsi odabirom karte pa potom klik na dugme Ponisti te refreshiranjem stranice za spasavanje promjena*"></Label>
+    <Grid>
+        <Image Source="Assets/mainpagenatpis.jpg" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill"></Image>
+        <StackLayout>
+        
     </StackLayout>
+    </Grid>
 </ContentPage>

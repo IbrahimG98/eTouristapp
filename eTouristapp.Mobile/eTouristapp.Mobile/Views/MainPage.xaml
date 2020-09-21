@@ -5,13 +5,18 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             mc:Ignorable="d"
             xmlns:views="clr-namespace:eTouristapp.Mobile.Views"
-            x:Class="eTouristapp.Mobile.Views.MainPage">
+            x:Class="eTouristapp.Mobile.Views.MainPage"
+            >
 
     <MasterDetailPage.Master>
         <views:MenuPage />
-    </MasterDetailPage.Master>
 
+    </MasterDetailPage.Master>
+    
     <MasterDetailPage.Detail>
+        
+            
+        
         <NavigationPage>
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
@@ -21,7 +26,9 @@
             <x:Arguments>
                 <views:ItemsPage />
             </x:Arguments>
+            
         </NavigationPage>
+        
     </MasterDetailPage.Detail>
     
 </MasterDetailPage>

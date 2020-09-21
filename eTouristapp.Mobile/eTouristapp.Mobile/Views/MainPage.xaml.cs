@@ -21,6 +21,7 @@ namespace eTouristapp.Mobile.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
+            
             MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
         }
 
@@ -30,7 +31,9 @@ namespace eTouristapp.Mobile.Views
             {
                 switch (id)
                 {
-                    
+                    case (int)MenuItemType.Pocetna:
+                        MenuPages.Add(id, new NavigationPage(new MainPage()));
+                        break;
                     case (int)MenuItemType.Preporuka:
                         MenuPages.Add(id, new NavigationPage(new PreporukaPage()));
                         break;
@@ -56,5 +59,7 @@ namespace eTouristapp.Mobile.Views
                 IsPresented = false;
             }
         }
+
+       
     }
 }

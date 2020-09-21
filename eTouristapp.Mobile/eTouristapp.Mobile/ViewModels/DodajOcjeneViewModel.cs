@@ -40,11 +40,25 @@ namespace eTouristapp.Mobile.ViewModels
             set { SetProperty(ref _komentar, value); }
         }
 
-        int? _ocjena = null;
-        public int? Ocjena
+        int _ocjena = 0;
+        public int Ocjena
         {
             get { return _ocjena; }
             set { SetProperty(ref _ocjena, value); }
+        }
+
+        public ObservableCollection<int> Ocjene { get; set; } = new ObservableCollection<int>();
+        public void LoadOcjene()
+        {
+           Ocjene.Clear();
+            for(int i=1;i<=5;i++)
+            {
+               
+                Ocjene.Add(i);
+            }
+
+            
+
         }
 
         public ICommand DKomentar { get; set; }
@@ -65,7 +79,7 @@ namespace eTouristapp.Mobile.ViewModels
                 OcjenaUsluge=int.Parse(Ocjena.ToString())
             };
 
-            Obavijest= "*Komentar ne smije biti prazan, a ocjena mora biti izmedju 1 i 5*";
+            Obavijest = "*Komentar ne smije biti prazan, a ocjena mora biti izmedju 1 i 5*";
             if (ocj.Komentar != null && !string.IsNullOrEmpty(ocj.Komentar) && ocj.OcjenaUsluge >= 1 && ocj.OcjenaUsluge <= 5)
             {
                 await _ocjeneservice.Insert<Ocjena>(ocj);
@@ -73,9 +87,9 @@ namespace eTouristapp.Mobile.ViewModels
             }
             else
             {
-
-                //await App.Current.MainPage.DisplayAlert("Greska", "Unesite komentar i ocjenu izmedju 1 i 5!", "OK");
                 
+                //await App.Current.MainPage.DisplayAlert("Greska", "Unesite komentar i ocjenu izmedju 1 i 5!", "OK");
+
 
             }
             

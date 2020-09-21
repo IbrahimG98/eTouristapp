@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ViewModels="clr-namespace:eTouristapp.Mobile.ViewModels" xmlns:Converters="clr-namespace:eTouristapp.Mobile.Converters"
              mc:Ignorable="d"
-             x:Class="eTouristapp.Mobile.Views.PreporukaPage">
+             x:Class="eTouristapp.Mobile.Views.PreporukaPage"
+             BackgroundImageSource="Assets/apppozadina.jpg">
     <ContentPage.BindingContext>
         <ViewModels:PreporukaViewModel></ViewModels:PreporukaViewModel>
     </ContentPage.BindingContext>
@@ -18,7 +19,7 @@
     <ContentPage.Content>
         
         <StackLayout>
-            <Label Text="Za vas preporucujemo:"
+            <Label Text="Za vas preporucujemo:" TextColor="WhiteSmoke" FontSize="Medium" FontFamily="Verdana" FontAttributes="Bold"
                 VerticalOptions="StartAndExpand" 
                 HorizontalOptions="StartAndExpand" />
 
@@ -27,10 +28,11 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout>
+                                <Label FontSize="Small" TextColor="WhiteSmoke" FontFamily="Verdana" FontAttributes="Italic"  Text="{Binding Naziv}"></Label>
                                 <Image Aspect="AspectFit" HorizontalOptions="FillAndExpand" Source="{Binding Slika,Converter={StaticResource ImgConverter}}"></Image>
-                                <Label Text="{Binding Naziv}">
+                                
 
-                                </Label>
+                                
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

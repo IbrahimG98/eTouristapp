@@ -29,8 +29,9 @@ namespace eTouristapp.Mobile.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            model.LoadOcjene();
             model.Ocjena = 0;
-            model.Komentar = " ";
+            model.Komentar = "";
             
         }
         private async void Button_Clicked(object sender, EventArgs e)
@@ -44,6 +45,11 @@ namespace eTouristapp.Mobile.Views
             }
             
            
+            
+        }
+
+        private void Picker_SelectedIndexChanged(object sender, EventArgs e)
+        {
             
         }
     }

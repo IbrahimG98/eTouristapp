@@ -66,7 +66,11 @@ namespace eTouristapp.Mobile.ViewModels
                         Cijena = termin.Cijena
 
                     };
-                    KarteList.Add(k);
+                   
+                   
+                        KarteList.Add(k);
+                    
+                    
                 }
 
             }

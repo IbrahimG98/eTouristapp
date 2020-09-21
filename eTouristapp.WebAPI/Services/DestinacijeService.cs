@@ -33,6 +33,7 @@ namespace eTouristapp.WebAPI.Services
         public override Models.Destinacija Update(int id, DestinacijaInsertRequest request)
         {
             var entitet = _touristcontext.Set<Database.Destinacija>().Find(id);
+            entitet.Slika = request.Slika;
             entitet.Naziv = request.Naziv;
             entitet.GradId = request.GradId;
             _touristcontext.Set<Database.Destinacija>().Attach(entitet);

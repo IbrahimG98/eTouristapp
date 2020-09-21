@@ -9,28 +9,31 @@
         <ViewModels:RegistracijaViewModel></ViewModels:RegistracijaViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Padding="5" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
-            <Label Text="Unesite vase podatke:"
+        <Grid>
+            <Image Source="Assets/pozadina.jpg" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image> 
+            <StackLayout BackgroundColor="Transparent" Padding="5" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+            <Label TextColor="WhiteSmoke" Text="Unesite vase podatke:"
                 VerticalOptions="StartAndExpand" 
                 HorizontalOptions="StartAndExpand" />
 
             
-                <Label Text="Ime"></Label>
-                <Entry Text="{Binding Ime}"></Entry>
-                <Label Text="Prezime"></Label>
-                <Entry Text="{Binding Prezime}"></Entry>
-                <Label Text="Korisnicko ime"></Label>
-                <Entry Text="{Binding KorisnickoIme}"></Entry>
-                <Label Text="Email(example: examemail@exm.exa)"></Label>
-                <Entry Text="{Binding Email}"></Entry>
-                <Label Text="Password"></Label>
-                <Entry Text="{Binding Password}"></Entry>
-                <Label Text="Password potvrda"></Label>
-                <Entry Text="{Binding PasswordPotvrda}"></Entry>
-            
-                <Button BackgroundColor="Blue" Clicked="Button_Clicked"  Text="Registracija"></Button>
+                <Label Margin="5" TextColor="WhiteSmoke" Text="Ime"></Label>
+                <Entry FontSize="12" VerticalOptions="Start" HeightRequest="28" Margin="5" Text="{Binding Ime}"></Entry>
+                <Label Margin="5" TextColor="WhiteSmoke" Text="Prezime"></Label>
+                <Entry FontSize="12" VerticalOptions="Start" HeightRequest="28" Margin="5"  Text="{Binding Prezime}"></Entry>
+                <Label  Margin="5" TextColor="WhiteSmoke" Text="Korisnicko ime"></Label>
+                <Entry FontSize="12" VerticalOptions="Start" HeightRequest="28" Margin="5" Text="{Binding KorisnickoIme}"></Entry>
+                <Label  Margin="5" TextColor="WhiteSmoke" Text="Email(example: examemail@exm.exa)"></Label>
+                <Entry FontSize="12" VerticalOptions="Start" HeightRequest="28" Margin="5" Text="{Binding Email}"></Entry>
+                <Label  Margin="5" TextColor="WhiteSmoke" Text="Password"></Label>
+                <Entry FontSize="12" VerticalOptions="Start" HeightRequest="28" Margin="5" Text="{Binding Password}"></Entry>
+                <Label  Margin="5" TextColor="WhiteSmoke" Text="Password potvrda"></Label>
+                <Entry FontSize="12" VerticalOptions="Start" HeightRequest="28" Margin="5" Text="{Binding PasswordPotvrda}"></Entry>
+
+                <Button FontSize="12" VerticalOptions="Start" HeightRequest="28" Margin="5" BackgroundColor="LightBlue" Clicked="Button_Clicked"  Text="Registracija"></Button>
                 
             </StackLayout>
-        
+        </Grid>
+
     </ContentPage.Content>
 </ContentPage>

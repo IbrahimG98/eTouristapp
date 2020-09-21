@@ -10,7 +10,8 @@ namespace eTouristapp.Mobile.Models
         About,
         Destinacije,
         MojiPodaci,
-        Preporuka
+        Preporuka,
+        Pocetna
     }
     public class HomeMenuItem
     {

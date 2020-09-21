@@ -4,23 +4,31 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ViewModels="clr-namespace:eTouristapp.Mobile.ViewModels"
              mc:Ignorable="d"
-             x:Class="eTouristapp.Mobile.Views.LoginPage">
+             x:Class="eTouristapp.Mobile.Views.LoginPage"
+             >
     <ContentPage.BindingContext>
         <ViewModels:LoginViewModel></ViewModels:LoginViewModel>
+        
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Padding="5" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+        
+        <Grid>
+            
+            <Image  Source="Assets/pozadina2.jpg" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill"></Image>
+        
+            <StackLayout Margin="20" BackgroundColor="WhiteSmoke" Padding="5" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
             <Label Text="Korisnicko ime"></Label>
             <Entry Text="{Binding Username}"></Entry>
             <Label Text="Password"></Label>
-            <Entry Text="{Binding Password}"></Entry>
+            <Entry IsPassword="True" Text="{Binding Password}"></Entry>
             <!--<Button Command="{Binding LoginCommand}" BackgroundColor="Blue"  Text="Login"></Button>-->
-            <Button Clicked="Button_Clicked_1" BackgroundColor="LightBlue" Text="Login"></Button>
-            <Button Clicked="Button_Clicked" BackgroundColor="Red" Text="Nemas racun?Registruj se!" ></Button>
+                <Button Clicked="Button_Clicked_1" BackgroundColor="LightBlue" TextColor="WhiteSmoke" FontAttributes="Italic" Text="Login"></Button>
+            <Button Clicked="Button_Clicked" BackgroundColor="Red" TextColor="WhiteSmoke" FontAttributes="Italic" Text="Nemate racun?Registrujte se!" ></Button>
             <Label IsVisible="{Binding IsBusy}" HorizontalOptions="FillAndExpand" Text="Working...">
-                
-                
-            </Label>
+                </Label>
         </StackLayout>
+        </Grid>
+
+
     </ContentPage.Content>
 </ContentPage>

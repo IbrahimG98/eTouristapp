@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Controls;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.Xaml;
+using Button = Xamarin.Forms.Button;
+using Grid = Xamarin.Forms.Grid;
 
 namespace eTouristapp.Mobile.Views
 {
@@ -22,6 +24,8 @@ namespace eTouristapp.Mobile.Views
         TerminiViewModel model = new TerminiViewModel();
         private readonly APIService _karte = new APIService("Karte");
         private readonly APIService _korisniciservice = new APIService("Korisnici");
+        private readonly APIService _terminiservice = new APIService("Termini");
+
 
         public TerminiPage(int destinacijaid)
         {
@@ -38,6 +42,7 @@ namespace eTouristapp.Mobile.Views
             await model.Load();
         }
         KartaInsertRequest karta = null;
+        Termin TerminzaPage = null;
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem != null)
@@ -56,11 +61,11 @@ namespace eTouristapp.Mobile.Views
                 karta.DatumKreiranja = System.DateTime.Now;
                 karta.TerminId = termin.Id;
 
-                
+                TerminzaPage = termin;
+
+
 
                 
-
-                //await _karte.Insert<KartaInsertRequest>(karta);
 
 
             }
@@ -69,34 +74,34 @@ namespace eTouristapp.Mobile.Views
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            bool postoji = true;
-            KartaSearchRequest kartasearch = null;
+            //bool postoji = true;
+            //KartaSearchRequest kartasearch = null;
 
-            if (karta != null)
-            {
+            //if (karta != null)
+            //{
 
 
-                kartasearch = new KartaSearchRequest();
+            //    kartasearch = new KartaSearchRequest();
 
-                kartasearch.KorisnikID = int.Parse(karta.KorisnikId.ToString());
-                kartasearch.TerminID = int.Parse(karta.TerminId.ToString());
-                kartasearch.Ponistena = false;
+            //    kartasearch.KorisnikID = int.Parse(karta.KorisnikId.ToString());
+            //    kartasearch.TerminID = int.Parse(karta.TerminId.ToString());
+            //    kartasearch.Ponistena = false;
 
                
-            }
+            //}
 
-            var provjera = await _karte.Get<List<Karta>>(kartasearch);
-            if(provjera.Count==0)
-            {
-                postoji = false;
-            }
+            //var provjera = await _karte.Get<List<Karta>>(kartasearch);
+            //if(provjera.Count==0)
+            //{
+            //    postoji = false;
+            //}
 
 
-            if (karta != null && postoji == false)
-            {
-                await _karte.Insert<KartaInsertRequest>(karta);
+            //if (karta != null && postoji == false)
+            //{
+            //    await _karte.Insert<KartaInsertRequest>(karta);
                 
-            }
+            //}
            
 
            
@@ -108,6 +113,51 @@ namespace eTouristapp.Mobile.Views
             int id = Convert.ToInt32(model.DestinacijaID.ToString());
             Navigation.PushAsync(new OcjenePage(id));
 
+        }
+
+        private async void Button_Clicked_2(object sender, EventArgs e)
+        {
+
+
+            bool postoji = true;
+            KartaSearchRequest kartasearch = null;
+
+
+            if (karta != null)
+            {
+
+
+                kartasearch = new KartaSearchRequest();
+
+                kartasearch.KorisnikID = int.Parse(karta.KorisnikId.ToString());
+                kartasearch.TerminID = int.Parse(karta.TerminId.ToString());
+                kartasearch.Ponistena = false;
+
+
+            }
+
+            var provjera = await _karte.Get<List<Karta>>(kartasearch);
+            if (provjera.Count == 0)
+            {
+                postoji = false;
+            }
+
+
+            if (karta != null && postoji == false)
+            {
+                await _karte.Insert<KartaInsertRequest>(karta);
+
+            }
+
+        }
+
+        private void Button_Clicked_3(object sender, EventArgs e)
+        {
+            if(TerminzaPage!=null)
+            {
+                var id = Convert.ToInt32(TerminzaPage.Id.ToString());
+                Navigation.PushAsync(new TerminDetaljiPage(id));
+            }
         }
     }
 }
