@@ -4,20 +4,19 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ViewModels="clr-namespace:eTouristapp.Mobile.ViewModels"
              mc:Ignorable="d"
-             x:Class="eTouristapp.Mobile.Views.HistorijaKarataPage">
+             x:Class="eTouristapp.Mobile.Views.HistorijaKarataPage"
+             BackgroundImageSource="Assets/apppozadina.jpg">
     <ContentPage.BindingContext>
         <ViewModels:HistorijaKarataViewModel></ViewModels:HistorijaKarataViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Historija karata (neaktivne karte termina koje nisu ponistene)"
-                VerticalOptions="StartAndExpand" 
-                HorizontalOptions="StartAndExpand" />
-            <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Text="Od"></Label>
+            
+            <Label TextColor="white" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Text="Od"></Label>
             <DatePicker VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Date="{Binding SelectedDatumOd}"></DatePicker>
-            <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Text="Do"></Label>
+            <Label TextColor="white" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Text="Do"></Label>
             <DatePicker VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Date="{Binding SelectedDatumDo}"></DatePicker>
-            <Button Text="Pretraga" Clicked="Button_Clicked"></Button>
+            <Button TextColor="White" Text="Pretraga" Clicked="Button_Clicked"></Button>
             <ListView ItemsSource="{Binding HistorijaKarteList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -32,8 +31,7 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
+                                    
 
                                 </Grid.ColumnDefinitions>
                                 <Label BackgroundColor="CadetBlue" Text="Naziv putovanja" Grid.Row="0" Grid.Column="0"></Label>
@@ -47,9 +45,9 @@
                                 <Label Text="{Binding NazivPutovanja}" Grid.Row="1" Grid.Column="0"></Label>
                                 <Label Text="{Binding DatumPolaska,StringFormat='{}{0:dd/MM/yyyy}'}" Grid.Row="1" Grid.Column="1"></Label>
                                 <Label Text="{Binding DatumDolaska,StringFormat='{}{0:dd/MM/yyyy}'}" Grid.Row="1"  Grid.Column="2"></Label>
-                                <Label Text="{Binding NazivHotela}" Grid.Row="1" Grid.Column="3"></Label>
-                                <Label Text="{Binding BrojZvjezdica}" Grid.Row="1"  Grid.Column="4"></Label>
-                                <Label Text="{Binding Cijena,StringFormat='{0:F2} KM'}" Grid.Row="1"  Grid.Column="5"></Label>
+                                <!--<Label Text="{Binding NazivHotela}" Grid.Row="1" Grid.Column="3"></Label>
+                                <Label Text="{Binding BrojZvjezdica}" Grid.Row="1"  Grid.Column="4"></Label>-->
+                                <Label Text="{Binding Cijena,StringFormat='{0:F2} KM'}" Grid.Row="3"  Grid.Column="5"></Label>
 
                             </Grid>
                         </ViewCell>

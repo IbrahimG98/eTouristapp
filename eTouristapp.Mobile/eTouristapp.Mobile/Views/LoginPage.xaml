@@ -23,9 +23,11 @@
             <Entry IsPassword="True" Text="{Binding Password}"></Entry>
             <!--<Button Command="{Binding LoginCommand}" BackgroundColor="Blue"  Text="Login"></Button>-->
                 <Button Clicked="Button_Clicked_1" BackgroundColor="LightBlue" TextColor="WhiteSmoke" FontAttributes="Italic" Text="Login"></Button>
-            <Button Clicked="Button_Clicked" BackgroundColor="Red" TextColor="WhiteSmoke" FontAttributes="Italic" Text="Nemate racun?Registrujte se!" ></Button>
-            <Label IsVisible="{Binding IsBusy}" HorizontalOptions="FillAndExpand" Text="Working...">
+                <Label></Label>
+            <Button Clicked="Button_Clicked" BackgroundColor="Red" TextColor="WhiteSmoke" FontAttributes="Italic" Text="Registracija" ></Button>
+            <Label IsVisible="{Binding IsBusy}" HorizontalOptions="FillAndExpand" Text="Provjera...">
                 </Label>
+               
         </StackLayout>
         </Grid>
 

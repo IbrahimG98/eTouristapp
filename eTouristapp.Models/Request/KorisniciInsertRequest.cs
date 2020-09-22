@@ -9,8 +9,9 @@ namespace eTouristapp.Models.Request
     public class KorisniciInsertRequest
     {
         public int Id { get; set; }
+        
+        public byte[] Slika { get; set; }
         [Required]
-       
         public string Ime { get; set; }
         [Required]
         

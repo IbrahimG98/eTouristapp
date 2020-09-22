@@ -18,12 +18,15 @@ namespace eTouristapp.Mobile.Views
         {
             InitializeComponent();
 
+           
+
             menuItems = new List<HomeMenuItem>
             {
                 new HomeMenuItem {Id = MenuItemType.Pocetna, Title="Pocetna" },
                 new HomeMenuItem {Id = MenuItemType.Preporuka, Title="Preporucujemo" },
                 new HomeMenuItem {Id = MenuItemType.Destinacije, Title="Destinacije" },
-                new HomeMenuItem {Id = MenuItemType.MojiPodaci, Title="Moji podaci" }
+                new HomeMenuItem {Id = MenuItemType.MojiPodaci, Title="Moji podaci" },
+                new HomeMenuItem {Id = MenuItemType.MojProfil, Title="Moj profil" }
             };
 
             ListViewMenu.ItemsSource = menuItems;

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace eTouristapp.Models
+namespace eTouristapp.Mobile.Models
 {
-    public class Korisnik
+    public class KorisnikDetaljiModels
     {
         public int Id { get; set; }
         public string Ime { get; set; }
@@ -12,8 +12,6 @@ namespace eTouristapp.Models
         public string KorisnikoIme { get; set; }
         public byte[] Slika { get; set; }
         public string Email { get; set; }
-        public int? UlogaId { get; set; }
-        public Uloga Uloga { get; set; }
 
     }
 }

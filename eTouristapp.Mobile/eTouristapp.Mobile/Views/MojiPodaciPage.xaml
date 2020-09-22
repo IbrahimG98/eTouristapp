@@ -14,7 +14,7 @@
             <Label FontSize="Medium" TextColor="WhiteSmoke" Text="Moje aktivne karte"
                 VerticalOptions="StartAndExpand" 
                 HorizontalOptions="StartAndExpand" />
-            <Button VerticalOptions="Start" HorizontalOptions="Start" Text="Kliknite ovdje za pregled historije karata" TextColor="WhiteSmoke" Clicked="Button_Clicked_1"></Button>
+            <Button VerticalOptions="End" HorizontalOptions="End" Text="Kliknite ovdje za pregled historije karata" TextColor="WhiteSmoke" Clicked="Button_Clicked_1"></Button>
             <ListView ItemSelected="ListView_ItemSelected" ItemsSource="{Binding KarteList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -30,25 +30,25 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <!--<ColumnDefinition Width="*"/>-->
 
                                 </Grid.ColumnDefinitions>
                                 <Label Text="Naziv" Grid.Row="0" Grid.Column="0"></Label>
                                 <Label  Text="Polazak" Grid.Row="0" Grid.Column="1"></Label>
                                 <Label  Text="Povratak" Grid.Row="0" Grid.Column="2"></Label>
-                                <Label  Text="Hotel" Grid.Row="0" Grid.Column="3"></Label>
-                                <Label  Text="Broj zvjezdica" Grid.Row="0" Grid.Column="4"></Label>
-                                <Label  Text="Cijena" Grid.Row="0" Grid.Column="5"></Label>
-                                <Label  Text="Akcija" Grid.Row="0" Grid.Column="6"></Label>
+                                <!--<Label  Text="Hotel" Grid.Row="0" Grid.Column="3"></Label>
+                                <Label  Text="Broj zvjezdica" Grid.Row="0" Grid.Column="4"></Label>-->
+                                <Label  Text="Cijena" Grid.Row="0" Grid.Column="3"></Label>
+                                <Label  Text="Akcija" Grid.Row="0" Grid.Column="4"></Label>
 
 
                                 <Label Text="{Binding NazivPutovanja}" Grid.Row="1" Grid.Column="0"></Label>
                                 <Label Text="{Binding DatumPolaska,StringFormat='{}{0:dd/MM/yyyy}'}" Grid.Row="1" Grid.Column="1"></Label>
                                 <Label Text="{Binding DatumDolaska,StringFormat='{}{0:dd/MM/yyyy}'}" Grid.Row="1"  Grid.Column="2"></Label>
-                                <Label Text="{Binding NazivHotela}" Grid.Row="1" Grid.Column="3"></Label>
-                                <Label Text="{Binding BrojZvjezdica}" Grid.Row="1"  Grid.Column="4"></Label>
-                                <Label Text="{Binding Cijena,StringFormat='{0:F2} KM'}" Grid.Row="1"  Grid.Column="5"></Label>
-                                <Button Text="Ponisti" BackgroundColor="LightBlue" TextColor="White" Grid.Row="1" Grid.Column="6" Clicked="Button_Clicked_2"></Button>
+                                <!--<Label Text="{Binding NazivHotela}" Grid.Row="1" Grid.Column="3"></Label>
+                                <Label Text="{Binding BrojZvjezdica}" Grid.Row="1"  Grid.Column="4"></Label>-->
+                                <Label Text="{Binding Cijena,StringFormat='{0:F2} KM'}" Grid.Row="1"  Grid.Column="3"></Label>
+                                <Button Text="Ponisti" BackgroundColor="LightBlue" TextColor="White" Grid.Row="1" Grid.Column="4" Clicked="Button_Clicked_2"></Button>
 
                             </Grid>
                         </ViewCell>
@@ -59,7 +59,7 @@
                 
 
             </ListView>
-            <!--<Button Clicked="Button_Clicked" BackgroundColor="Red" Text="Ponisti" ></Button>-->
+           
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

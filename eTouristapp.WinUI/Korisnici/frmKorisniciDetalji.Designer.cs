@@ -46,7 +46,13 @@
             this.cmbUloge = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnObrisi = new System.Windows.Forms.Button();
+            this.pbSlika = new System.Windows.Forms.PictureBox();
+            this.txtSlika = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnDodajSliku = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
             this.SuspendLayout();
             // 
             // txtIme
@@ -91,7 +97,7 @@
             // 
             // txtLozinkapotvrda
             // 
-            this.txtLozinkapotvrda.Location = new System.Drawing.Point(190, 348);
+            this.txtLozinkapotvrda.Location = new System.Drawing.Point(22, 427);
             this.txtLozinkapotvrda.Name = "txtLozinkapotvrda";
             this.txtLozinkapotvrda.Size = new System.Drawing.Size(145, 22);
             this.txtLozinkapotvrda.TabIndex = 5;
@@ -145,7 +151,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(187, 328);
+            this.label6.Location = new System.Drawing.Point(24, 398);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(109, 17);
             this.label6.TabIndex = 11;
@@ -153,7 +159,7 @@
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(243, 398);
+            this.btnSacuvaj.Location = new System.Drawing.Point(244, 419);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(91, 30);
             this.btnSacuvaj.TabIndex = 12;
@@ -168,7 +174,7 @@
             // cmbUloge
             // 
             this.cmbUloge.FormattingEnabled = true;
-            this.cmbUloge.Location = new System.Drawing.Point(427, 284);
+            this.cmbUloge.Location = new System.Drawing.Point(214, 348);
             this.cmbUloge.Name = "cmbUloge";
             this.cmbUloge.Size = new System.Drawing.Size(121, 24);
             this.cmbUloge.TabIndex = 15;
@@ -177,7 +183,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(427, 261);
+            this.label8.Location = new System.Drawing.Point(211, 328);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(45, 17);
             this.label8.TabIndex = 16;
@@ -185,7 +191,7 @@
             // 
             // btnObrisi
             // 
-            this.btnObrisi.Location = new System.Drawing.Point(427, 404);
+            this.btnObrisi.Location = new System.Drawing.Point(430, 423);
             this.btnObrisi.Name = "btnObrisi";
             this.btnObrisi.Size = new System.Drawing.Size(98, 23);
             this.btnObrisi.TabIndex = 17;
@@ -193,11 +199,53 @@
             this.btnObrisi.UseVisualStyleBackColor = true;
             this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
             // 
+            // pbSlika
+            // 
+            this.pbSlika.Location = new System.Drawing.Point(430, 45);
+            this.pbSlika.Name = "pbSlika";
+            this.pbSlika.Size = new System.Drawing.Size(337, 279);
+            this.pbSlika.TabIndex = 18;
+            this.pbSlika.TabStop = false;
+            // 
+            // txtSlika
+            // 
+            this.txtSlika.Location = new System.Drawing.Point(430, 348);
+            this.txtSlika.Name = "txtSlika";
+            this.txtSlika.Size = new System.Drawing.Size(236, 22);
+            this.txtSlika.TabIndex = 19;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(427, 25);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 17);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Slika";
+            // 
+            // btnDodajSliku
+            // 
+            this.btnDodajSliku.Location = new System.Drawing.Point(672, 348);
+            this.btnDodajSliku.Name = "btnDodajSliku";
+            this.btnDodajSliku.Size = new System.Drawing.Size(95, 23);
+            this.btnDodajSliku.TabIndex = 21;
+            this.btnDodajSliku.Text = "Dodaj sliku";
+            this.btnDodajSliku.UseVisualStyleBackColor = true;
+            this.btnDodajSliku.Click += new System.EventHandler(this.btnDodajSliku_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // frmKorisniciDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 461);
+            this.Controls.Add(this.btnDodajSliku);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtSlika);
+            this.Controls.Add(this.pbSlika);
             this.Controls.Add(this.btnObrisi);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cmbUloge);
@@ -218,6 +266,7 @@
             this.Text = "frmKorisniciDetalji";
             this.Load += new System.EventHandler(this.frmKorisniciDetalji_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,5 +291,10 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cmbUloge;
         private System.Windows.Forms.Button btnObrisi;
+        private System.Windows.Forms.Button btnDodajSliku;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtSlika;
+        private System.Windows.Forms.PictureBox pbSlika;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

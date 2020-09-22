@@ -28,6 +28,7 @@ namespace eTouristapp.Mobile.Views
 
         protected async  override void OnAppearing()
         {
+            
             base.OnAppearing();
             
         }

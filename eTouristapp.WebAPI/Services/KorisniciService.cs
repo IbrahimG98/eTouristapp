@@ -89,6 +89,7 @@ namespace eTouristapp.WebAPI.Services
             {
                 throw new Exception("Paswordi se ne slazu!");
             }
+            entitet.Slika = request.Slika;
             entitet.LozinkaSalt = GenerateSalt();
             entitet.LozinkaHash = GenerateHash(entitet.LozinkaSalt, request.Password);
 
@@ -107,7 +108,7 @@ namespace eTouristapp.WebAPI.Services
             entitet.Prezime = request.Prezime;
             entitet.UlogaId = request.UlogaId;
             entitet.Email = request.Email;
-
+            entitet.Slika = request.Slika;
             if (!string.IsNullOrWhiteSpace(request.Password))
             {
                 if (request.Password != request.PasswordPotvrda)

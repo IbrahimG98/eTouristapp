@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -25,7 +26,24 @@ namespace eTouristapp.WinUI.Korisnici
             _id = id;
 
         }
-       private async Task LoadUloge()
+        public static Bitmap ByteToImage(byte[] blob)
+        {
+            MemoryStream mStream = new MemoryStream();
+            byte[] pData = blob;
+            mStream.Write(pData, 0, Convert.ToInt32(pData.Length));
+            Bitmap bm = new Bitmap(mStream, false);
+            mStream.Dispose();
+            return bm;
+        }
+        private Image Resize(Image img, int iWidth, int iHeight)
+        {
+            Bitmap bmp = new Bitmap(iWidth, iHeight);
+            Graphics graphic = Graphics.FromImage((Image)bmp);
+            graphic.DrawImage(img, 0, 0, iWidth, iHeight);
+            return (Image)bmp;
+        }
+
+        private async Task LoadUloge()
         {
             var uloge = await _ulogeservice.Get<List<Models.Uloga>>(null);
             uloge.Insert(0, new Models.Uloga() { Naziv="---" });
@@ -50,7 +68,10 @@ namespace eTouristapp.WinUI.Korisnici
                 cmbUloge.SelectedValue = korisnik.UlogaId;
                 txtLozinka.Text = " ";
                 txtLozinkapotvrda.Text =" ";
-                
+
+                pbSlika.Image = ByteToImage(korisnik.Slika);
+                pbSlika.Image = Resize(pbSlika.Image, 250, 250);
+                kor.Slika = korisnik.Slika;
             }
         }
         Regex myregex = new Regex("[A-Za-z]{2,30}[@][A-Za-z]{2,8}[.][A-Za-z]{2,7}");
@@ -67,6 +88,8 @@ namespace eTouristapp.WinUI.Korisnici
                 PasswordPotvrda=txtLozinkapotvrda.Text,
                 UlogaId=int.Parse(cmbUloge.SelectedValue.ToString())
             };
+
+           korisnik.Slika=kor.Slika;
 
 
 
@@ -218,6 +241,23 @@ namespace eTouristapp.WinUI.Korisnici
             {
                 e.Cancel = false;
                 errorProvider1.SetError(cmbUloge, null);
+            }
+        }
+        KorisniciInsertRequest kor = new KorisniciInsertRequest();
+        private void btnDodajSliku_Click(object sender, EventArgs e)
+        {
+            var result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                var filename = openFileDialog1.FileName;
+                var fileslika = File.ReadAllBytes(filename);
+                kor.Slika = fileslika;
+                txtSlika.Text = filename;
+
+                Image image = Image.FromFile(filename);
+                image = Resize(image, 250, 250);
+                pbSlika.Image = image;
+
             }
         }
     }

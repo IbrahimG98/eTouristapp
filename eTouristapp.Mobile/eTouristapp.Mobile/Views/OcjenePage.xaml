@@ -2,34 +2,53 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ViewModels="clr-namespace:eTouristapp.Mobile.ViewModels"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ViewModels="clr-namespace:eTouristapp.Mobile.ViewModels" xmlns:Converters="clr-namespace:eTouristapp.Mobile.Converters"
              mc:Ignorable="d"
              x:Class="eTouristapp.Mobile.Views.OcjenePage"
              BackgroundImageSource="Assets/apppozadina.jpg">
     <ContentPage.BindingContext>
         <ViewModels:OcjeneViewModel></ViewModels:OcjeneViewModel>
     </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Converters:ImageConverter x:Key="ImgConverter"></Converters:ImageConverter>
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+
+
+
     <ContentPage.Content>
         <StackLayout>
-            <Label FontSize="Medium" TextColor="WhiteSmoke" Text="Pregled komentara i ocjena:"
-                VerticalOptions="StartAndExpand" 
-                HorizontalOptions="StartAndExpand" />
             <Button HorizontalOptions="End" Clicked="Button_Clicked" TextColor="WhiteSmoke" Text="Dodaj komentar"></Button>
             <ListView ItemsSource="{Binding ListaOcjena}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid x:Name="ListaOcjena"  Margin="4">
-                                <StackLayout>
-                                    <Label TextColor="White" FontAttributes="Italic" FontSize="Medium" Text="{Binding KorisnickoIme}">
-                                        
-                                    </Label> <Label TextColor="White" Text="{Binding OcjenaUsluge}"></Label>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                <RowDefinition Height="100" />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                           
 
-                                    <Label TextColor="White" Text="{Binding Komentar}"></Label>
-                                </StackLayout>
+                            <Image HorizontalOptions="Start" Grid.Row="0" Grid.Column="0" HeightRequest="100" WidthRequest="100" Source="{Binding Slika,Converter={StaticResource ImgConverter}}"></Image>
+                             <Label Grid.Row="1" Grid.Column="0" TextColor="White" FontAttributes="Bold" FontSize="Medium" Text="{Binding KorisnickoIme}"></Label>
+                                <Label Grid.Row="2" Grid.Column="0" FontSize="Small" Text="Ocjena:" TextColor="White"></Label>
+                             <Label Grid.Row="3" Grid.Column="0" FontSize="Small" TextColor="White" Text="{Binding OcjenaUsluge}"></Label>
+                              <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Grid.Row="0" Grid.Column="1" TextColor="White" FontSize="Small" Text="{Binding Komentar}"></Label>
                                 
 
                             </Grid>
+
+
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

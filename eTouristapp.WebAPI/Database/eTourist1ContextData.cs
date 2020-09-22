@@ -321,7 +321,7 @@ namespace eTouristapp.WebAPI.Database
                 KorisnikoIme="desktop",
                 Email= "desktop@gmail.com",
                 UlogaId=2,
-                Slika=null
+                Slika=originalhotel
                 
 
             };
@@ -337,7 +337,7 @@ namespace eTouristapp.WebAPI.Database
                 KorisnikoIme = "mobile",
                 Email = "mobile@gmail.com",
                 UlogaId = 1,
-                Slika=null
+                Slika=originalhotel
 
 
             };

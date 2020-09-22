@@ -46,7 +46,8 @@ namespace eTouristapp.Mobile.ViewModels
                         Komentar=x.Komentar,
                         OcjenaUsluge=x.OcjenaUsluge,
                         KorisnikId=korisnik.Id,
-                        KorisnickoIme=korisnik.KorisnikoIme
+                        KorisnickoIme=korisnik.KorisnikoIme,
+                        Slika=korisnik.Slika
                     };
                    
                    

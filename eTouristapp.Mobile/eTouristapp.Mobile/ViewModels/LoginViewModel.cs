@@ -11,6 +11,8 @@ using eProdaja.Mobile;
 using eTouristapp.Models;
 using eTouristapp.Models.Request;
 using System.Linq;
+using Windows.UI.Popups;
+using System.Diagnostics;
 
 namespace eTouristapp.Mobile.ViewModels
 {
@@ -21,6 +23,13 @@ namespace eTouristapp.Mobile.ViewModels
         public LoginViewModel()
         {
             LoginCommand = new Command(async()=> await Login());
+            ShowAlertCommand = new Command(get => MakeAlter());
+        }
+        public ICommand ShowAlertCommand { get; set; }
+        
+        void MakeAlter()
+        {
+            Application.Current.MainPage.DisplayAlert("Alert", "Hello", "Cancel", "ok");
         }
 
         string _username = string.Empty;
@@ -38,7 +47,7 @@ namespace eTouristapp.Mobile.ViewModels
         }
 
         public ICommand LoginCommand { get; set; }
-       
+
         public async Task Login()
         {
             IsBusy = true;
@@ -46,35 +55,41 @@ namespace eTouristapp.Mobile.ViewModels
             APIService.Password = _password;
             KorisniciSearchRequest request = new KorisniciSearchRequest()
             {
-                KorisnickoIme=_username
+                KorisnickoIme = _username
 
             };
             var korisnici = await _service.Get<List<Korisnik>>(request);
             var korisnik = korisnici.FirstOrDefault();
-            
+
             try
             {
 
                 //await _service.Get<dynamic>(null);
                 //Application.Current.MainPage = new MainPage();
-                if(korisnik!=null && korisnik.UlogaId==1)
+                if (korisnik != null && korisnik.UlogaId == 1)
                 {
                     Application.Current.MainPage = new MainPage();
-                   
+
+
                 }
                 else
                 {
-                    //await DisplayAlert("Greska", "Netacni podaci!", "OK");
-                    await App.Current.MainPage.DisplayAlert("Greska", "Netacni podaci!", "OK");
+                   
+                    await Application.Current.MainPage.DisplayAlert("Confirm", "Are you sure?", "Yes", "No");
+                    //await Application.Current.MainPage.DisplayAlert("Greska", "Netacni podaci!", "OK");
+                    
 
 
                 }
 
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Greska",ex.Message,"OK");
+                
+                await Application.Current.MainPage.DisplayAlert("Greska", ex.Message, "OK","OK");
+                
+
             }
         }
     }

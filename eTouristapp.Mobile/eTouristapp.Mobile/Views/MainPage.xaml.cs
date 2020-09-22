@@ -20,11 +20,15 @@ namespace eTouristapp.Mobile.Views
             InitializeComponent();
 
             MasterBehavior = MasterBehavior.Popover;
-
+           
             
             MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
         }
-
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            ToolbarItems.Clear();
+        }
         public async Task NavigateFromMenu(int id)
         {
             if (!MenuPages.ContainsKey(id))
@@ -43,6 +47,10 @@ namespace eTouristapp.Mobile.Views
                     case (int)MenuItemType.MojiPodaci:
                         MenuPages.Add(id, new NavigationPage(new MojiPodaciPage()));
                         break;
+                    case (int)MenuItemType.MojProfil:
+                        MenuPages.Add(id, new NavigationPage(new KorisnikDetaljiPage()));
+                        break;
+
 
                 }
             }
