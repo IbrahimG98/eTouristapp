@@ -34,23 +34,8 @@ namespace eTouristapp.Mobile.Views
 
         private async  void Button_Clicked(object sender, EventArgs e)
         {
-            if(model.KorisnikDetalji.Count!=0)
-            {
-                
-
-                model.request.Password = model.Lozinka;
-                model.request.PasswordPotvrda = model.LozinkaPotvrda;
-
-                if(model.Lozinka==model.LozinkaPotvrda && model.Lozinka!=null && model.LozinkaPotvrda!=null)
-                {
-                    await _korisniciservice.Update<KorisniciInsertRequest>(model.request.Id, model.request);
-                    await Navigation.PushAsync(new KorisnikDetaljiPage());
-                }
-                else
-                {
-
-                }
-            }
+            await model.UpdateLozinka();
+            App.Current.MainPage=new KorisnikDetaljiPage();
         }
     }
 }

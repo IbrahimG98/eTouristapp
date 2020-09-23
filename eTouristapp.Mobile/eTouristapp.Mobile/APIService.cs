@@ -81,7 +81,8 @@ namespace eProdaja.Mobile
             //{
                 var url = $"{_apiUrl2}/{_route}/{id}";
 
-                return await url.WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<T>();
+                 var result= await url.WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<T>();
+            return result;
                
             //}
 

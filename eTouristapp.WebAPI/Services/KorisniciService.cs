@@ -115,8 +115,17 @@ namespace eTouristapp.WebAPI.Services
                 {
                     throw new Exception("Passwordi se ne slazu!");
                 }
+                else
+                {
+
+
+                    entitet.LozinkaSalt = GenerateSalt();
+                    entitet.LozinkaHash = GenerateHash(entitet.LozinkaSalt, request.Password);
+                }
+                
                 
             }
+
             _context.Korisnik.Attach(entitet);
             _context.Korisnik.Update(entitet);
             _mapper.Map(entitet, request);
@@ -153,6 +162,16 @@ namespace eTouristapp.WebAPI.Services
             if(entitet!=null)
             {
                 _context.Korisnik.Remove(entitet);
+                var listkarte = _context.Karta.Where(x => x.KorisnikId == entitet.Id);
+                foreach (var x in listkarte)
+                {
+                    _context.Karta.Remove(x);
+                }
+                var listocjena = _context.Ocjena.Where(x => x.KorisnikId == entitet.Id);
+                foreach(var x in listocjena)
+                {
+                    _context.Ocjena.Remove(x);
+                }
                 _context.SaveChanges();
                 return true;
             }

@@ -1,7 +1,9 @@
 ﻿using eProdaja.Mobile;
 using eTouristapp.Mobile.Models;
+using eTouristapp.Mobile.Views;
 using eTouristapp.Models;
 using eTouristapp.Models.Request;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -37,7 +39,7 @@ namespace eTouristapp.Mobile.ViewModels
             set { SetProperty(ref _lozinkapotvrda, value); }
         }
 
-        public KorisniciInsertRequest request = new KorisniciInsertRequest();
+        public KorisniciInsertRequest request { get; set; } = new KorisniciInsertRequest();
         public async Task LoadDetalji()
         {
             KorisnikDetalji.Clear();
@@ -62,14 +64,29 @@ namespace eTouristapp.Mobile.ViewModels
             };
             KorisnikDetalji.Add(detalji);
 
-            request.Id = korisnik.Id;
+            request.Id = detalji.Id;
             request.Ime = korisnik.Ime;
             request.Prezime = korisnik.Prezime;
             request.Email = korisnik.Email;
             request.KorisnikoIme = korisnik.KorisnikoIme;
             request.Slika = korisnik.Slika;
-            request.UlogaId = korisnik.UlogaId;
+            request.UlogaId = int.Parse(korisnik.UlogaId.ToString());
 
         }
+
+        public async Task UpdateLozinka()
+        {
+            request.Password = this.Lozinka;
+            request.PasswordPotvrda = this.LozinkaPotvrda;
+
+            if(request.Password==request.PasswordPotvrda && !string.IsNullOrEmpty(request.Password) && !string.IsNullOrEmpty(request.PasswordPotvrda))
+            {
+
+                await _korisniciservice.Update<KorisniciInsertRequest>(request.Id, request);
+                
+            }
+        }
+
+        
     }
 }

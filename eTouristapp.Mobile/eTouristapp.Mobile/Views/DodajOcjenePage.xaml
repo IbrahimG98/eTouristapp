@@ -19,7 +19,7 @@
 
     <ContentPage.Content>
 
-        <StackLayout>
+        <StackLayout WidthRequest="300" HeightRequest="300" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
             <Label FontSize="Medium" Text="{Binding Obavijest}"></Label>
             <Label TextColor="WhiteSmoke" FontSize="Medium" Text="Ocjena(1-5)"></Label>
             <!--<Entry HorizontalOptions="Start" Text="{Binding Ocjena}"></Entry>-->
@@ -27,7 +27,7 @@
             
              <Label TextColor="WhiteSmoke" FontSize="Medium" Text="Komentar"></Label>
             <Entry Text="{Binding Komentar}"></Entry>
-            <Button Clicked="Button_Clicked" Command="{Binding DKomentar }" TextColor="WhiteSmoke" Text="Dodaj"></Button>
+            <Button BackgroundColor="LightBlue" Clicked="Button_Clicked" Command="{Binding DKomentar }" TextColor="WhiteSmoke" Text="Dodaj"></Button>
 
         </StackLayout>
     </ContentPage.Content>

@@ -57,9 +57,9 @@
 
                 </ListView>
 
-            <Entry IsPassword="True" WidthRequest="300" HeightRequest="40" Placeholder="Lozinka" PlaceholderColor="White" FontAttributes="Italic" BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  TextColor="White" FontSize="Small" Text="{Binding Lozinka}"></Entry>
+            <!--<Entry IsPassword="True" WidthRequest="300" HeightRequest="40" Placeholder="Lozinka" PlaceholderColor="White" FontAttributes="Italic" BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  TextColor="White" FontSize="Small" Text="{Binding Lozinka}"></Entry>
             <Entry IsPassword="True" WidthRequest="300" HeightRequest="40" Placeholder="Lozinka potvrda" PlaceholderColor="White" FontAttributes="Italic" BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" FontSize="Small" Text="{Binding LozinkaPotvrda}"></Entry>
-            <Button WidthRequest="300" HeightRequest="40" BackgroundColor="LightBlue" Text="Sacuvaj" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Clicked="Button_Clicked"></Button>
+            <Button WidthRequest="300" HeightRequest="40" BackgroundColor="LightBlue" Text="Sacuvaj" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Clicked="Button_Clicked"></Button>-->
 
         </StackLayout>
     </ContentPage.Content>
