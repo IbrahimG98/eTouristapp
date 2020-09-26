@@ -76,5 +76,15 @@ namespace eTouristapp.Mobile.Views
             await _karteservice.Update<Karta>(id, insertkarta);
             await Navigation.PushAsync(new MojiPodaciPage());
         }
+
+        private async void Button_Clicked_3(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ProbniPage());
+        }
+
+        private async void Button_Clicked_4(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -19,7 +19,8 @@ namespace eTouristapp.Mobile.ViewModels
     public class LoginViewModel : BaseViewModel
     {
         private readonly APIService _service = new APIService("Korisnici");//ili destinacije
-        
+        private readonly APIService _rsII = new APIService("RSII25092020");
+
         public LoginViewModel()
         {
             LoginCommand = new Command(async()=> await Login());
@@ -60,7 +61,7 @@ namespace eTouristapp.Mobile.ViewModels
             };
             var korisnici = await _service.Get<List<Korisnik>>(request);
             var korisnik = korisnici.FirstOrDefault();
-
+           
             try
             {
 
@@ -68,6 +69,10 @@ namespace eTouristapp.Mobile.ViewModels
                 //Application.Current.MainPage = new MainPage();
                 if (korisnik != null && korisnik.UlogaId == 1)
                 {
+                    
+
+
+                    
                     Application.Current.MainPage = new MainPage();
 
 

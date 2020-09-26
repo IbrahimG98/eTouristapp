@@ -84,11 +84,20 @@ namespace eTouristapp.WinUI.Termini
                 txtAkcijskaCijena.Text = "0";
                 pickerOd.MinDate = System.DateTime.Now;
                 pickerDo.MinDate = System.DateTime.Now;
+                btnObrisi.Visible = false;
+                btnPrint.Visible = false;
+                btnKarte.Visible = false;
+                panel1.Visible = false;
             }
             
 
             if (_id.HasValue)
             {
+                btnObrisi.Visible = true;
+                btnPrint.Visible = true;
+                btnKarte.Visible = true;
+                panel1.Visible = true;
+
                 await LoadZaradaiKarte();
 
                 var termin = await _termini.GetById<Models.Termin>(_id);
@@ -260,7 +269,7 @@ namespace eTouristapp.WinUI.Termini
 
         private void cmbHotel_Validating(object sender, CancelEventArgs e)
         {
-            if(int.Parse(cmbHotel.SelectedValue.ToString())==0 || cmbHotel.SelectedValue==null)
+            if(int.Parse(cmbHotel.SelectedValue.ToString())==0 || cmbHotel.SelectedIndex==-1 || cmbHotel.SelectedValue==null)
             {
                 e.Cancel = true;
                 errorProvider1.SetError(cmbHotel, "Odaberite hotel!");

@@ -225,5 +225,11 @@ namespace eTouristapp.WinUI.Hoteli
             cmbDrzava.Enabled = false;
             cmbGrad.Enabled = false;
         }
+
+        private void btnNovihotel_Click(object sender, EventArgs e)
+        {
+            frmHoteliDetalji frm = new frmHoteliDetalji();
+            frm.Show();
+        }
     }
 }

@@ -43,6 +43,9 @@ namespace eTouristapp.WinUI.Destinacije
         {
             if (_id.HasValue)
             {
+                btnObrisi.Visible = true;
+                btnTermini.Visible = true;
+
                 var destinacija = await _destinacija.GetById<Models.Destinacija>(_id);
                 txtNaziv.Text = destinacija.Naziv;
                 var grad = await _gradovi.GetById<Models.Grad>(destinacija.GradId);
@@ -71,6 +74,8 @@ namespace eTouristapp.WinUI.Destinacije
             }
             else
             {
+                btnObrisi.Visible = false;
+                btnTermini.Visible = false;
                 await LoadDrzave();
                 await LoadGradovi(null);
             }

@@ -214,5 +214,30 @@ namespace eTouristapp.WinUI
             //frm.WindowState = FormWindowState.Maximized;
             //frm.Show();
         }
+
+        private void frmIndex_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmKorisnici frm = new frmKorisnici();
+            //frm.MdiParent = this;
+            //frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void btnDestinacije_Click(object sender, EventArgs e)
+        {
+            frmDestinacije frm = new frmDestinacije();
+            frm.Show();
+        }
+
+        private void btnHoteli_Click(object sender, EventArgs e)
+        {
+            frmHoteli frm = new frmHoteli();
+            frm.Show();
+        }
     }
 }

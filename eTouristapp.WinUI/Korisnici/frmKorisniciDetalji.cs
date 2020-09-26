@@ -60,6 +60,7 @@ namespace eTouristapp.WinUI.Korisnici
             cmbUloge.SelectedValue = 0;
             if(_id.HasValue)
             {
+                btnObrisi.Visible = true;
                 var korisnik = await _service.GetById<Models.Korisnik>(_id);
                 txtIme.Text = korisnik.Ime;
                 txtPrezime.Text = korisnik.Prezime;
@@ -72,6 +73,10 @@ namespace eTouristapp.WinUI.Korisnici
                 pbSlika.Image = ByteToImage(korisnik.Slika);
                 pbSlika.Image = Resize(pbSlika.Image, 250, 250);
                 kor.Slika = korisnik.Slika;
+            }
+            else
+            {
+                btnObrisi.Visible = false;
             }
         }
         Regex myregex = new Regex("[A-Za-z]{2,30}[@][A-Za-z]{2,8}[.][A-Za-z]{2,7}");

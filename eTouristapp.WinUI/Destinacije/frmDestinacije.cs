@@ -209,5 +209,11 @@ namespace eTouristapp.WinUI.Destinacije
                 dgvDestinacije.DataSource = result;
             }
         }
+
+        private void btnNovi_Click(object sender, EventArgs e)
+        {
+            frmDestinacijeDetalji frm = new frmDestinacijeDetalji();
+            frm.Show();
+        }
     }
 }

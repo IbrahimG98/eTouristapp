@@ -93,5 +93,11 @@ namespace eTouristapp.WinUI.Korisnici
                 errorProvider1.SetError(cmbUloge, null);
             }
         }
+
+        private void btnNoviKorisnik_Click(object sender, EventArgs e)
+        {
+            frmKorisniciDetalji frm = new frmKorisniciDetalji();
+            frm.Show();
+        }
     }
 }

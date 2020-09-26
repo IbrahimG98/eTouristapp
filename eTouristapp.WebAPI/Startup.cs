@@ -108,6 +108,7 @@ namespace eTouristapp.WebAPI
             services.AddScoped<ICRUDService<Models.Grad, GradoviSearchRequest, GradoviInsertRequest, GradoviInsertRequest>, GradoviService>();
             services.AddScoped<ICRUDService<Models.Drzava,DrzavaSearchRequest,DrzavaInsertRequest,DrzavaInsertRequest>,DrzaveService>();
             services.AddScoped<ICRUDService<Models.Kontinent, KontinentSearchRequest, KontinentInsertRequest, KontinentInsertRequest>, KontinentiService>();
+            
             services.AddAutoMapper(typeof(Startup));
         }
 

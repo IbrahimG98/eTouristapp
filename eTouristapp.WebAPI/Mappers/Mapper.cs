@@ -59,6 +59,7 @@ namespace eTouristapp.WebAPI.Mappers
             CreateMap<Database.Kontinent, KontinentInsertRequest>().ReverseMap();
             CreateMap<Database.Kontinent, Models.Kontinent>().ReverseMap();
 
+           
 
 
         }

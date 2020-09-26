@@ -45,6 +45,7 @@ namespace eTouristapp.WinUI.Hoteli
 
             if (_id.HasValue)
             {
+                btnObrisi.Visible = true;
                 var hotel = await _hotel.GetById<Models.Hotel>(_id);
                 txtNaziv.Text = hotel.Naziv;
 
@@ -74,6 +75,7 @@ namespace eTouristapp.WinUI.Hoteli
                 await LoadDrzave();
                 await LoadGradovi(null);
                 txtZvjezdice.Text = "0";
+                btnObrisi.Visible = false;
             }
 
 

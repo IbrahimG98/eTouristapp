@@ -11,6 +11,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
+           
             <Label FontSize="Medium" TextColor="WhiteSmoke" Text="Moje aktivne karte"
                 VerticalOptions="StartAndExpand" 
                 HorizontalOptions="StartAndExpand" />

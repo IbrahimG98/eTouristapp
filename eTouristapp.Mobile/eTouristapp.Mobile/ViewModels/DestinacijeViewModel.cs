@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore.Internal;
 using eTouristapp.Models.Request;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using eTouristapp.Mobile.Views;
+using eTouristapp.Mobile.Models;
 
 namespace eTouristapp.Mobile.ViewModels
 {
@@ -73,6 +74,7 @@ namespace eTouristapp.Mobile.ViewModels
 
         public ObservableCollection<Drzava> DrzaveList { get; set; } = new ObservableCollection<Drzava>();
         public ObservableCollection<Destinacija> DestinacijeList { get; set; } = new ObservableCollection<Destinacija>();
+       
         public ObservableCollection<Grad> GradoviList { get; set; } = new ObservableCollection<Grad>();
         public ICommand Initial { get; set; }
 
@@ -144,6 +146,7 @@ namespace eTouristapp.Mobile.ViewModels
 
                 foreach (var destinacija in list)
                 {
+
                     DestinacijeList.Add(destinacija);
                 }
             }
